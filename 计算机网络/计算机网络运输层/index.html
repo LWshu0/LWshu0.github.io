@@ -1,0 +1,257 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>朔宝的小屋 | 朔宝的小屋</title><meta name="author" content="朔宝"><meta name="copyright" content="朔宝"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="多路复用与多路分解 网络层提供的是端到端(主机到主机)的服务, 是一对一的, 而运输层将这一服务拓展到进程到进程的服务, 变为了多对多. 这些多对多的服务都是使用网络层提供的一对一服务, 运输层将多个进程发送的数据分别打包并传输到网络层, 就是 多路复用 ; 接收端从网络层接收到的数据需要分发到对应的进程, 这就是 多路分解 . 多路分解时通过运输层协议中的 源端口字段 和 目的端口字段 来确定该">
+<meta property="og:type" content="article">
+<meta property="og:title" content="朔宝的小屋">
+<meta property="og:url" content="https://lwshu0.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/index.html">
+<meta property="og:site_name" content="朔宝的小屋">
+<meta property="og:description" content="多路复用与多路分解 网络层提供的是端到端(主机到主机)的服务, 是一对一的, 而运输层将这一服务拓展到进程到进程的服务, 变为了多对多. 这些多对多的服务都是使用网络层提供的一对一服务, 运输层将多个进程发送的数据分别打包并传输到网络层, 就是 多路复用 ; 接收端从网络层接收到的数据需要分发到对应的进程, 这就是 多路分解 . 多路分解时通过运输层协议中的 源端口字段 和 目的端口字段 来确定该">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lwshu0.github.io/img/touxiang.jpg">
+<meta property="article:published_time" content="2023-10-05T08:41:03.821Z">
+<meta property="article:modified_time" content="2023-10-06T15:54:41.866Z">
+<meta property="article:author" content="朔宝">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lwshu0.github.io/img/touxiang.jpg"><link rel="shortcut icon" href="/img/wlogo.png"><link rel="canonical" href="https://lwshu0.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 朔宝","link":"链接: ","source":"来源: 朔宝的小屋","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '朔宝的小屋',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-10-06 23:54:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/touxiang.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 小屋</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案馆</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/dahe.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="朔宝的小屋"><span class="site-name">朔宝的小屋</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 小屋</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 档案馆</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-05T08:41:03.821Z" title="发表于 2023-10-05 16:41:03">2023-10-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-10-06T15:54:41.866Z" title="更新于 2023-10-06 23:54:41">2023-10-06</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>多路复用与多路分解</h1>
+<p>网络层提供的是端到端(主机到主机)的服务, 是一对一的, 而运输层将这一服务拓展到进程到进程的服务, 变为了多对多. 这些多对多的服务都是使用网络层提供的一对一服务, 运输层将多个进程发送的数据分别打包并传输到网络层, 就是 <strong>多路复用</strong> ; 接收端从网络层接收到的数据需要分发到对应的进程, 这就是 <strong>多路分解</strong> .</p>
+<p>多路分解时通过运输层协议中的 <strong>源端口字段</strong> 和 <strong>目的端口字段</strong> 来确定该条数据要分发到哪一个进程. 其中的端口字段都是 16 bits 的数字, 范围从0到65535, 注意0到1023的端口号为 <strong>周知端口号(well-known port number)</strong> 都有特定的用途, 比如 HTTP 使用80端口, FTP使用21端口等.</p>
+<p>在一般的网络程序中, 服务器是固定IP和固定端口, 而客户端则可以使用随机IP和随机端口. 服务器能够向客户端发送数据靠的就是协议中的源IP和源端口字段.</p>
+<ol>
+<li>
+<p>面向无连接<br>
+一个UDP套接字由目的IP和目的端口唯一标识, 在接收方运输层将根据目的端口定向发送到对应的进程套接字.</p>
+</li>
+<li>
+<p>面向连接<br>
+一个TCP套接字由源IP, 源端口, 目的IP和目的端口唯一标识, 接收主机通过全部四个值来确定要将该数据发送到哪一个套接字(除非携带了创建连接请求, 这将会创建一个新的套接字).</p>
+</li>
+<li>
+<p>web服务器与TCP<br>
+一个web服务器使用的都是80端口, 当今高性能的服务器通常只运行一个进程, 而为每一个客户创建一个具有新套接字的新线程, 这样就可以在一个端口上为多个用户提供服务. 当用户使用非持续性连接时, 频繁的创建关闭套接字会严重影响服务器的性能.</p>
+</li>
+</ol>
+<h1>UDP</h1>
+<p>在运输层提供最低限度的服务—复用/解复用.</p>
+<h2 id="相对于TCP的优点">相对于TCP的优点</h2>
+<ul>
+<li>可以立即发送数据到网络层, 且没有拥塞控制来遏制发送, 适合一些容忍数据丢失的实时程序(如视频播放等)</li>
+<li>没有建立连接的时延, 如DNS服务, 谷歌chrome浏览器就使用UDP</li>
+<li>无需在系统中维护连接状态, 包括接收发送缓存, 拥塞控制参数, 序号与确认号等, 某些特定应用就可以支持更多的用户</li>
+<li>分组首部开销小</li>
+</ul>
+<h2 id="报文段结构">报文段结构</h2>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696516554716.png" alt="1696516554716"></p>
+<p>长度字段包括首部加数据的字节数</p>
+<h2 id="UDP校验和">UDP校验和</h2>
+<p>发送方:</p>
+<p>将所有16bit字求和, 如果遇到进位就将进位加到最低位(回卷), 最后的结果取反码存到校验和字段中</p>
+<p>接收方:</p>
+<p>将所有的16bit字求和(包括校验和字段), 如果没有错, 最终结果将是1111_1111_1111_1111, 如果结果有一位是0就代表分组出错.</p>
+<h1>可靠数据传输</h1>
+<blockquote>
+<p>下面使用FSM(有限状态机)来描述, 横线上方是引起变化的条件, 横线下方是采取的动作, 实线箭头是状态转移.</p>
+</blockquote>
+<h2 id="基于可靠信道">基于可靠信道</h2>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696518014199.png" alt="1696518014199"></p>
+<h2 id="基于具有比特差错的信道">基于具有比特差错的信道</h2>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696518460337.png" alt="1696518460337"></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Λ</mi></mrow><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Λ</span></span></span></span> 代表什么也不做</p>
+<p>发送方在发送数据后需要等待接收方发来的ACK消息, 说明接收方接收到了正确的数据.</p>
+<p>接收方在接收到数据后需要检验, 数据没有错就向发送方发送一个ACK消息, 否则发送一个NAK消息告知发送方重发.</p>
+<p><strong>重要的步骤:</strong></p>
+<ul>
+<li>差错检验</li>
+<li>接收方反馈</li>
+<li>重传</li>
+</ul>
+<p><strong>当ACK或者NAK受损时:</strong></p>
+<ul>
+<li>发送方要求接收方重复一遍上一次的消息(也就是ACK/NAK)</li>
+<li>增加足够的检验和比特, 可以从错误中恢复数据</li>
+<li>发送方收到不清楚的ANK/NAK时, 直接重传一份数据分组(称为 <strong>冗余分组</strong> ), 那么接收方如何知道这是重传的数据还是新的数据呢? 给分组 <strong>序号</strong>!</li>
+</ul>
+<p>对于序号, 只用1 bit就可以, 因为只需要区分是重传还是新数据, 可靠传输的发送方在上一次发送的数据没有得到接收方确认收到的时候不会发送新数据.</p>
+<p><strong>rdt2.1 解决ACK/NAK受损的问题</strong></p>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696580888103.png" alt="1696580888103"></p>
+<p>接收方的两个 duplicate pkt 是因为发送方没有接收到ACK/NAK而重发的数据包, 但是接收方已经接收到了正确的数据包, 并且将状态转移到了等待接收另一个数据包, 所以才会出现接收方在等待1的时候接收到0, 在等待0的时候接收到1的情况.</p>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696580969063.png" alt="1696580969063"></p>
+<p><strong>rdt2.2 不使用NAK, 而使用冗余ACK</strong></p>
+<p>红色方框框出主要的与rdt2.1不同的地方. 接收方只会发送自己正确接收到的最后一个分组标号,</p>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696581671087.png" alt="1696581671087"></p>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696581985703.png" alt="1696581985703"></p>
+<h2 id="基于有比特差错的丢包信道">基于有比特差错的丢包信道</h2>
+<p>发送方没有收到ACK可能是因为: 发送数据丢包, ACK丢包, 数据或ACK过度时延. 而对于发送方, 重传总是起作用的, 所以在遇到超时没有收到ACK的情况, 就重传数据.</p>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696598963935.png" alt="1696598963935"></p>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696605424067.png" alt="1696605424067"></p>
+<h2 id="流水线的可靠数据传输协议">流水线的可靠数据传输协议</h2>
+<p>rdt3.0是一个功能正确但性能不高的协议, 主要是因为其中有大量的停等时间.</p>
+<p>定义一个信道利用率: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mfrac><mrow><mi>L</mi><mi mathvariant="normal">/</mi><mi>R</mi></mrow><mrow><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mi>L</mi><mi mathvariant="normal">/</mi><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">U = \frac{L/R}{RTT+L/R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">RTT</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">L</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> , 假如往返时延为30ms, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi mathvariant="normal">/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">L/R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mi>μ</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">8 \mu s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">8</span><span class="mord mathnormal">μ</span><span class="mord mathnormal">s</span></span></span></span>, 此时信道利用率只有万分之2.7. 在上面的协议中, 每传输一个分组就要等待一个RTT. 这是非常低效的.</p>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696606074361.png" alt="1696606074361"></p>
+<h3 id="回退N步-Go-Back-N-GBN">回退N步(Go-Back-N, GBN)</h3>
+<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696606218217.png" alt="1696606218217"></p>
+<p>随着协议的进行, 窗口会在分组序号空间中向后滑动, 因此GBN协议也叫做 <strong>滑动窗口协议</strong></p>
+<p>需要注意, 假如分配给分组序号的bit是k, 那么分组序号的范围就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 2^k-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> , 滑动窗口的大小不能超过该范围的一半</p>
+<p><strong>sender</strong><br>
+<img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696607002803.png" alt="1696607002803"></p>
+<p><strong>receiver</strong><br>
+<img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696607165711.png" alt="1696607165711"></p>
+<p>可以发现, 接收方只会对按顺序收到的最后一个正确分组回复一个ACK消息, 假如此时接收到了1245, 3号分组丢失, 也只会回复ACK 2, 这就浪费了时间和网络资源重发已经正确收到的45号分组.</p>
+<p><strong>累积确认</strong>: 指发送方在收到序号为N的ACK, 代表包括N及其之前的所有分组接收方都正确收到</p>
+<h3 id="选择重传-Selective-Repeat-SR">选择重传(Selective Repeat, SR)</h3>
+<h1>TCP</h1>
+<h1>拥塞控制原理</h1>
+<h1>TCP的拥塞控制</h1>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://lwshu0.github.io">朔宝</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://lwshu0.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/">https://lwshu0.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://lwshu0.github.io" target="_blank">朔宝的小屋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/touxiang.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/img/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/%E9%A1%B9%E7%9B%AE/%E7%BD%91%E7%BB%9C%E5%A5%97%E6%8E%A5%E5%AD%97%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/" title="网络套接字聊天程序"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">网络套接字聊天程序</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/touxiang.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">朔宝</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">15</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LWshu0"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LWShu0" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:eastwind10274@163.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">多路复用与多路分解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">UDP</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%AF%B9%E4%BA%8ETCP%E7%9A%84%E4%BC%98%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">相对于TCP的优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E6%96%87%E6%AE%B5%E7%BB%93%E6%9E%84"><span class="toc-number">2.2.</span> <span class="toc-text">报文段结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP%E6%A0%A1%E9%AA%8C%E5%92%8C"><span class="toc-number">2.3.</span> <span class="toc-text">UDP校验和</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">可靠数据传输</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%8F%AF%E9%9D%A0%E4%BF%A1%E9%81%93"><span class="toc-number">3.1.</span> <span class="toc-text">基于可靠信道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%85%B7%E6%9C%89%E6%AF%94%E7%89%B9%E5%B7%AE%E9%94%99%E7%9A%84%E4%BF%A1%E9%81%93"><span class="toc-number">3.2.</span> <span class="toc-text">基于具有比特差错的信道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E6%9C%89%E6%AF%94%E7%89%B9%E5%B7%AE%E9%94%99%E7%9A%84%E4%B8%A2%E5%8C%85%E4%BF%A1%E9%81%93"><span class="toc-number">3.3.</span> <span class="toc-text">基于有比特差错的丢包信道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E6%B0%B4%E7%BA%BF%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.4.</span> <span class="toc-text">流水线的可靠数据传输协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E9%80%80N%E6%AD%A5-Go-Back-N-GBN"><span class="toc-number">3.4.1.</span> <span class="toc-text">回退N步(Go-Back-N, GBN)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%87%8D%E4%BC%A0-Selective-Repeat-SR"><span class="toc-number">3.4.2.</span> <span class="toc-text">选择重传(Selective Repeat, SR)</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">TCP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">拥塞控制原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">TCP的拥塞控制</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/" title="无题">无题</a><time datetime="2023-10-05T08:41:03.821Z" title="发表于 2023-10-05 16:41:03">2023-10-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E9%A1%B9%E7%9B%AE/%E7%BD%91%E7%BB%9C%E5%A5%97%E6%8E%A5%E5%AD%97%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/" title="网络套接字聊天程序">网络套接字聊天程序</a><time datetime="2023-09-28T15:59:58.000Z" title="发表于 2023-09-28 23:59:58">2023-09-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/internet-programming/" title="internet_programming">internet_programming</a><time datetime="2023-09-18T14:56:09.000Z" title="发表于 2023-09-18 22:56:09">2023-09-18</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/DataBase/MySql/" title="MySql">MySql</a><time datetime="2023-09-14T15:49:13.000Z" title="发表于 2023-09-14 23:49:13">2023-09-14</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/DataBase/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" title="关系数据库">关系数据库</a><time datetime="2023-09-10T15:09:05.000Z" title="发表于 2023-09-10 23:09:05">2023-09-10</time></div></div></div></div></div></div></main><footer id="footer" style="background: rgb(50, 80, 100, .05)"><div id="footer-wrap"><div class="copyright">&copy;2023 By 朔宝</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, Welcome to my blog!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">簡</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/copy-tex.min.js"></script><script>(() => {
+  document.querySelectorAll('#article-container span.katex-display').forEach(item => {
+    btf.wrap(item, 'div', { class: 'katex-wrap'})
+  })
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script></div></body></html>
