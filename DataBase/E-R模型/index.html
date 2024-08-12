@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
   <link rel="icon" href="/img/fluid.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,12 +19,12 @@
   <meta name="author" content="LWshu0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="E-R(实体-联系)模型 基本概念 实体 实体 是现实世界中可以唯一区分的个体&#x2F;对象. 使用 属性 来描述一个实体的性质, 根据属性的 值 我们可以有关这个实体的一些信息. 实体集 是相同类型(具有相同属性)的一个实体的集合 联系 联系 是多个实体间的相互关联. 联系集 是相同类型的联系的集合. 实体集之间的关联称为 参与, 实体集可以参与到多个联系集中. 参与联系集的实体集个数为联系集的 度.">
+    <meta name="description" content="E-R(实体-联系)模型基本概念实体实体 是现实世界中可以唯一区分的个体&#x2F;对象. 使用 属性 来描述一个实体的性质, 根据属性的 值 我们可以有关这个实体的一些信息. 实体集 是相同类型(具有相同属性)的一个实体的集合 联系联系 是多个实体间的相互关联. 联系集 是相同类型的联系的集合. 实体集之间的关联称为 参与, 实体集可以参与到多个联系集中. 参与联系集的实体集个数为联系集的 度.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="E-R模型">
 <meta property="og:url" content="https://lwshu0.github.io/DataBase/E-R%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="朔宝的小屋">
-<meta property="og:description" content="E-R(实体-联系)模型 基本概念 实体 实体 是现实世界中可以唯一区分的个体&#x2F;对象. 使用 属性 来描述一个实体的性质, 根据属性的 值 我们可以有关这个实体的一些信息. 实体集 是相同类型(具有相同属性)的一个实体的集合 联系 联系 是多个实体间的相互关联. 联系集 是相同类型的联系的集合. 实体集之间的关联称为 参与, 实体集可以参与到多个联系集中. 参与联系集的实体集个数为联系集的 度.">
+<meta property="og:description" content="E-R(实体-联系)模型基本概念实体实体 是现实世界中可以唯一区分的个体&#x2F;对象. 使用 属性 来描述一个实体的性质, 根据属性的 值 我们可以有关这个实体的一些信息. 实体集 是相同类型(具有相同属性)的一个实体的集合 联系联系 是多个实体间的相互关联. 联系集 是相同类型的联系的集合. 实体集之间的关联称为 参与, 实体集可以参与到多个联系集中. 参与联系集的实体集个数为联系集的 度.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lwshu0.github.io/img/E-R%E6%A8%A1%E5%9E%8B/1696864417344.png">
 <meta property="og:image" content="https://lwshu0.github.io/img/E-R%E6%A8%A1%E5%9E%8B/1696866602384.png">
@@ -57,7 +60,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -78,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -122,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -134,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -146,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -158,7 +161,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -170,9 +173,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -229,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2k 字
+          1.6k 字
         
       </span>
     
@@ -240,7 +255,7 @@
         
         
         
-          17 分钟
+          13 分钟
         
       </span>
     
@@ -270,6 +285,19 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
 
@@ -282,34 +310,22 @@
             
               <div class="markdown-body">
                 
-                <h1>E-R(实体-联系)模型</h1>
-<h2 id="基本概念">基本概念</h2>
-<h3 id="实体">实体</h3>
-<p><strong>实体</strong> 是现实世界中可以唯一区分的个体/对象. 使用 <strong>属性</strong> 来描述一个实体的性质, 根据属性的 <strong>值</strong> 我们可以有关这个实体的一些信息.</p>
+                <h1 id="E-R-实体-联系-模型"><a href="#E-R-实体-联系-模型" class="headerlink" title="E-R(实体-联系)模型"></a>E-R(实体-联系)模型</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><h3 id="实体"><a href="#实体" class="headerlink" title="实体"></a>实体</h3><p><strong>实体</strong> 是现实世界中可以唯一区分的个体&#x2F;对象. 使用 <strong>属性</strong> 来描述一个实体的性质, 根据属性的 <strong>值</strong> 我们可以有关这个实体的一些信息.</p>
 <p><strong>实体集</strong> 是相同类型(具有相同属性)的一个实体的集合</p>
-<h3 id="联系">联系</h3>
-<p><strong>联系</strong> 是多个实体间的相互关联.</p>
+<h3 id="联系"><a href="#联系" class="headerlink" title="联系"></a>联系</h3><p><strong>联系</strong> 是多个实体间的相互关联.</p>
 <p><strong>联系集</strong> 是相同类型的联系的集合. 实体集之间的关联称为 <strong>参与</strong>, 实体集可以参与到多个联系集中. 参与联系集的实体集个数为联系集的 <strong>度</strong>. 实体在联系中扮演的功能称为 <strong>角色</strong></p>
-<h3 id="属性">属性</h3>
-<p>属性的可取值范围为属性的 <strong>域</strong>, 或者 <strong>值集</strong>.</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>属性的可取值范围为属性的 <strong>域</strong>, 或者 <strong>值集</strong>.</p>
 <p>划分:</p>
 <ul>
 <li>简单和复合属性: 简单属性是不可划分的最小属性, 符合属性可以由简单属性和复合属性聚集得到</li>
 <li>单值和多值属性: 对于一个实体, 属性的取值只有一个称为单值属性, 可以有多个称为多值属性</li>
 <li>派生属性: 从别的相关属性或实体派生出来(即可以通过它们以一定的计算方法得到)</li>
 </ul>
-<h3 id="约束">约束</h3>
-<h4 id="映射基数">映射基数</h4>
-<p>一个实体通过一个联系集可以关联到的实体个数, 分为一对一, 一对多, 多对一, 多对多.</p>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><h4 id="映射基数"><a href="#映射基数" class="headerlink" title="映射基数"></a>映射基数</h4><p>一个实体通过一个联系集可以关联到的实体个数, 分为一对一, 一对多, 多对一, 多对多.</p>
 <p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1696864417344.png" srcset="/img/loading.gif" lazyload alt="1696864417344"></p>
-<h4 id="参与约束">参与约束</h4>
-<p>一个实体集中的实体全部参与到联系中, 称这个联系为 <strong>全部</strong>的, 否则是 <strong>部分</strong>的</p>
-<h4 id="码">码</h4>
-<p>数据库中一个实体的属性必须可以作为该实体的唯一标识<br>
-假设 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 是一个涉及实体集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>E</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>E</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>E</mi><mi>n</mi></msub></mrow><annotation encoding="application/x-tex">E_1, E_2, \dots, E_n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8778em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的联系, 那么 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>r</mi><mi>i</mi><mi>m</mi><mi>a</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">_</mi><mi>k</mi><mi>e</mi><mi>y</mi><mo stretchy="false">(</mo><msub><mi>E</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo>∪</mo><mi>p</mi><mi>r</mi><mi>i</mi><mi>m</mi><mi>a</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">_</mi><mi>k</mi><mi>e</mi><mi>y</mi><mo stretchy="false">(</mo><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false">)</mo><mo>∪</mo><mo>⋯</mo><mo>∪</mo><mi>p</mi><mi>r</mi><mi>i</mi><mi>m</mi><mi>a</mi><mi>r</mi><mi>y</mi><mi mathvariant="normal">_</mi><mi>k</mi><mi>e</mi><mi>y</mi><mo stretchy="false">(</mo><msub><mi>E</mi><mi>n</mi></msub><mo stretchy="false">)</mo><mo>∪</mo><mo stretchy="false">{</mo><msub><mi>a</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>a</mi><mn>2</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>a</mi><mi>m</mi></msub><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">primary\_key(E_1) \cup primary\_key(E_2) \cup \dots \cup primary\_key(E_n) \cup \{ a_1, a_2, \dots , a_m \}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">ima</span><span class="mord mathnormal" style="margin-right:0.03588em;">ry</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.03588em;">ey</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">ima</span><span class="mord mathnormal" style="margin-right:0.03588em;">ry</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.03588em;">ey</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5556em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.06em;vertical-align:-0.31em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">ima</span><span class="mord mathnormal" style="margin-right:0.03588em;">ry</span><span class="mord" style="margin-right:0.02778em;">_</span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mord mathnormal" style="margin-right:0.03588em;">ey</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0576em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∪</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span> 就是联系集 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>R</mi></mrow><annotation encoding="application/x-tex">R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 的一个超码, 其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 是联系集的一些属性.</p>
-<h2 id="E-R图">E-R图</h2>
-<h3 id="基本结构">基本结构</h3>
-<ul>
+<h4 id="参与约束"><a href="#参与约束" class="headerlink" title="参与约束"></a>参与约束</h4><p>一个实体集中的实体全部参与到联系中, 称这个联系为 <strong>全部</strong>的, 否则是 <strong>部分</strong>的</p>
+<h4 id="码"><a href="#码" class="headerlink" title="码"></a>码</h4><p>数据库中一个实体的属性必须可以作为该实体的唯一标识<br>假设 $R$ 是一个涉及实体集 $E_1, E_2, \dots, E_n$ 的联系, 那么 $primary_key(E_1) \cup primary_key(E_2) \cup \dots \cup primary_key(E_n) \cup { a_1, a_2, \dots , a_m }$ 就是联系集 $R$ 的一个超码, 其中 $a_i$ 是联系集的一些属性.</p>
+<h2 id="E-R图"><a href="#E-R图" class="headerlink" title="E-R图"></a>E-R图</h2><h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><ul>
 <li>分隔的矩形: 实体集, 第一部分是实体集名称, 第二部分是实体集属性</li>
 <li>菱形: 联系集</li>
 <li>未分隔的矩形: 联系集的属性</li>
@@ -319,20 +335,15 @@
 <li>双线: 实体集中的实体在联系集中全参与</li>
 <li>双菱形: 连接到弱实体集的标志性联系集</li>
 </ul>
-<h3 id="映射基数-2">映射基数</h3>
-<p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1696866602384.png" srcset="/img/loading.gif" lazyload alt="1696866602384"></p>
-<p>还可以在线段的上面标识 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi>h</mi></mrow><annotation encoding="application/x-tex">l..h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord">..</span><span class="mord mathnormal">h</span></span></span></span> 来约束映射基数的上下界, 最大值 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi></mrow><annotation encoding="application/x-tex">h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">h</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∗</mo></mrow><annotation encoding="application/x-tex">*</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord">∗</span></span></span></span> 代表没有上限.</p>
-<h3 id="属性-2">属性</h3>
-<p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1696866887128.png" srcset="/img/loading.gif" lazyload alt="1696866887128"></p>
+<h3 id="映射基数-1"><a href="#映射基数-1" class="headerlink" title="映射基数"></a>映射基数</h3><p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1696866602384.png" srcset="/img/loading.gif" lazyload alt="1696866602384"></p>
+<p>还可以在线段的上面标识 $l..h$ 来约束映射基数的上下界, 最大值 $h$ 为 $*$ 代表没有上限.</p>
+<h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1696866887128.png" srcset="/img/loading.gif" lazyload alt="1696866887128"></p>
 <p>其中name, address, street为复合属性, phone_number为多值属性(用花括号括起来), age是派生属性(后面跟小括号)</p>
-<h3 id="角色">角色</h3>
-<p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1696867069451.png" srcset="/img/loading.gif" lazyload alt="1696867069451"></p>
+<h3 id="角色"><a href="#角色" class="headerlink" title="角色"></a>角色</h3><p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1696867069451.png" srcset="/img/loading.gif" lazyload alt="1696867069451"></p>
 <p>同一个实体集多次参与一个联系, 需要在连线上标识角色, 这里是course_id和prereq_id.</p>
-<h3 id="弱实体集">弱实体集</h3>
-<p>在删除实体集中冗余的属性时, 会造成一些实体集中属性无法唯一标识一个实体, 这些实体集就叫 <strong>弱实体集</strong>. 弱实体集必须与另一个称作 <strong>标识</strong> 或者 <strong>属主实体集</strong> 的实体集关联才有意义, 即弱实体集的存在依赖于标识实体集, 将弱实体集和标识实体集关联的联系是 <strong>标识性联系</strong></p>
+<h3 id="弱实体集"><a href="#弱实体集" class="headerlink" title="弱实体集"></a>弱实体集</h3><p>在删除实体集中冗余的属性时, 会造成一些实体集中属性无法唯一标识一个实体, 这些实体集就叫 <strong>弱实体集</strong>. 弱实体集必须与另一个称作 <strong>标识</strong> 或者 <strong>属主实体集</strong> 的实体集关联才有意义, 即弱实体集的存在依赖于标识实体集, 将弱实体集和标识实体集关联的联系是 <strong>标识性联系</strong></p>
 <p>区分弱实体集中实体的属性集合称为 <strong>分辨符</strong>, 在E-R图中用下划虚线指明.</p>
-<h3 id="联系集">联系集</h3>
-<p>联系集的主码</p>
+<h3 id="联系集"><a href="#联系集" class="headerlink" title="联系集"></a>联系集</h3><p>联系集的主码</p>
 <ul>
 <li>多对多的二元联系, 参与实体集的主码属性的并集成为联系集的主码</li>
 <li>一对一的二元联系集, 任意一个实体集的主码都可以为联系集的主码</li>
@@ -346,16 +357,13 @@
 <li>多对一的联系集, 可以把’多’实体集和联系集合并为一个</li>
 <li>一对一的联系集, 可以把联系集和任意一个实体集合并</li>
 </ul>
-<h2 id="拓展的-E-R-特性">拓展的 E-R 特性</h2>
-<h3 id="特化和概化">特化和概化</h3>
-<p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1697095093271.png" srcset="/img/loading.gif" lazyload alt="1697095093271"></p>
+<h2 id="拓展的-E-R-特性"><a href="#拓展的-E-R-特性" class="headerlink" title="拓展的 E-R 特性"></a>拓展的 E-R 特性</h2><h3 id="特化和概化"><a href="#特化和概化" class="headerlink" title="特化和概化"></a>特化和概化</h3><p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1697095093271.png" srcset="/img/loading.gif" lazyload alt="1697095093271"></p>
 <p>特化: 自顶向下, 在实体集内部进一步分组</p>
 <p>重叠特化: 一个实体集可能属于多个特化实体集, 在E-R图中使用分开的两个箭头指向(图中的employee和student)</p>
 <p>不相交特化: 一个实体集至多属于一个特化实体集, 在E-R图中使用一个箭头指向(图中的instructor和secretary)</p>
 <p>概化: 自底向上, 多个实体集根据共同的特征综合为一个更高层的实体集</p>
 <p>高层和低层实体集可被分别称为 <strong>超类</strong> 和 <strong>子类</strong>, 子类会继承所有超类的属性(类似c++中的类, 沿继承树向上找所有属性)</p>
-<h3 id="概化上的约束">概化上的约束</h3>
-<p>成员资格</p>
+<h3 id="概化上的约束"><a href="#概化上的约束" class="headerlink" title="概化上的约束"></a>概化上的约束</h3><p>成员资格</p>
 <ul>
 <li>条件定义的: 实体需要满足特定的成员资格条件或者谓词才能属于低层实体集</li>
 <li>用户定义的: 由数据库用户指派实体集所属的低层实体集</li>
@@ -367,13 +375,11 @@
 </ul>
 <p>概化的完全性约束</p>
 <ul>
-<li>全部概化/特化: 每个高层实体必须属于一个低层实体集</li>
-<li>部分概化/特化: 一些高层实体集不属于任何低层实体集, 这是默认的</li>
+<li>全部概化&#x2F;特化: 每个高层实体必须属于一个低层实体集</li>
+<li>部分概化&#x2F;特化: 一些高层实体集不属于任何低层实体集, 这是默认的</li>
 </ul>
-<h3 id="聚集">聚集</h3>
-<p>将联系集及其关联的实体集看作一个整体的实体集, 这个实体集可以参与到其他联系中.</p>
-<h2 id="E-R-图其他表示">E-R 图其他表示</h2>
-<p>教材第五版及之前的表示E-R图方式</p>
+<h3 id="聚集"><a href="#聚集" class="headerlink" title="聚集"></a>聚集</h3><p>将联系集及其关联的实体集看作一个整体的实体集, 这个实体集可以参与到其他联系中.</p>
+<h2 id="E-R-图其他表示"><a href="#E-R-图其他表示" class="headerlink" title="E-R 图其他表示"></a>E-R 图其他表示</h2><p>教材第五版及之前的表示E-R图方式</p>
 <p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1697103578570.png" srcset="/img/loading.gif" lazyload alt="1697103578570"></p>
 <p>UML类图表示法</p>
 <p><img src="/img/E-R%E6%A8%A1%E5%9E%8B/1697103675433.png" srcset="/img/loading.gif" lazyload alt="1697103675433"></p>
@@ -457,7 +463,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -505,19 +511,6 @@
 
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
 
     </div>
   </div>
@@ -592,7 +585,6 @@
     <div class="footer-content">
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  
   
   
   

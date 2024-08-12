@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
   <link rel="icon" href="/img/fluid.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,12 +19,12 @@
   <meta name="author" content="LWshu0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="数据平面 网络层概述 网络层将来自运输层的报文段封装成数据报, 或从数据报中提取报文段交付给运输层. 数据平面的作用是从输入链路向输出链路转发数据; 控制平面的作用是协调所有本地路由器的转发动作. 路由器没有网络层之上的部分.  转发: 将分组从输入链路移动到适当的输出链路, 这是数据平面的唯一功能. 路由选择: 决定分组所采用的路由或路径, 计算路径的算法称为 路由选择算法, 这在控制平面中实现">
+    <meta name="description" content="数据平面网络层概述网络层将来自运输层的报文段封装成数据报, 或从数据报中提取报文段交付给运输层. 数据平面的作用是从输入链路向输出链路转发数据; 控制平面的作用是协调所有本地路由器的转发动作. 路由器没有网络层之上的部分.  转发: 将分组从输入链路移动到适当的输出链路, 这是数据平面的唯一功能. 路由选择: 决定分组所采用的路由或路径, 计算路径的算法称为 路由选择算法, 这在控制平面中实现.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络网络层">
 <meta property="og:url" content="https://lwshu0.github.io/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
 <meta property="og:site_name" content="朔宝的小屋">
-<meta property="og:description" content="数据平面 网络层概述 网络层将来自运输层的报文段封装成数据报, 或从数据报中提取报文段交付给运输层. 数据平面的作用是从输入链路向输出链路转发数据; 控制平面的作用是协调所有本地路由器的转发动作. 路由器没有网络层之上的部分.  转发: 将分组从输入链路移动到适当的输出链路, 这是数据平面的唯一功能. 路由选择: 决定分组所采用的路由或路径, 计算路径的算法称为 路由选择算法, 这在控制平面中实现">
+<meta property="og:description" content="数据平面网络层概述网络层将来自运输层的报文段封装成数据报, 或从数据报中提取报文段交付给运输层. 数据平面的作用是从输入链路向输出链路转发数据; 控制平面的作用是协调所有本地路由器的转发动作. 路由器没有网络层之上的部分.  转发: 将分组从输入链路移动到适当的输出链路, 这是数据平面的唯一功能. 路由选择: 决定分组所采用的路由或路径, 计算路径的算法称为 路由选择算法, 这在控制平面中实现.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lwshu0.github.io/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699375304256.png">
 <meta property="og:image" content="https://lwshu0.github.io/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700235025.png">
@@ -65,7 +68,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -86,7 +89,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -130,7 +133,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -142,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -154,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -166,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -178,9 +181,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -237,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k 字
+          4.4k 字
         
       </span>
     
@@ -248,7 +263,7 @@
         
         
         
-          48 分钟
+          37 分钟
         
       </span>
     
@@ -278,6 +293,19 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
 
@@ -290,51 +318,41 @@
             
               <div class="markdown-body">
                 
-                <h1>数据平面</h1>
-<h2 id="网络层概述">网络层概述</h2>
-<p>网络层将来自运输层的报文段封装成数据报, 或从数据报中提取报文段交付给运输层. 数据平面的作用是从输入链路向输出链路转发数据; 控制平面的作用是协调所有本地路由器的转发动作. 路由器没有网络层之上的部分.</p>
+                <h1 id="数据平面"><a href="#数据平面" class="headerlink" title="数据平面"></a>数据平面</h1><h2 id="网络层概述"><a href="#网络层概述" class="headerlink" title="网络层概述"></a>网络层概述</h2><p>网络层将来自运输层的报文段封装成数据报, 或从数据报中提取报文段交付给运输层. 数据平面的作用是从输入链路向输出链路转发数据; 控制平面的作用是协调所有本地路由器的转发动作. 路由器没有网络层之上的部分.</p>
 <ul>
 <li><strong>转发</strong>: 将分组从输入链路移动到适当的输出链路, 这是数据平面的唯一功能.</li>
 <li><strong>路由选择</strong>: 决定分组所采用的路由或路径, 计算路径的算法称为 <strong>路由选择算法</strong>, 这在控制平面中实现.</li>
 <li><strong>转发表</strong>: 路由器检查分组的首部字段, 路由器通过查转发表决定分组将被转发到哪个输出链路接口.</li>
 </ul>
 <p><strong>链路层交换机</strong> 是根据链路层帧中的字段做转发决定, 路由器使用过网络层数据报中的首部字段做转发决定, 所以路由器属于网络层设备, 而交换机属于链路层设备.</p>
-<h2 id="路由器">路由器</h2>
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699375304256.png" srcset="/img/loading.gif" lazyload alt="1699375304256"></p>
+<h2 id="路由器"><a href="#路由器" class="headerlink" title="路由器"></a>路由器</h2><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699375304256.png" srcset="/img/loading.gif" lazyload alt="1699375304256"></p>
 <ul>
 <li>输入端口: 输入端口中将会进行查找功能, 通过查找路由表确定数据将要转发到哪一个输出端口.</li>
 <li>交换结构: 将输入端口连接到输出端口, 这在后面会看到有多种形式.</li>
 <li>输出端口: 存储从交换结构收到的数据, 并执行传输功能.</li>
 <li>路由选择处理器: 执行控制平面的功能, 即路由选择协议.</li>
 </ul>
-<h3 id="输入端口处理">输入端口处理</h3>
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700235025.png" srcset="/img/loading.gif" lazyload alt="1699700235025"></p>
+<h3 id="输入端口处理"><a href="#输入端口处理" class="headerlink" title="输入端口处理"></a>输入端口处理</h3><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700235025.png" srcset="/img/loading.gif" lazyload alt="1699700235025"></p>
 <p>路由器使用 <strong>最长前缀匹配规则</strong> 选择输出端口, 根据地址在转发表中最长匹配的前缀对应的端口转发数据.</p>
-<h3 id="交换">交换</h3>
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700418495.png" srcset="/img/loading.gif" lazyload alt="1699700418495"></p>
+<h3 id="交换"><a href="#交换" class="headerlink" title="交换"></a>交换</h3><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700418495.png" srcset="/img/loading.gif" lazyload alt="1699700418495"></p>
 <ul>
-<li>经内存的交换: 一次只能传输一个分组, 因为共享系统总线一次只能进行一个内存读/写操作.</li>
+<li>经内存的交换: 一次只能传输一个分组, 因为共享系统总线一次只能进行一个内存读&#x2F;写操作.</li>
 <li>经总线的交换: 因为使用总线的原因, 所以一次只能传输一个分组.</li>
 <li>经互联网络的交换: 可以在不冲突的前提下同时交换多个分组.</li>
 </ul>
-<h3 id="输出端口处理">输出端口处理</h3>
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700691630.png" srcset="/img/loading.gif" lazyload alt="1699700691630"></p>
-<h3 id="排队现象">排队现象</h3>
-<ol>
+<h3 id="输出端口处理"><a href="#输出端口处理" class="headerlink" title="输出端口处理"></a>输出端口处理</h3><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700691630.png" srcset="/img/loading.gif" lazyload alt="1699700691630"></p>
+<h3 id="排队现象"><a href="#排队现象" class="headerlink" title="排队现象"></a>排队现象</h3><ol>
 <li>输入排队: 如果交换结构不能很快的(相对于输入线路的速度)将分组传送, 就会在输入端口处产生排队. 对于互联网络交换结构, 如果因为某一个输入分组的传输妨碍了其他到空闲输出端口的输入分组, 被称为线路前部(HOL, head of the line)阻塞.</li>
 <li>输出排队: 当交换结构的速度大于输出端口的速度时, 会在输出端口处产生排队. 如果没有足够的内存时, 就要考虑丢弃一些分组, 一种方法是 <strong>弃尾</strong>, 另一种就是删除一个已排队的分组. 有时候, 在队列缓冲填满之前就丢弃一个分组, 称为 <strong>主动队列管理(AQM)</strong>, <strong>随机早期检测(RED)</strong> 是一种广泛使用的算法.</li>
 </ol>
-<h3 id="分组调度">分组调度</h3>
-<p>解决排队的分组如何经输出链路传输的问题.</p>
+<h3 id="分组调度"><a href="#分组调度" class="headerlink" title="分组调度"></a>分组调度</h3><p>解决排队的分组如何经输出链路传输的问题.</p>
 <ol>
 <li>先进先出</li>
 <li>优先权排队, 同一优先权下采用先进先出, 一般是非抢占式优先权排队</li>
 <li>循环排队, 分组会像优先权那样排队, 每一种都对应一个队列, <strong>保持工作排队</strong> 规则将不允许链路空闲, 于是就循环检查队列, 一旦其对应的输出链路空闲就传输它.</li>
 <li>加权公平排序, 为每一个输出队列分配一个权重, 保证其至少占有权重百分比的输出速率.</li>
 </ol>
-<h2 id="网际协议">网际协议</h2>
-<h3 id="IPv4-报文">IPv4 报文</h3>
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699711303881.png" srcset="/img/loading.gif" lazyload alt="1699711303881"></p>
+<h2 id="网际协议"><a href="#网际协议" class="headerlink" title="网际协议"></a>网际协议</h2><h3 id="IPv4-报文"><a href="#IPv4-报文" class="headerlink" title="IPv4 报文"></a>IPv4 报文</h3><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699711303881.png" srcset="/img/loading.gif" lazyload alt="1699711303881"></p>
 <ul>
 <li>版本号: 用于区分数据报文的格式.</li>
 <li>首部长度: 因为数据报存在可选的数据, 所以报文长度是可变的.</li>
@@ -344,35 +362,28 @@
 <li>寿命: Time-To-Live(TTL) 是数据报在网络中经过路由器的最大跳数, 当TTL为0时路由器就丢弃该数据报.</li>
 <li>协议: 指明上层协议, 比如TCP是6, UDP是17</li>
 <li>首部校验和: 数据报按照 2 字节求和并取反码, 首部校验和字段初始时为 0</li>
-<li>源/目的IP: 如名字</li>
+<li>源&#x2F;目的IP: 如名字</li>
 <li>选项: 可以进行首部扩展, 不过 IPv6 已经删除此项</li>
 <li>数据(有效载荷): 要交付给运输层的报文段(TCP, UDP, ICMP等)</li>
 </ul>
-<h3 id="IPv4数据分片">IPv4数据分片</h3>
-<p>一个链路层帧能传输的最大数据为 <strong>最大传送单元</strong> 通常为 1500 字节. 当一个IP数据报大小超过 1500 字节时, 就需要对数据报分成多个不超过 1500 字节的数据报.</p>
+<h3 id="IPv4数据分片"><a href="#IPv4数据分片" class="headerlink" title="IPv4数据分片"></a>IPv4数据分片</h3><p>一个链路层帧能传输的最大数据为 <strong>最大传送单元</strong> 通常为 1500 字节. 当一个IP数据报大小超过 1500 字节时, 就需要对数据报分成多个不超过 1500 字节的数据报.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699729324366.png" srcset="/img/loading.gif" lazyload alt="1699729324366"></p>
 <p>如上图, 一个20字节头部+3000字节数据的 IP 报文, 被分为了三部分, data1 大小为 1480 字节, data2 为 1480 字节, data3 为 40 字节, 再加上 3 个首部, 那么原来大小为 3020 字节的报文就被分为了 3 个总大小为 3060 字节的报文.</p>
 <p><strong>标识</strong>, 用于区分一组分片, 原来属于同一个数据报的分片拥有相同的标识.</p>
 <p><strong>标志</strong>, 除了最后一个分片的标志为0外, 其他都为1, 这是为了告知接收方分片的结束.</p>
 <p><strong>片偏移</strong>, 是分片中的数据在原来数据报的有效载荷中的偏移字节除以8, 比如上边的三个分片的片偏移分别为 0, 185, 370.</p>
-<h3 id="IPv4编址">IPv4编址</h3>
-<h4 id="IPv4地址形式">IPv4地址形式</h4>
-<p>形如 a.b.c.d/x 的地址, 其中 a,b,c,d 都是 8 位的数字(0-255), x 是子网掩码, 比如子网掩码是 255.255.255.0 前 24 位是 1, 那么对应子网的 IP 就是 a.b.c.d/24. 这里要会求一个子网中最大容许的 IP 数.</p>
-<h4 id="动态获取IP">动态获取IP</h4>
-<p><strong>动态主机配置协议 (DHCP)</strong> 允许主机自动获取一个 IP 地址.</p>
+<h3 id="IPv4编址"><a href="#IPv4编址" class="headerlink" title="IPv4编址"></a>IPv4编址</h3><h4 id="IPv4地址形式"><a href="#IPv4地址形式" class="headerlink" title="IPv4地址形式"></a>IPv4地址形式</h4><p>形如 a.b.c.d&#x2F;x 的地址, 其中 a,b,c,d 都是 8 位的数字(0-255), x 是子网掩码, 比如子网掩码是 255.255.255.0 前 24 位是 1, 那么对应子网的 IP 就是 a.b.c.d&#x2F;24. 这里要会求一个子网中最大容许的 IP 数.</p>
+<h4 id="动态获取IP"><a href="#动态获取IP" class="headerlink" title="动态获取IP"></a>动态获取IP</h4><p><strong>动态主机配置协议 (DHCP)</strong> 允许主机自动获取一个 IP 地址.</p>
 <ul>
 <li>DHCP服务器发现: 一个新到达的主机通过 DHCP 发现报文发现一个要与其交互的 DHCP 服务器. DHCP 发现报文中目的 IP 为广播地址 255.255.255.255, 并且使用’本主机’源 IP 地址 0.0.0.0.</li>
 <li>DHCP 服务器提供: DHCP 服务器接收到一个发现报文时, 用 DHCP 提供报文向客户做出相应, 该报文向子网所有节点广播(广播地址为 255.255.255.255), 因为网络中可能存在多个 DHCP 服务器, 主机会从中进行选择. 提供报文中包含发现报文的事务 ID , 向客户推荐的 IP, 网络掩码, IP 租用期(通常为几个小时或者几天)</li>
 <li>DHCP 请求: 客户向选中的服务器发送 DHCP 请求报文进行响应.</li>
 <li>DHCP ACK: 服务器用 DHCP ACK 报文对请求报文进行响应, 客户接收到 ACK 后即可使用服务器刚才分配的 IP</li>
 </ul>
-<h3 id="NAT">NAT</h3>
-<p>网络地址转换, 使得多个主机在互联网中共用一个 IP, 解决 IPv4 IP 不够的问题. 主要通过在 NAT 路由器上设置 NAT 转换表来实现.</p>
+<h3 id="NAT"><a href="#NAT" class="headerlink" title="NAT"></a>NAT</h3><p>网络地址转换, 使得多个主机在互联网中共用一个 IP, 解决 IPv4 IP 不够的问题. 主要通过在 NAT 路由器上设置 NAT 转换表来实现.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699731188543.png" srcset="/img/loading.gif" lazyload alt="1699731188543"></p>
-<h3 id="IPv6">IPv6</h3>
-<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699731446639.png" srcset="/img/loading.gif" lazyload alt="1699731446639"></p>
-<h2 id="通用转发和SDN">通用转发和SDN</h2>
-<p>OpenFlow 的匹配+动作转发表, 即 <strong>流表</strong></p>
+<h3 id="IPv6"><a href="#IPv6" class="headerlink" title="IPv6"></a>IPv6</h3><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699731446639.png" srcset="/img/loading.gif" lazyload alt="1699731446639"></p>
+<h2 id="通用转发和SDN"><a href="#通用转发和SDN" class="headerlink" title="通用转发和SDN"></a>通用转发和SDN</h2><p>OpenFlow 的匹配+动作转发表, 即 <strong>流表</strong></p>
 <p>匹配字段</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699769469828.png" srcset="/img/loading.gif" lazyload alt="1699769469828"></p>
 <p>动作</p>
@@ -389,13 +400,9 @@
 </ul>
 <p>例子:</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699770620115.png" srcset="/img/loading.gif" lazyload alt="1699770620115"></p>
-<h1>控制平面</h1>
-<h2 id="概述">概述</h2>
-<p>逻辑集中式控制, 本地路由器需要从集中服务点获取转发表和流表.</p>
+<h1 id="控制平面"><a href="#控制平面" class="headerlink" title="控制平面"></a>控制平面</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>逻辑集中式控制, 本地路由器需要从集中服务点获取转发表和流表.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699834156338.png" srcset="/img/loading.gif" lazyload alt="1699834156338"></p>
-<h2 id="路由选择算法">路由选择算法</h2>
-<h3 id="分类">分类</h3>
-<p>分类一</p>
+<h2 id="路由选择算法"><a href="#路由选择算法" class="headerlink" title="路由选择算法"></a>路由选择算法</h2><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>分类一</p>
 <ul>
 <li>集中式选择算法: 用完整, 全局的网络知识来计算最优路径, 被称为 <strong>链路状态(LS)算法</strong></li>
 <li>分散式选择算法: 节点没有所有网络链路的开销, 通过迭代的方式逐渐计算出最优路径, 称为 <strong>距离向量(DV)算法</strong></li>
@@ -410,11 +417,9 @@
 <li>负载敏感算法: 链路开销会动态的反映出底层链路的当前拥塞水平</li>
 <li>负载迟钝算法: 某条链路的开销不明确的反映出当前(最近)的拥塞水平</li>
 </ul>
-<h3 id="LS-算法">LS 算法</h3>
-<p>通过让每个节点广播链路状态分组来实现网络中的节点对全局的认知. 实践中(比如OSPF协议)经常是由 <strong>链路状态广播</strong> 算法实现, 当节点已知网络状态后, 通过 Dijkstra 算法计算最短路径(教材246页). 计算完成后, 每个节点存储一个目的地-链路(下一跳)的转发表.</p>
+<h3 id="LS-算法"><a href="#LS-算法" class="headerlink" title="LS 算法"></a>LS 算法</h3><p>通过让每个节点广播链路状态分组来实现网络中的节点对全局的认知. 实践中(比如OSPF协议)经常是由 <strong>链路状态广播</strong> 算法实现, 当节点已知网络状态后, 通过 Dijkstra 算法计算最短路径(教材246页). 计算完成后, 每个节点存储一个目的地-链路(下一跳)的转发表.</p>
 <p>该算法是负载敏感型算法, 可能产生振荡现象.</p>
-<h3 id="DV-算法">DV 算法</h3>
-<ul>
+<h3 id="DV-算法"><a href="#DV-算法" class="headerlink" title="DV 算法"></a>DV 算法</h3><ul>
 <li>分布式的: 每个节点都需要从相邻的一个或多个节点接收信息</li>
 <li>迭代的: 此过程会一直持续到邻居之间没有信息可交互, 是可以自我终止的</li>
 <li>异步的: 不要求所有的节点之间步伐一致的执行操作</li>
@@ -422,48 +427,41 @@
 <p>算法过程:</p>
 <ul>
 <li>对于每个邻居 v, 从 x 到直接相连的邻居的开销为 c(x, v)</li>
-<li>节点 x 的距离向量, 即 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>x</mi></msub><mo>=</mo><mo stretchy="false">[</mo><msub><mi>D</mi><mi>X</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo>:</mo><mi>y</mi><mo>∈</mo><mi>N</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">D_x = [D_X(y): y \in N]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.07847em;">X</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mclose">]</span></span></span></span>, N 为 x 的可达目的地集合</li>
-<li>节点 x 的邻居的距离向量为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">D_v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
-<li>当节点接收到邻居的距离向量时, 使用 Bellman-Ford 方程 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>D</mi><mi>x</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo>=</mo><mi>m</mi><mi>i</mi><msub><mi>n</mi><mi>v</mi></msub><mo stretchy="false">{</mo><mi>c</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>v</mi><mo stretchy="false">)</mo><mo>+</mo><msub><mi>D</mi><mi>c</mi></msub><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo><mo stretchy="false">}</mo><mi>f</mi><mi>o</mi><mi>r</mi><mi>e</mi><mi>a</mi><mi>c</mi><mi>h</mi><mi>v</mi><mi>i</mi><mi>n</mi><mi>N</mi></mrow><annotation encoding="application/x-tex">D_x(y) = min_v\{c(x, v)+D_c(y) \} for each v in N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">mi</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">{</span><span class="mord mathnormal">c</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0278em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">c</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.03588em;">y</span><span class="mclose">)}</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">ore</span><span class="mord mathnormal">a</span><span class="mord mathnormal">c</span><span class="mord mathnormal">h</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">in</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 更新当前节点的距离向量</li>
+<li>节点 x 的距离向量, 即 $D_x &#x3D; [D_X(y): y \in N]$, N 为 x 的可达目的地集合</li>
+<li>节点 x 的邻居的距离向量为 $D_v$</li>
+<li>当节点接收到邻居的距离向量时, 使用 Bellman-Ford 方程 $D_x(y) &#x3D; min_v{c(x, v)+D_c(y) } for each v in N$ 更新当前节点的距离向量</li>
 <li>重复上述过程, 直到收敛(节点的距离向量不变)</li>
 </ul>
 <p>路由选择环路现象:</p>
 <p>教材252页</p>
 <p>毒性逆转:</p>
 <p>为了避免路由选择环路现象, 做法: 如果 x 通过 y 到达 z, 那么 x 告知 y 到 z 的距离是无穷. 但是当节点超过3个时, 该方法无法解决路由环路.</p>
-<h3 id="LS-对比-DV">LS 对比 DV</h3>
-<ul>
-<li>报文复杂性: LS 要求每次都发送 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo>∗</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N*E)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mclose">)</span></span></span></span> 个报文, 而 DV 只在最低开销路径发生改变时才传播.</li>
-<li>收敛速度: LS 是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(N^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的算法, DV 收敛速度慢且会遇到无穷计数问题.</li>
+<h3 id="LS-对比-DV"><a href="#LS-对比-DV" class="headerlink" title="LS 对比 DV"></a>LS 对比 DV</h3><ul>
+<li>报文复杂性: LS 要求每次都发送 $O(N*E)$ 个报文, 而 DV 只在最低开销路径发生改变时才传播.</li>
+<li>收敛速度: LS 是 $O(N^2)$ 的算法, DV 收敛速度慢且会遇到无穷计数问题.</li>
 <li>健壮性: DV 算法会将一个不正确的节点计算值扩散到整个网络, LS 只会发送到相邻节点</li>
 </ul>
-<h2 id="OSPF-开放最短路优先">OSPF - 开放最短路优先</h2>
-<p>优点:</p>
+<h2 id="OSPF-开放最短路优先"><a href="#OSPF-开放最短路优先" class="headerlink" title="OSPF - 开放最短路优先"></a>OSPF - 开放最短路优先</h2><p>优点:</p>
 <ul>
 <li>安全: 能够鉴别OSPF路由器之间的交换, 只有受信任的路由器能参与一个AS(自治系统)内的OSPF协议.</li>
 <li>多条相同开销的路径: 可以使用多条开销相同的路径, 将流量分散到这些路径中.</li>
 <li>支持单播与多播路由选择: 多播OSPF(MOSPF)提供多播支持.</li>
 <li>支持在单个AS中的层次结构: 一个OSPF自治系统能够层次化的配置多个区域, 每个区域运行自己的OSPF链路状态路由选择协议.</li>
 </ul>
-<h2 id="BGP-边界网关协议">BGP - 边界网关协议</h2>
-<p>BGP 是自治系统之间的路由选择协议.</p>
-<h3 id="BGP的作用">BGP的作用</h3>
-<p>在每一个AS内部的转发由AS内部的路由协议决定, 而转发到该AS外部的目的地就需要通过BGP协议. BGP中的一个目的地采用前缀的形式, 比如 138.16.68/22. BGP提供了完成以下任务的手段:</p>
+<h2 id="BGP-边界网关协议"><a href="#BGP-边界网关协议" class="headerlink" title="BGP - 边界网关协议"></a>BGP - 边界网关协议</h2><p>BGP 是自治系统之间的路由选择协议.</p>
+<h3 id="BGP的作用"><a href="#BGP的作用" class="headerlink" title="BGP的作用"></a>BGP的作用</h3><p>在每一个AS内部的转发由AS内部的路由协议决定, 而转发到该AS外部的目的地就需要通过BGP协议. BGP中的一个目的地采用前缀的形式, 比如 138.16.68&#x2F;22. BGP提供了完成以下任务的手段:</p>
 <ul>
 <li>从邻居AS获得前缀的可达信息: 允许每个AS向因特网其余部分告知自己的存在</li>
-<li>确定到该前缀的&quot;最好&quot;路由: 在多条路径中, 路由器在本地运行一个BGP路由选择过程.</li>
+<li>确定到该前缀的”最好”路由: 在多条路径中, 路由器在本地运行一个BGP路由选择过程.</li>
 </ul>
-<h3 id="通告BGP路由信息">通告BGP路由信息</h3>
-<p>对于下图中的网络, 红圈圈出来的是每个AS的网关路由器, 其余的是各自AS的内部路由器. 在 BGP 中，每对路由器通过使用 179 端口的半永久TCP 连接交换路由选择信息. 每条直接连接以及所有通过该连接发送的 BGP 报文，称为BGP 连接(BGP connection). 跨越两个AS的BGP链接称为 <strong>外部BGP(eBGP)</strong> 链接, 同一个AS中的两台路由器之间的BGP会话称为 <strong>内部BGP(iBGP)</strong> 链接.</p>
+<h3 id="通告BGP路由信息"><a href="#通告BGP路由信息" class="headerlink" title="通告BGP路由信息"></a>通告BGP路由信息</h3><p>对于下图中的网络, 红圈圈出来的是每个AS的网关路由器, 其余的是各自AS的内部路由器. 在 BGP 中，每对路由器通过使用 179 端口的半永久TCP 连接交换路由选择信息. 每条直接连接以及所有通过该连接发送的 BGP 报文，称为BGP 连接(BGP connection). 跨越两个AS的BGP链接称为 <strong>外部BGP(eBGP)</strong> 链接, 同一个AS中的两台路由器之间的BGP会话称为 <strong>内部BGP(iBGP)</strong> 链接.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1700382752448.png" srcset="/img/loading.gif" lazyload alt="1700382752448"></p>
-<p>例如, 现在AS1要知道如何到达3c前缀. 网关路由器3a通过eBGP向网关路由器2c发送eBGP报文&quot;AS3 3c&quot;, 然后2a告知AS2中的所有路由器, 发送iBGP报文&quot;AS3 3c&quot;, 网关路由器2a再向AS1的网关路由器1c发送eBGP报文&quot;AS2 AS3 3c&quot;, 最后1c通过iBGP报文&quot;AS2 AS3 3c&quot;告知AS1的所有路由器.</p>
-<h3 id="确定最好的路由">确定最好的路由</h3>
-<p>在BGP通告前缀中有BGP属性, 其中比较重要的是 <strong>AS-PATH</strong> 和 <strong>NEXT-HOP</strong>. <strong>AS-PATH</strong> 记录了该BGP通告经过的AS列表, 如果一台BGP路由器在路径列表中发现了自己的AS, 他将拒绝该通告. <strong>NEXT-HOP</strong> 是 <strong>AS-PATH</strong> 起始路由器接口的IP地址, 在下图中, NEXT-HOP 指向起始路由器的接口.</p>
+<p>例如, 现在AS1要知道如何到达3c前缀. 网关路由器3a通过eBGP向网关路由器2c发送eBGP报文”AS3 3c”, 然后2a告知AS2中的所有路由器, 发送iBGP报文”AS3 3c”, 网关路由器2a再向AS1的网关路由器1c发送eBGP报文”AS2 AS3 3c”, 最后1c通过iBGP报文”AS2 AS3 3c”告知AS1的所有路由器.</p>
+<h3 id="确定最好的路由"><a href="#确定最好的路由" class="headerlink" title="确定最好的路由"></a>确定最好的路由</h3><p>在BGP通告前缀中有BGP属性, 其中比较重要的是 <strong>AS-PATH</strong> 和 <strong>NEXT-HOP</strong>. <strong>AS-PATH</strong> 记录了该BGP通告经过的AS列表, 如果一台BGP路由器在路径列表中发现了自己的AS, 他将拒绝该通告. <strong>NEXT-HOP</strong> 是 <strong>AS-PATH</strong> 起始路由器接口的IP地址, 在下图中, NEXT-HOP 指向起始路由器的接口.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702253252997.png" srcset="/img/loading.gif" lazyload alt="1702253252997"></p>
 <ul>
 <li>热土豆路由选择: 每个网关路由器将BGP通告发给开销最小的 NEXT-HOP, 这里的开销可以是链路跳数或时延等.</li>
-<li>路由器选择算法: 对于给定的目的地前缀, 路由器本地学习了一个或多个到达该前缀的下一跳路由, 如果是有多个将使用如下规则进行选择:
-<ul>
+<li>路由器选择算法: 对于给定的目的地前缀, 路由器本地学习了一个或多个到达该前缀的下一跳路由, 如果是有多个将使用如下规则进行选择:<ul>
 <li>路由器被指派一个本地偏好值, 这可能是由网络管理员设置或从其他路由学习到的.</li>
 <li>选择最短的 AS-PATH 路由, 如果该规则是路由选择的唯一规则, 那么将使用距离向量算法(AS 的跳数)来选择最短.</li>
 <li>使用热土豆路由选择, 选择 NEXT-HOP 最近的路由器路由</li>
@@ -471,39 +469,31 @@
 </ul>
 </li>
 </ul>
-<h3 id="IP-任播">IP 任播</h3>
-<p>IP 任播通常用于 DNS 中. 教材使用了 CDN 来作为例子(虽然实际中并不使用), 对于每个 CDN 的服务器, 可能分布于世界上的不同地理位置, 但是为它们分配一个相同的IP地址, 这样通过 BGP 就可以将用户的请求发送到距离用户最近的 CDN 服务器上. 但是这可能导致同一个用户的同一个 TCP 连接请求发送到不同的 CDN 服务器上, 比如说当连接过程中 BGP 的最优选择改变.</p>
-<h3 id="路由选择策略">路由选择策略</h3>
-<p>下图中的 X 为一个 <strong>多宿接入ISP</strong> 它经由两个不同的提供商连接到网络, 为了避免转发 B 和 C 之间的流量, X 必须不通告它到 B 或到 C 的BGP路由信息. 同样, 这种方法可以使用到两个互联网提供商之间, 让两个没有合作的提供商相互不转发流量.</p>
+<h3 id="IP-任播"><a href="#IP-任播" class="headerlink" title="IP 任播"></a>IP 任播</h3><p>IP 任播通常用于 DNS 中. 教材使用了 CDN 来作为例子(虽然实际中并不使用), 对于每个 CDN 的服务器, 可能分布于世界上的不同地理位置, 但是为它们分配一个相同的IP地址, 这样通过 BGP 就可以将用户的请求发送到距离用户最近的 CDN 服务器上. 但是这可能导致同一个用户的同一个 TCP 连接请求发送到不同的 CDN 服务器上, 比如说当连接过程中 BGP 的最优选择改变.</p>
+<h3 id="路由选择策略"><a href="#路由选择策略" class="headerlink" title="路由选择策略"></a>路由选择策略</h3><p>下图中的 X 为一个 <strong>多宿接入ISP</strong> 它经由两个不同的提供商连接到网络, 为了避免转发 B 和 C 之间的流量, X 必须不通告它到 B 或到 C 的BGP路由信息. 同样, 这种方法可以使用到两个互联网提供商之间, 让两个没有合作的提供商相互不转发流量.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702254826688.png" srcset="/img/loading.gif" lazyload alt="1702254826688"></p>
-<h2 id="SDN-控制平面">SDN 控制平面</h2>
-<h3 id="特征">特征</h3>
-<ul>
+<h2 id="SDN-控制平面"><a href="#SDN-控制平面" class="headerlink" title="SDN 控制平面"></a>SDN 控制平面</h2><h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><ul>
 <li>基于流的转发: SDN控制的交换机在进行分组转发工作时, 能够基于运输层, 网络层或链路层首部中任意数量的首部字段值进行. 比如前面的 Openflow 1.0 可以基于 11 个不同的首部字段进行转发.</li>
 <li>数据平面与控股之平面分离: 数据平面是由网络交换机组成, 交换机在流表中执行匹配加动作的规则, 控制平面是由服务器以及决定和管理交换机流表的软件组成.</li>
 <li>网络控制功能: 控制平面由一个 SDN 控制器以及若干网络控制应用程序两部分组陈, 这里的一个控制器是逻辑上的, 通常是在多台服务器上实现的.</li>
 <li>可编程的网络: 通过运行在控制平面的网络控制程序, 该网络是可编程的.</li>
 </ul>
-<h3 id="组成">组成</h3>
-<ul>
-<li>对于网络控制应用程序层的接口: 允许网络应用层通过 API 读/写网络状态与流表.</li>
+<h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><ul>
+<li>对于网络控制应用程序层的接口: 允许网络应用层通过 API 读&#x2F;写网络状态与流表.</li>
 <li>网络范围状态管理层: 由 SDN 控制平面做出的最终控制决定.</li>
 <li>通信层: SDN 控制器和受控网络设备之间的通信.</li>
 </ul>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702256264076.png" srcset="/img/loading.gif" lazyload alt="1702256264076"></p>
-<h3 id="OpenFlow-协议">OpenFlow 协议</h3>
-<ul>
+<h3 id="OpenFlow-协议"><a href="#OpenFlow-协议" class="headerlink" title="OpenFlow 协议"></a>OpenFlow 协议</h3><ul>
 <li>配置. 该报文允许控制器查询并设置交换机的配置参数.</li>
 <li>修改状态. 该报文由控制器所使用，以增加／删除或修改交换机流表中的表项, 并且设置交换机端口特性.</li>
 <li>读状态. 该报文被控制器用千从交换机的流表和端口收集统计数据和计数器值.</li>
-<li>发送分组. 该报文被控制器用于在受控交换机从特定的端口发送出 一个特定的报文.<br>
-从受控交换机到控制器流动的重要报文有下列这些：</li>
+<li>发送分组. 该报文被控制器用于在受控交换机从特定的端口发送出 一个特定的报文.<br>从受控交换机到控制器流动的重要报文有下列这些：</li>
 <li>流删除. 该报文通知控制器已删除一个流表项，例如由于超时，或作为收到“修改状态＂报文的结果.</li>
 <li>端口状态. 交换机用该报文向控制器通知端口状态的变化.</li>
 <li>分组入. 一个分组到达交换机端口，并且不能与任何流表项匹配，那么这个分组将被发送给控制器进行额外处理. 匹配的分组也被发送给控制器，作为匹配时所采取的一个动作. “分组入“报文被用于将分组发送给控制器.</li>
 </ul>
-<h2 id="待续">待续</h2>
-
+<h2 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h2>
                 
               </div>
             
@@ -583,7 +573,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -631,19 +621,6 @@
 
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
 
     </div>
   </div>
@@ -718,7 +695,6 @@
     <div class="footer-content">
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  
   
   
   

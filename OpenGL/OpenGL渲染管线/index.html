@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
   <link rel="icon" href="/img/fluid.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -24,12 +27,6 @@
 <meta property="og:description" content="记录OpenGL中关于渲染管线的内容, 主要包括 VBO, VAO, EBO&#x2F;IBO">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lwshu0.github.io/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693317800616.png">
-<meta property="og:image" content="https://lwshu0.github.io/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693319036346.png">
-<meta property="og:image" content="https://lwshu0.github.io/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693318755780.png">
-<meta property="og:image" content="https://lwshu0.github.io/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693321975378.png">
-<meta property="og:image" content="https://lwshu0.github.io/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693321965242.png">
-<meta property="og:image" content="https://lwshu0.github.io/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693323124547.png">
-<meta property="og:image" content="https://lwshu0.github.io/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693324412564.png">
 <meta property="article:published_time" content="2023-08-29T13:58:41.000Z">
 <meta property="article:modified_time" content="2023-08-29T13:58:41.000Z">
 <meta property="article:author" content="LWshu0">
@@ -57,7 +54,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -78,7 +75,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -122,7 +119,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -134,7 +131,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -146,7 +143,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -158,7 +155,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -170,9 +167,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -229,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.2k 字
+          2.1k 字
         
       </span>
     
@@ -240,7 +249,7 @@
         
         
         
-          44 分钟
+          18 分钟
         
       </span>
     
@@ -270,6 +279,19 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
 
@@ -282,94 +304,88 @@
             
               <div class="markdown-body">
                 
-                <h1>图形渲染管线</h1>
-<p>图形渲染管线主要包含如下几个阶段, 通过渲染管线可以把三维顶点数据渲染到2D屏幕上.</p>
+                <h1 id="图形渲染管线"><a href="#图形渲染管线" class="headerlink" title="图形渲染管线"></a>图形渲染管线</h1><p>图形渲染管线主要包含如下几个阶段, 通过渲染管线可以把三维顶点数据渲染到2D屏幕上.</p>
 <p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693317800616.png" srcset="/img/loading.gif" lazyload alt="1693317800616"></p>
 <p>我们可以自定义的着色器是图中的三个蓝色部分, 我们 <strong>必须</strong> 自定义至少一个顶点着色器和一个片段着色器, 而几何着色器在GPU中有默认的. <strong>顶点着色器</strong> 把一个单独的顶点作为输入, 同时可以对顶点的属性进行一些基本的处理. <strong>片段着色器</strong> 负责计算一个像素最终的颜色, 这是所有OpenGL高级效果产生的地方(光照, 阴影等).</p>
-<h1>渲染一个简单三角形的流程</h1>
-<p>这是我们最终希望的效果:</p>
+<h1 id="渲染一个简单三角形的流程"><a href="#渲染一个简单三角形的流程" class="headerlink" title="渲染一个简单三角形的流程"></a>渲染一个简单三角形的流程</h1><p>这是我们最终希望的效果:</p>
 <p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693319036346.png" srcset="/img/loading.gif" lazyload alt="1693319036346"></p>
-<h2 id="准备顶点数据">准备顶点数据</h2>
-<h3 id="顶点定义">顶点定义</h3>
-<p><strong>OpenGL</strong>中使用的都是三维的顶点(x, y, z), 它们的范围为 [-1, 1] (超出范围的点不显示). 也就是说把屏幕标准化了, 所以同一个三角形在不同分辨率的屏幕上显示大小会不同.</p>
+<h2 id="准备顶点数据"><a href="#准备顶点数据" class="headerlink" title="准备顶点数据"></a>准备顶点数据</h2><h3 id="顶点定义"><a href="#顶点定义" class="headerlink" title="顶点定义"></a>顶点定义</h3><p><strong>OpenGL</strong>中使用的都是三维的顶点(x, y, z), 它们的范围为 [-1, 1] (超出范围的点不显示). 也就是说把屏幕标准化了, 所以同一个三角形在不同分辨率的屏幕上显示大小会不同.</p>
 <p><strong>标准化设备坐标</strong> (同我们以前习惯的坐标系一样)</p>
 <p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693318755780.png" srcset="/img/loading.gif" lazyload alt="1693318755780"></p>
 <p>定义三角形的三个顶点:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">float</span> vertices[] = &#123;<br>    <span class="hljs-number">-0.5f</span>, <span class="hljs-number">-0.5f</span>, <span class="hljs-number">0.0f</span>,<br>     <span class="hljs-number">0.5f</span>, <span class="hljs-number">-0.5f</span>, <span class="hljs-number">0.0f</span>,<br>     <span class="hljs-number">0.0f</span>,  <span class="hljs-number">0.5f</span>, <span class="hljs-number">0.0f</span><br>&#125;;<br></code></pre></td></tr></table></figure>
-<h3 id="VBO-顶点缓冲对象">VBO(顶点缓冲对象)</h3>
-<blockquote>
+
+<h3 id="VBO-顶点缓冲对象"><a href="#VBO-顶点缓冲对象" class="headerlink" title="VBO(顶点缓冲对象)"></a>VBO(顶点缓冲对象)</h3><blockquote>
 <p>OpenGL中的各种对象都有一个独一无二的ID, 访问对象时也是用这个ID(<code>unsigned int</code>类型)</p>
 </blockquote>
 <p>VBO管理在GPU上存放的顶点数据, 使用 <code>glGenBuffers(1, &amp;VBO);</code> 生成1个缓冲对象, 并把其ID存放在VBO中</p>
 <blockquote>
 <p>OpenGL有很多缓冲对象类型, 我们可以分别为它们绑定缓冲对象</p>
 </blockquote>
-<p>VBO 的缓冲对象类型为<code>GL_ARRAY_BUFFER</code>, 我们就用<code>glBindBuffer(GL_ARRAY_BUFFER, VBO);</code>把刚才创建的顶点缓冲对象绑定到<code>GL_ARRAY_BUFFER</code>, 同时使用<code>glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);</code>把之前定义的顶点数据复制到GPU的缓冲中.</p>
+<p>VBO 的缓冲对象类型为 <code>GL_ARRAY_BUFFER</code>, 我们就用 <code>glBindBuffer(GL_ARRAY_BUFFER, VBO);</code>把刚才创建的顶点缓冲对象绑定到 <code>GL_ARRAY_BUFFER</code>, 同时使用 <code>glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);</code>把之前定义的顶点数据复制到GPU的缓冲中.</p>
 <figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-built_in">glBufferData</span>(目标缓冲对象类型, 传输的数据字节, 要发送的数据指针, 显卡管理数据的方式);<br></code></pre></td></tr></table></figure>
+
 <ul>
 <li>GL_STATIC_DRAW ：数据不会或几乎不会改变。</li>
 <li>GL_DYNAMIC_DRAW：数据会被改变很多。</li>
 <li>GL_STREAM_DRAW ：数据每次绘制时都会改变。</li>
 </ul>
-<h2 id="顶点着色器-Vertex-Shader">顶点着色器(Vertex Shader)</h2>
-<blockquote>
+<h2 id="顶点着色器-Vertex-Shader"><a href="#顶点着色器-Vertex-Shader" class="headerlink" title="顶点着色器(Vertex Shader)"></a>顶点着色器(Vertex Shader)</h2><blockquote>
 <p>使用着色器语言GLSL(OpenGL Shading Language)编写着色器</p>
 </blockquote>
 <p>每个着色器都起始于一个版本声明。OpenGL 3.3以及和更高版本中，GLSL版本号和OpenGL的版本是匹配的（比如说GLSL 420版本对应于OpenGL 4.2）. 我们同样明确表示我们会使用核心模式.</p>
 <p><strong>此部分后续文章详细记录.</strong></p>
-<h3 id="定义着色器">定义着色器</h3>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#version 330 core</span><br>layout (location = <span class="hljs-number">0</span>) in vec3 aPos;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    gl_Position = vec4(aPos.x, aPos.y, aPos.z, <span class="hljs-number">1.0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="创建着色器">创建着色器</h3>
-<p>我们把要创建的着色器类型传入函数中, 返回着色器的ID. 这里我们要创建一个顶点着色器, 所以传入<code>GL_VERTEX_SHADER</code></p>
+<h3 id="定义着色器"><a href="#定义着色器" class="headerlink" title="定义着色器"></a>定义着色器</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#version 330 core</span><br>layout (location = <span class="hljs-number">0</span>) in vec3 aPos;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    gl_Position = vec4(aPos.x, aPos.y, aPos.z, <span class="hljs-number">1.0</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建着色器"><a href="#创建着色器" class="headerlink" title="创建着色器"></a>创建着色器</h3><p>我们把要创建的着色器类型传入函数中, 返回着色器的ID. 这里我们要创建一个顶点着色器, 所以传入 <code>GL_VERTEX_SHADER</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> vertexShader;<br>vertexShader = <span class="hljs-built_in">glCreateShader</span>(GL_VERTEX_SHADER);<br></code></pre></td></tr></table></figure>
-<h3 id="编译着色器">编译着色器</h3>
-<p>定义好着色器并且创建好着色器后就要编译着色器以待GPU执行.</p>
+
+<h3 id="编译着色器"><a href="#编译着色器" class="headerlink" title="编译着色器"></a>编译着色器</h3><p>定义好着色器并且创建好着色器后就要编译着色器以待GPU执行.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><br><span class="hljs-type">const</span> <span class="hljs-type">char</span> *vertexShaderSource = <span class="hljs-string">&quot;#version 330 core\n&quot;</span><br>    <span class="hljs-string">&quot;layout (location = 0) in vec3 aPos;\n&quot;</span><br>    <span class="hljs-string">&quot;void main()\n&quot;</span><br>    <span class="hljs-string">&quot;&#123;\n&quot;</span><br>    <span class="hljs-string">&quot;   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n&quot;</span><br>    <span class="hljs-string">&quot;&#125;\0&quot;</span>;<br><span class="hljs-comment">//******************************************</span><br><span class="hljs-built_in">glShaderSource</span>(vertexShader, <span class="hljs-number">1</span>, &amp;vertexShaderSource, <span class="hljs-literal">NULL</span>);<br><span class="hljs-built_in">glCompileShader</span>(vertexShader);<br></code></pre></td></tr></table></figure>
-<p>其中使用<code>glShaderSource</code>把着色器的源码附着到着色器对象(用ID指代).</p>
+
+<p>其中使用 <code>glShaderSource</code>把着色器的源码附着到着色器对象(用ID指代).</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glShaderSource</span>(着色器ID, 源码字符串数量, 源码数据, <span class="hljs-literal">NULL</span>)<br></code></pre></td></tr></table></figure>
-<h3 id="检查是否编译成功">检查是否编译成功</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span>  success;<br><span class="hljs-type">char</span> infoLog[<span class="hljs-number">512</span>];<br><span class="hljs-built_in">glGetShaderiv</span>(vertexShader, GL_COMPILE_STATUS, &amp;success);<br><span class="hljs-keyword">if</span>(!success)<br>&#123;<br>    <span class="hljs-built_in">glGetShaderInfoLog</span>(vertexShader, <span class="hljs-number">512</span>, <span class="hljs-literal">NULL</span>, infoLog);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="片段着色器-Fragment-Shader">片段着色器(Fragment Shader)</h2>
-<h3 id="定义着色器-2">定义着色器</h3>
-<p>输出颜色, 这里简单的只输出一种颜色</p>
+
+<h3 id="检查是否编译成功"><a href="#检查是否编译成功" class="headerlink" title="检查是否编译成功"></a>检查是否编译成功</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">int</span>  success;<br><span class="hljs-type">char</span> infoLog[<span class="hljs-number">512</span>];<br><span class="hljs-built_in">glGetShaderiv</span>(vertexShader, GL_COMPILE_STATUS, &amp;success);<br><span class="hljs-keyword">if</span>(!success)<br>&#123;<br>    <span class="hljs-built_in">glGetShaderInfoLog</span>(vertexShader, <span class="hljs-number">512</span>, <span class="hljs-literal">NULL</span>, infoLog);<br>    std::cout &lt;&lt; <span class="hljs-string">&quot;ERROR::SHADER::VERTEX::COMPILATION_FAILED\n&quot;</span> &lt;&lt; infoLog &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="片段着色器-Fragment-Shader"><a href="#片段着色器-Fragment-Shader" class="headerlink" title="片段着色器(Fragment Shader)"></a>片段着色器(Fragment Shader)</h2><h3 id="定义着色器-1"><a href="#定义着色器-1" class="headerlink" title="定义着色器"></a>定义着色器</h3><p>输出颜色, 这里简单的只输出一种颜色</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#version 330 core</span><br>out vec4 FragColor;<br><br><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    FragColor = vec4(<span class="hljs-number">1.0f</span>, <span class="hljs-number">0.5f</span>, <span class="hljs-number">0.2f</span>, <span class="hljs-number">1.0f</span>);<br>&#125; <br></code></pre></td></tr></table></figure>
-<h3 id="创建着色器-2">创建着色器</h3>
-<p>与顶点着色器类似, 此处着色器类型为<code>GL_FRAGMENT_SHADER</code></p>
+
+<h3 id="创建着色器-1"><a href="#创建着色器-1" class="headerlink" title="创建着色器"></a>创建着色器</h3><p>与顶点着色器类似, 此处着色器类型为 <code>GL_FRAGMENT_SHADER</code></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> fragmentShader;<br>fragmentShader = <span class="hljs-built_in">glCreateShader</span>(GL_FRAGMENT_SHADER);<br></code></pre></td></tr></table></figure>
-<h3 id="编译-检查着色器">编译/检查着色器</h3>
-<p>与顶点着色器相同</p>
-<h2 id="着色器程序对象-Shader-Program-Object">着色器程序对象(Shader Program Object)</h2>
-<p>将上述定义的一系列着色器链接为一个<strong>着色器程序</strong>, 在渲染对象时要激活这个着色器程序, 激活后就可以发送渲染调用渲染图形.</p>
-<h3 id="创建程序对象">创建程序对象</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> shaderProgram;<br>shaderProgram = <span class="hljs-built_in">glCreateProgram</span>();<br></code></pre></td></tr></table></figure>
-<h3 id="附加并链接着色器">附加并链接着色器</h3>
-<p>将我们定义的着色器附加到着色器对象上:</p>
+
+<h3 id="编译-检查着色器"><a href="#编译-检查着色器" class="headerlink" title="编译&#x2F;检查着色器"></a>编译&#x2F;检查着色器</h3><p>与顶点着色器相同</p>
+<h2 id="着色器程序对象-Shader-Program-Object"><a href="#着色器程序对象-Shader-Program-Object" class="headerlink" title="着色器程序对象(Shader Program Object)"></a>着色器程序对象(Shader Program Object)</h2><p>将上述定义的一系列着色器链接为一个<strong>着色器程序</strong>, 在渲染对象时要激活这个着色器程序, 激活后就可以发送渲染调用渲染图形.</p>
+<h3 id="创建程序对象"><a href="#创建程序对象" class="headerlink" title="创建程序对象"></a>创建程序对象</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> shaderProgram;<br>shaderProgram = <span class="hljs-built_in">glCreateProgram</span>();<br></code></pre></td></tr></table></figure>
+
+<h3 id="附加并链接着色器"><a href="#附加并链接着色器" class="headerlink" title="附加并链接着色器"></a>附加并链接着色器</h3><p>将我们定义的着色器附加到着色器对象上:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glAttachShader</span>(shaderProgram, vertexShader);<br><span class="hljs-built_in">glAttachShader</span>(shaderProgram, fragmentShader);<br></code></pre></td></tr></table></figure>
+
 <p>将着色器链接为着色器程序:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glLinkProgram</span>(shaderProgram);<br></code></pre></td></tr></table></figure>
+
 <blockquote>
-<p>链接为着色器对象后之前定义的着色器对象就没有用了, 可以使用<code>glDeleteShader</code>删除着色器对象</p>
+<p>链接为着色器对象后之前定义的着色器对象就没有用了, 可以使用 <code>glDeleteShader</code>删除着色器对象</p>
 </blockquote>
-<h3 id="检查链接">检查链接</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glGetProgramiv</span>(shaderProgram, GL_LINK_STATUS, &amp;success);<br><span class="hljs-keyword">if</span>(!success) &#123;<br>    <span class="hljs-built_in">glGetProgramInfoLog</span>(shaderProgram, <span class="hljs-number">512</span>, <span class="hljs-literal">NULL</span>, infoLog);<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="激活程序对象">激活程序对象</h3>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glUseProgram</span>(shaderProgram);<br></code></pre></td></tr></table></figure>
-<h2 id="顶点属性">顶点属性</h2>
-<p>一个顶点可以有很多属性(至少有16个4分量的顶点属性), 向下面的两个VBO例子, 其中都定义了三个点, 但是他们的属性数量不同.</p>
+<h3 id="检查链接"><a href="#检查链接" class="headerlink" title="检查链接"></a>检查链接</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glGetProgramiv</span>(shaderProgram, GL_LINK_STATUS, &amp;success);<br><span class="hljs-keyword">if</span>(!success) &#123;<br>    <span class="hljs-built_in">glGetProgramInfoLog</span>(shaderProgram, <span class="hljs-number">512</span>, <span class="hljs-literal">NULL</span>, infoLog);<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="激活程序对象"><a href="#激活程序对象" class="headerlink" title="激活程序对象"></a>激活程序对象</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glUseProgram</span>(shaderProgram);<br></code></pre></td></tr></table></figure>
+
+<h2 id="顶点属性"><a href="#顶点属性" class="headerlink" title="顶点属性"></a>顶点属性</h2><p>一个顶点可以有很多属性(至少有16个4分量的顶点属性), 向下面的两个VBO例子, 其中都定义了三个点, 但是他们的属性数量不同.</p>
 <p>位置属性:</p>
 <p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693321975378.png" srcset="/img/loading.gif" lazyload alt="1693321975378"></p>
 <p>位置属性+颜色属性:</p>
 <p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693321965242.png" srcset="/img/loading.gif" lazyload alt="1693321965242"></p>
-<p>记得顶点着色器中的<code>location = 0</code>吗? 它指明了位置属性在VBO中的位置值(换句话说就是第几个属性, 标号从0开始).</p>
-<h3 id="设置顶点属性指针">设置顶点属性指针</h3>
-<p>当我们把顶点数据复制到VBO中后, OpenGL并不知道该怎么去解释这些数据(当然我们自己是知道的), 哪些是位置, 哪些是颜色需要我们告知OpenGL.</p>
+<p>记得顶点着色器中的 <code>location = 0</code>吗? 它指明了位置属性在VBO中的位置值(换句话说就是第几个属性, 标号从0开始).</p>
+<h3 id="设置顶点属性指针"><a href="#设置顶点属性指针" class="headerlink" title="设置顶点属性指针"></a>设置顶点属性指针</h3><p>当我们把顶点数据复制到VBO中后, OpenGL并不知道该怎么去解释这些数据(当然我们自己是知道的), 哪些是位置, 哪些是颜色需要我们告知OpenGL.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glVertexAttribPointer</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, GL_FLOAT, GL_FALSE, <span class="hljs-number">3</span> * <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">float</span>), (<span class="hljs-type">void</span>*)<span class="hljs-number">0</span>);<br><span class="hljs-built_in">glEnableVertexAttribArray</span>(<span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glVertexAttribPointer</span>(属性的位置值, 属性的大小, 数据类型, 是否标准化([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>]<span class="hljs-keyword">for</span> <span class="hljs-type">unsigned</span> 或者[<span class="hljs-number">-1</span>, <span class="hljs-number">1</span>] <span class="hljs-keyword">for</span> <span class="hljs-type">signed</span>), 顶点属性之间的步长(相邻顶点相同属性之间的间隔), 数据在缓冲中起始偏移量);<br><span class="hljs-built_in">glEnableVertexAttribArray</span>(属性的位置值); <span class="hljs-comment">//启用顶点属性 默认是禁用的</span><br></code></pre></td></tr></table></figure>
+
 <blockquote>
 <p>每个顶点属性从一个VBO管理的内存中获得它的数据，而具体是从哪个VBO（程序中可以有多个VBO）获取则是通过在调用glVertexAttribPointer时绑定到GL_ARRAY_BUFFER的VBO决定的。</p>
 </blockquote>
-<h1>顶点数组对象(VAO)</h1>
-<p>绑定一个VAO后, 任何顶点属性调用都会存储在当前绑定的VAO中:</p>
+<h1 id="顶点数组对象-VAO"><a href="#顶点数组对象-VAO" class="headerlink" title="顶点数组对象(VAO)"></a>顶点数组对象(VAO)</h1><p>绑定一个VAO后, 任何顶点属性调用都会存储在当前绑定的VAO中:</p>
 <ul>
 <li>glEnableVertexAttribArray和glDisableVertexAttribArray的调用。</li>
 <li>通过glVertexAttribPointer设置的顶点属性配置。</li>
@@ -378,30 +394,29 @@
 <p>如图, VAO中一共有16个顶点属性指针, 但VAO1只使用了第一个(也就是0号), 而VAO2使用了两个, 因为VBO2有两个属性</p>
 <p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693323124547.png" srcset="/img/loading.gif" lazyload alt="1693323124547"></p>
 <p>当下一次想要渲染绘制物体时, 只要绑定对应的VAO即可, 不需要再进行设置顶点属性指针等操作.</p>
-<h2 id="创建VAO">创建VAO</h2>
-<p>与创建VBO类似:</p>
+<h2 id="创建VAO"><a href="#创建VAO" class="headerlink" title="创建VAO"></a>创建VAO</h2><p>与创建VBO类似:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> VAO;<br><span class="hljs-built_in">glGenVertexArrays</span>(<span class="hljs-number">1</span>, &amp;VAO);<br></code></pre></td></tr></table></figure>
-<h2 id="绑定VAO">绑定VAO</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glBindVertexArray</span>(VAO);<br></code></pre></td></tr></table></figure>
-<h2 id="绘图流程">绘图流程</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// ..:: 初始化代码（只运行一次 (除非你的物体频繁改变)） :: ..</span><br><span class="hljs-comment">// 1. 绑定VAO</span><br><span class="hljs-built_in">glBindVertexArray</span>(VAO);<br><span class="hljs-comment">// 2. 把顶点数组复制到缓冲中供OpenGL使用</span><br><span class="hljs-built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, VBO);<br><span class="hljs-built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="hljs-built_in">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);<br><span class="hljs-comment">// 3. 设置顶点属性指针</span><br><span class="hljs-built_in">glVertexAttribPointer</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, GL_FLOAT, GL_FALSE, <span class="hljs-number">3</span> * <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">float</span>), (<span class="hljs-type">void</span>*)<span class="hljs-number">0</span>);<br><span class="hljs-built_in">glEnableVertexAttribArray</span>(<span class="hljs-number">0</span>);<br><br>[...]<br><br><span class="hljs-comment">// ..:: 绘制代码（渲染循环中） :: ..</span><br><span class="hljs-comment">// 4. 绘制物体</span><br><span class="hljs-built_in">glUseProgram</span>(shaderProgram);<br><span class="hljs-built_in">glBindVertexArray</span>(VAO);<br><span class="hljs-built_in">someOpenGLFunctionThatDrawsOurTriangle</span>();<br></code></pre></td></tr></table></figure>
-<h1>绘制三角形</h1>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glDrawArrays</span>(GL_TRIANGLES, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="绑定VAO"><a href="#绑定VAO" class="headerlink" title="绑定VAO"></a>绑定VAO</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glBindVertexArray</span>(VAO);<br></code></pre></td></tr></table></figure>
+
+<h2 id="绘图流程"><a href="#绘图流程" class="headerlink" title="绘图流程"></a>绘图流程</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// ..:: 初始化代码（只运行一次 (除非你的物体频繁改变)） :: ..</span><br><span class="hljs-comment">// 1. 绑定VAO</span><br><span class="hljs-built_in">glBindVertexArray</span>(VAO);<br><span class="hljs-comment">// 2. 把顶点数组复制到缓冲中供OpenGL使用</span><br><span class="hljs-built_in">glBindBuffer</span>(GL_ARRAY_BUFFER, VBO);<br><span class="hljs-built_in">glBufferData</span>(GL_ARRAY_BUFFER, <span class="hljs-built_in">sizeof</span>(vertices), vertices, GL_STATIC_DRAW);<br><span class="hljs-comment">// 3. 设置顶点属性指针</span><br><span class="hljs-built_in">glVertexAttribPointer</span>(<span class="hljs-number">0</span>, <span class="hljs-number">3</span>, GL_FLOAT, GL_FALSE, <span class="hljs-number">3</span> * <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">float</span>), (<span class="hljs-type">void</span>*)<span class="hljs-number">0</span>);<br><span class="hljs-built_in">glEnableVertexAttribArray</span>(<span class="hljs-number">0</span>);<br><br>[...]<br><br><span class="hljs-comment">// ..:: 绘制代码（渲染循环中） :: ..</span><br><span class="hljs-comment">// 4. 绘制物体</span><br><span class="hljs-built_in">glUseProgram</span>(shaderProgram);<br><span class="hljs-built_in">glBindVertexArray</span>(VAO);<br><span class="hljs-built_in">someOpenGLFunctionThatDrawsOurTriangle</span>();<br></code></pre></td></tr></table></figure>
+
+<h1 id="绘制三角形"><a href="#绘制三角形" class="headerlink" title="绘制三角形"></a>绘制三角形</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glDrawArrays</span>(GL_TRIANGLES, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>);<br></code></pre></td></tr></table></figure>
+
 <p>参数列表:</p>
 <ol>
 <li><code>GL_TRIANGLES</code>是绘制的图元类型, 这里要绘制三角形</li>
 <li>顶点数组的起始索引</li>
 <li>绘制多少个顶点(三角形就填3)</li>
 </ol>
-<h1>元素缓冲对象(EBO/IBO)</h1>
-<p>为了减少额外的内存开销, 对于同一个顶点我们在VBO中只存储一次, 而EBO中存储的是顶点在VBO中的索引.</p>
-<h2 id="创建EBO">创建EBO</h2>
-<p>也就是创建一个缓冲区</p>
+<h1 id="元素缓冲对象-EBO-IBO"><a href="#元素缓冲对象-EBO-IBO" class="headerlink" title="元素缓冲对象(EBO&#x2F;IBO)"></a>元素缓冲对象(EBO&#x2F;IBO)</h1><p>为了减少额外的内存开销, 对于同一个顶点我们在VBO中只存储一次, 而EBO中存储的是顶点在VBO中的索引.</p>
+<h2 id="创建EBO"><a href="#创建EBO" class="headerlink" title="创建EBO"></a>创建EBO</h2><p>也就是创建一个缓冲区</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> EBO;<br><span class="hljs-built_in">glGenBuffers</span>(<span class="hljs-number">1</span>, &amp;EBO);<br></code></pre></td></tr></table></figure>
-<h2 id="绑定EBO并传输数据">绑定EBO并传输数据</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> indices[] = &#123;<br>    <span class="hljs-comment">// 注意索引从0开始! </span><br>    <span class="hljs-comment">// 此例的索引(0,1,2,3)就是顶点数组vertices的下标，</span><br>    <span class="hljs-comment">// 这样可以由下标代表顶点组合成矩形</span><br><br>    <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-comment">// 第一个三角形</span><br>    <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>  <span class="hljs-comment">// 第二个三角形</span><br>&#125;;<br><span class="hljs-comment">//***********************************************</span><br><span class="hljs-built_in">glBindBuffer</span>(GL_ELEMENT_ARRAY_BUFFER, EBO);<br><span class="hljs-built_in">glBufferData</span>(GL_ELEMENT_ARRAY_BUFFER, <span class="hljs-built_in">sizeof</span>(indices), indices, GL_STATIC_DRAW);<br></code></pre></td></tr></table></figure>
-<h2 id="绘制">绘制</h2>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glDrawElements</span>(GL_TRIANGLES, <span class="hljs-number">6</span>, GL_UNSIGNED_INT, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+
+<h2 id="绑定EBO并传输数据"><a href="#绑定EBO并传输数据" class="headerlink" title="绑定EBO并传输数据"></a>绑定EBO并传输数据</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">unsigned</span> <span class="hljs-type">int</span> indices[] = &#123;<br>    <span class="hljs-comment">// 注意索引从0开始! </span><br>    <span class="hljs-comment">// 此例的索引(0,1,2,3)就是顶点数组vertices的下标，</span><br>    <span class="hljs-comment">// 这样可以由下标代表顶点组合成矩形</span><br><br>    <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-comment">// 第一个三角形</span><br>    <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>  <span class="hljs-comment">// 第二个三角形</span><br>&#125;;<br><span class="hljs-comment">//***********************************************</span><br><span class="hljs-built_in">glBindBuffer</span>(GL_ELEMENT_ARRAY_BUFFER, EBO);<br><span class="hljs-built_in">glBufferData</span>(GL_ELEMENT_ARRAY_BUFFER, <span class="hljs-built_in">sizeof</span>(indices), indices, GL_STATIC_DRAW);<br></code></pre></td></tr></table></figure>
+
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glDrawElements</span>(GL_TRIANGLES, <span class="hljs-number">6</span>, GL_UNSIGNED_INT, <span class="hljs-number">0</span>);<br></code></pre></td></tr></table></figure>
+
 <p>参数列表:</p>
 <ol>
 <li>图元类型</li>
@@ -409,8 +424,7 @@
 <li>索引的类型</li>
 <li>指定EBO中的偏移量（或者传递一个索引数组，但是这是当你不在使用索引缓冲对象的时候）</li>
 </ol>
-<h2 id="绑定到VAO">绑定到VAO</h2>
-<blockquote>
+<h2 id="绑定到VAO"><a href="#绑定到VAO" class="headerlink" title="绑定到VAO"></a>绑定到VAO</h2><blockquote>
 <p>在绑定VAO时，绑定的最后一个元素缓冲区对象存储为VAO的元素缓冲区对象。然后，绑定到VAO也会自动绑定该EBO。</p>
 </blockquote>
 <p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693324412564.png" srcset="/img/loading.gif" lazyload alt="1693324412564"></p>
@@ -497,7 +511,7 @@
               
                 <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
                   <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
+                    <i class="iconfont icon-cc-by"></i>
                   </span>
                 </a>
               
@@ -545,19 +559,6 @@
 
     <div class="side-col d-none d-lg-block col-lg-2">
       
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header">
-    <i class="iconfont icon-list"></i>
-    <span>目录</span>
-  </p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
 
     </div>
   </div>
@@ -632,7 +633,6 @@
     <div class="footer-content">
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  
   
   
   

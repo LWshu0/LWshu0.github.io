@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
   <link rel="icon" href="/img/fluid.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -37,7 +40,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -58,7 +61,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -102,7 +105,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -114,7 +117,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -126,7 +129,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -138,7 +141,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -150,9 +153,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -186,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+            <span id="subtitle" data-typed-text="Welcome to my blog."></span>
           
         </div>
 
@@ -232,7 +247,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/Parallel/MPI/" target="_self">
         <div>
-          编译与运行 基本命令 1mpicc -g -Wall -o &lt;executable&gt; &lt;source file&gt;  mpicc: 编译命令, 实际中使用 gcc 也可以通过编译 -g: 产生调试信息 -Wall: 打开所有 waring -o: 输出文件, 后跟输出文件名 &lt;executable&gt;: 输出的可执行程序文件名 &lt;source file&gt;
+          编译与运行基本命令1mpicc -g -Wall -o &lt;executable&gt; &lt;source file&gt;  mpicc: 编译命令, 实际中使用 gcc 也可以通过编译 -g: 产生调试信息 -Wall: 打开所有 waring -o: 输出文件, 后跟输出文件名 &lt;executable&gt;: 输出的可执行程序文件名 &lt;source file&gt;:
         </div>
       </a>
 
@@ -246,6 +261,41 @@
           </div>
         
         
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B9%B6%E8%A1%8C%E7%BC%96%E7%A8%8B/" class="category-chain-item">并行编程</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B9%B6%E8%A1%8C%E7%BC%96%E7%A8%8B/MPI/" class="category-chain-item">MPI</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B9%B6%E8%A1%8C/">#并行</a>
+            
+          </div>
         
       </div>
     </article>
@@ -265,7 +315,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%93%BE%E8%B7%AF%E5%B1%82/" target="_self">
         <div>
-          链路层和局域网 概述 运行链路层协议的任何设备称为 节点, 节点包括主机、路由器、交换机和 WiFi 接入点, 沿着通信路径连接相邻节点的通信信道称为 链路. 在通过特定的链路时，传输节点将数据报封装在链路层帧中，并将该帧传送到链路中. 链路层提供的服务  成帧 (framing ): 在每个网络层数据报经链路传送之前 ，几乎所有的链路层协议都要将其用链路层帧封装起来  一个帧由一个数据字段和若干
+          链路层和局域网概述运行链路层协议的任何设备称为 节点, 节点包括主机、路由器、交换机和 WiFi 接入点, 沿着通信路径连接相邻节点的通信信道称为 链路. 在通过特定的链路时，传输节点将数据报封装在链路层帧中，并将该帧传送到链路中. 链路层提供的服务 成帧 (framing ): 在每个网络层数据报经链路传送之前 ，几乎所有的链路层协议都要将其用链路层帧封装起来  一个帧由一个数据字段和若干首部字
         </div>
       </a>
 
@@ -335,7 +385,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/" target="_self">
         <div>
-          数据平面 网络层概述 网络层将来自运输层的报文段封装成数据报, 或从数据报中提取报文段交付给运输层. 数据平面的作用是从输入链路向输出链路转发数据; 控制平面的作用是协调所有本地路由器的转发动作. 路由器没有网络层之上的部分.  转发: 将分组从输入链路移动到适当的输出链路, 这是数据平面的唯一功能. 路由选择: 决定分组所采用的路由或路径, 计算路径的算法称为 路由选择算法, 这在控制平面中实现
+          数据平面网络层概述网络层将来自运输层的报文段封装成数据报, 或从数据报中提取报文段交付给运输层. 数据平面的作用是从输入链路向输出链路转发数据; 控制平面的作用是协调所有本地路由器的转发动作. 路由器没有网络层之上的部分.  转发: 将分组从输入链路移动到适当的输出链路, 这是数据平面的唯一功能. 路由选择: 决定分组所采用的路由或路径, 计算路径的算法称为 路由选择算法, 这在控制平面中实现.
         </div>
       </a>
 
@@ -405,7 +455,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/DataBase/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/" target="_self">
         <div>
-          关系数据库设计 基础概念 域 是属性的取值范围, 如果一个域的元素不可再分, 则一个域是 原子的. 这里的原子性还是会由我们的理解方式来确定, 比如一个整数, 如果我们把它看成一个整数那它就是原子的, 但如果我们把它看成是一列有序数字, 则它就不是原子的. 属性集使用希腊字母表示, 如 α\alphaα. 使用罗马字母加大写字母表示关系模式, 如 r(R)r(R)r(R), r(A1,A2)r(A
+          关系数据库设计基础概念域 是属性的取值范围, 如果一个域的元素不可再分, 则一个域是 原子的. 这里的原子性还是会由我们的理解方式来确定, 比如一个整数, 如果我们把它看成一个整数那它就是原子的, 但如果我们把它看成是一列有序数字, 则它就不是原子的. 属性集使用希腊字母表示, 如 $\alpha$. 使用罗马字母加大写字母表示关系模式, 如 $r(R)$, $r(A_1, A_2)$, 其中 r
         </div>
       </a>
 
@@ -475,7 +525,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/DataBase/E-R%E6%A8%A1%E5%9E%8B/" target="_self">
         <div>
-          E-R(实体-联系)模型 基本概念 实体 实体 是现实世界中可以唯一区分的个体/对象. 使用 属性 来描述一个实体的性质, 根据属性的 值 我们可以有关这个实体的一些信息. 实体集 是相同类型(具有相同属性)的一个实体的集合 联系 联系 是多个实体间的相互关联. 联系集 是相同类型的联系的集合. 实体集之间的关联称为 参与, 实体集可以参与到多个联系集中. 参与联系集的实体集个数为联系集的 度.
+          E-R(实体-联系)模型基本概念实体实体 是现实世界中可以唯一区分的个体&#x2F;对象. 使用 属性 来描述一个实体的性质, 根据属性的 值 我们可以有关这个实体的一些信息. 实体集 是相同类型(具有相同属性)的一个实体的集合 联系联系 是多个实体间的相互关联. 联系集 是相同类型的联系的集合. 实体集之间的关联称为 参与, 实体集可以参与到多个联系集中. 参与联系集的实体集个数为联系集的 度.
         </div>
       </a>
 
@@ -687,7 +737,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/Computer_Net/internet-programming/" target="_self">
         <div>
-          网络通信 框架   套接字  函数说明 WSAStartup &amp; WSACleanup 在程序创建第一个套接字之前使用WSAStartup()初始化 Windows 套接字的动态连接库 程序结束后执行WSACleanup清除 12WINSOCK_API_LINKAGE int WSAAPI WSAStartup(WORD wVersionRequested,LPWSADATA lpWSAD
+          网络通信框架  套接字 函数说明WSAStartup &amp; WSACleanup在程序创建第一个套接字之前使用 WSAStartup()初始化 Windows 套接字的动态连接库 程序结束后执行 WSACleanup清除 12WINSOCK_API_LINKAGE int WSAAPI WSAStartup(WORD wVersionRequested,LPWSADATA lpWSAData
         </div>
       </a>
 
@@ -939,7 +989,6 @@
     <div class="footer-content">
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  
   
   
   

@@ -7,8 +7,11 @@
 
 <head>
   <meta charset="UTF-8">
+
   <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
   <link rel="icon" href="/img/fluid.png">
+  
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -37,7 +40,7 @@
 <!-- 主题依赖的图标库，不要自行修改 -->
 <!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
 
 
 
@@ -58,7 +61,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.5","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -102,7 +105,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -114,7 +117,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -126,7 +129,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -138,7 +141,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -150,9 +153,21 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
               </a>
             </li>
           
@@ -186,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+            <span id="subtitle" data-typed-text="Welcome to my blog."></span>
           
         </div>
 
@@ -232,7 +247,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82/" target="_self">
         <div>
-          应用层协议原理 网络应用程序体系结构 客户-服务器体系结构 该体系结构中存在一个总是打开的主机—服务器, 服务器服务来自其他主机(客户)的请求. 服务器(server)  总处于开机状态 有固定的IP 可以扩展以具有多个server  客户(client)  可以和服务器交互 可能中断(即关机) 可以有动态IP 客户之间不能直接通讯  对等体系结构(P2P) 应用程序在间断连接的主机对之间使用直接
+          应用层协议原理网络应用程序体系结构客户-服务器体系结构该体系结构中存在一个总是打开的主机—服务器, 服务器服务来自其他主机(客户)的请求. 服务器(server)  总处于开机状态 有固定的IP 可以扩展以具有多个server  客户(client)  可以和服务器交互 可能中断(即关机) 可以有动态IP 客户之间不能直接通讯  对等体系结构(P2P)应用程序在间断连接的主机对之间使用直接通信,
         </div>
       </a>
 
@@ -291,7 +306,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/OpenGL/OpenGL%E6%91%84%E5%83%8F%E6%9C%BA/" target="_self">
+          <img src="https://learnopengl-cn.github.io/img/01/09/camera_axes.png" srcset="/img/loading.gif" lazyload alt="OpenGL摄像机">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/OpenGL/OpenGL%E6%91%84%E5%83%8F%E6%9C%BA/" target="_self">
@@ -300,7 +321,7 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/OpenGL/OpenGL%E6%91%84%E5%83%8F%E6%9C%BA/" target="_self">
+      <a class="index-excerpt " href="/OpenGL/OpenGL%E6%91%84%E5%83%8F%E6%9C%BA/" target="_self">
         <div>
           OpenGL摄像机/观察空间记录, 编写一个摄像机类
         </div>
@@ -361,7 +382,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/OpenGL/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" target="_self">
+          <img src="/img/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/1693635010638.png" srcset="/img/loading.gif" lazyload alt="OpenGL坐标系统">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/OpenGL/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" target="_self">
@@ -370,7 +397,7 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/OpenGL/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" target="_self">
+      <a class="index-excerpt " href="/OpenGL/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" target="_self">
         <div>
           OpenGL中的坐标系统, 记录如何显示一个3D的物体
         </div>
@@ -431,7 +458,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/OpenGL/OpenGL%E5%8F%98%E6%8D%A2/" target="_self">
+          <img src="https://learnopengl-cn.github.io/img/01/07/transformations.png" srcset="/img/loading.gif" lazyload alt="OpenGL变换">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/OpenGL/OpenGL%E5%8F%98%E6%8D%A2/" target="_self">
@@ -440,7 +473,7 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/OpenGL/OpenGL%E5%8F%98%E6%8D%A2/" target="_self">
+      <a class="index-excerpt " href="/OpenGL/OpenGL%E5%8F%98%E6%8D%A2/" target="_self">
         <div>
           OpenGL中使用GLM库进行图像的变换
         </div>
@@ -501,7 +534,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/OpenGL/OpenGL%E7%BA%B9%E7%90%86/" target="_self">
+          <img src="https://learnopengl-cn.github.io/img/01/06/texture_wrapping.png" srcset="/img/loading.gif" lazyload alt="OpenGL纹理">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/OpenGL/OpenGL%E7%BA%B9%E7%90%86/" target="_self">
@@ -510,7 +549,7 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/OpenGL/OpenGL%E7%BA%B9%E7%90%86/" target="_self">
+      <a class="index-excerpt " href="/OpenGL/OpenGL%E7%BA%B9%E7%90%86/" target="_self">
         <div>
           OpenGL中有关纹理的创建与使用
         </div>
@@ -571,7 +610,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/OpenGL/OpenGL%E7%9D%80%E8%89%B2%E5%99%A8/" target="_self">
+          <img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693321965242.png" srcset="/img/loading.gif" lazyload alt="OpenGL着色器">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/OpenGL/OpenGL%E7%9D%80%E8%89%B2%E5%99%A8/" target="_self">
@@ -580,7 +625,7 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/OpenGL/OpenGL%E7%9D%80%E8%89%B2%E5%99%A8/" target="_self">
+      <a class="index-excerpt " href="/OpenGL/OpenGL%E7%9D%80%E8%89%B2%E5%99%A8/" target="_self">
         <div>
           OpenGL着色器的简要介绍, 包括输入, 输出等基本概念, 也包括了如何使用多个属性
         </div>
@@ -641,7 +686,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/OpenGL/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" target="_self">
+          <img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693317800616.png" srcset="/img/loading.gif" lazyload alt="OpenGL渲染管线">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/OpenGL/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" target="_self">
@@ -650,7 +701,7 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/OpenGL/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" target="_self">
+      <a class="index-excerpt " href="/OpenGL/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" target="_self">
         <div>
           记录OpenGL中关于渲染管线的内容, 主要包括 VBO, VAO, EBO/IBO
         </div>
@@ -781,7 +832,13 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%9B%A0%E7%89%B9%E7%BD%91/" target="_self">
+          <img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%9B%A0%E7%89%B9%E7%BD%91/1693225990154.png" srcset="/img/loading.gif" lazyload alt="计算机网络与因特网">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h2 class="index-header">
         
         <a href="/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%9B%A0%E7%89%B9%E7%BD%91/" target="_self">
@@ -790,7 +847,7 @@
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%9B%A0%E7%89%B9%E7%BD%91/" target="_self">
+      <a class="index-excerpt " href="/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%9B%A0%E7%89%B9%E7%BD%91/" target="_self">
         <div>
           计算机网络教程学习第一章内容的笔记, 供日后复习查看
         </div>
@@ -974,7 +1031,6 @@
     <div class="footer-content">
        <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  
   
   
   
