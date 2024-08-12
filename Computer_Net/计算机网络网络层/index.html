@@ -300,7 +300,7 @@
 </ul>
 <p><strong>链路层交换机</strong> 是根据链路层帧中的字段做转发决定, 路由器使用过网络层数据报中的首部字段做转发决定, 所以路由器属于网络层设备, 而交换机属于链路层设备.</p>
 <h2 id="路由器">路由器</h2>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699375304256.png" srcset="/img/loading.gif" lazyload alt="1699375304256"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699375304256.png" srcset="/img/loading.gif" lazyload alt="1699375304256"></p>
 <ul>
 <li>输入端口: 输入端口中将会进行查找功能, 通过查找路由表确定数据将要转发到哪一个输出端口.</li>
 <li>交换结构: 将输入端口连接到输出端口, 这在后面会看到有多种形式.</li>
@@ -308,17 +308,17 @@
 <li>路由选择处理器: 执行控制平面的功能, 即路由选择协议.</li>
 </ul>
 <h3 id="输入端口处理">输入端口处理</h3>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700235025.png" srcset="/img/loading.gif" lazyload alt="1699700235025"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700235025.png" srcset="/img/loading.gif" lazyload alt="1699700235025"></p>
 <p>路由器使用 <strong>最长前缀匹配规则</strong> 选择输出端口, 根据地址在转发表中最长匹配的前缀对应的端口转发数据.</p>
 <h3 id="交换">交换</h3>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700418495.png" srcset="/img/loading.gif" lazyload alt="1699700418495"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700418495.png" srcset="/img/loading.gif" lazyload alt="1699700418495"></p>
 <ul>
 <li>经内存的交换: 一次只能传输一个分组, 因为共享系统总线一次只能进行一个内存读/写操作.</li>
 <li>经总线的交换: 因为使用总线的原因, 所以一次只能传输一个分组.</li>
 <li>经互联网络的交换: 可以在不冲突的前提下同时交换多个分组.</li>
 </ul>
 <h3 id="输出端口处理">输出端口处理</h3>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700691630.png" srcset="/img/loading.gif" lazyload alt="1699700691630"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699700691630.png" srcset="/img/loading.gif" lazyload alt="1699700691630"></p>
 <h3 id="排队现象">排队现象</h3>
 <ol>
 <li>输入排队: 如果交换结构不能很快的(相对于输入线路的速度)将分组传送, 就会在输入端口处产生排队. 对于互联网络交换结构, 如果因为某一个输入分组的传输妨碍了其他到空闲输出端口的输入分组, 被称为线路前部(HOL, head of the line)阻塞.</li>
@@ -334,7 +334,7 @@
 </ol>
 <h2 id="网际协议">网际协议</h2>
 <h3 id="IPv4-报文">IPv4 报文</h3>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699711303881.png" srcset="/img/loading.gif" lazyload alt="1699711303881"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699711303881.png" srcset="/img/loading.gif" lazyload alt="1699711303881"></p>
 <ul>
 <li>版本号: 用于区分数据报文的格式.</li>
 <li>首部长度: 因为数据报存在可选的数据, 所以报文长度是可变的.</li>
@@ -350,7 +350,7 @@
 </ul>
 <h3 id="IPv4数据分片">IPv4数据分片</h3>
 <p>一个链路层帧能传输的最大数据为 <strong>最大传送单元</strong> 通常为 1500 字节. 当一个IP数据报大小超过 1500 字节时, 就需要对数据报分成多个不超过 1500 字节的数据报.</p>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699729324366.png" srcset="/img/loading.gif" lazyload alt="1699729324366"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699729324366.png" srcset="/img/loading.gif" lazyload alt="1699729324366"></p>
 <p>如上图, 一个20字节头部+3000字节数据的 IP 报文, 被分为了三部分, data1 大小为 1480 字节, data2 为 1480 字节, data3 为 40 字节, 再加上 3 个首部, 那么原来大小为 3020 字节的报文就被分为了 3 个总大小为 3060 字节的报文.</p>
 <p><strong>标识</strong>, 用于区分一组分片, 原来属于同一个数据报的分片拥有相同的标识.</p>
 <p><strong>标志</strong>, 除了最后一个分片的标志为0外, 其他都为1, 这是为了告知接收方分片的结束.</p>
@@ -368,13 +368,13 @@
 </ul>
 <h3 id="NAT">NAT</h3>
 <p>网络地址转换, 使得多个主机在互联网中共用一个 IP, 解决 IPv4 IP 不够的问题. 主要通过在 NAT 路由器上设置 NAT 转换表来实现.</p>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699731188543.png" srcset="/img/loading.gif" lazyload alt="1699731188543"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699731188543.png" srcset="/img/loading.gif" lazyload alt="1699731188543"></p>
 <h3 id="IPv6">IPv6</h3>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699731446639.png" srcset="/img/loading.gif" lazyload alt="1699731446639"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699731446639.png" srcset="/img/loading.gif" lazyload alt="1699731446639"></p>
 <h2 id="通用转发和SDN">通用转发和SDN</h2>
 <p>OpenFlow 的匹配+动作转发表, 即 <strong>流表</strong></p>
 <p>匹配字段</p>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699769469828.png" srcset="/img/loading.gif" lazyload alt="1699769469828"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699769469828.png" srcset="/img/loading.gif" lazyload alt="1699769469828"></p>
 <p>动作</p>
 <ul>
 <li>转发: 将分组转发到一个特定的端口或者广播到所有端口或通过指定的端口进行多播</li>
@@ -388,11 +388,11 @@
 <li>防火墙</li>
 </ul>
 <p>例子:</p>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699770620115.png" srcset="/img/loading.gif" lazyload alt="1699770620115"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699770620115.png" srcset="/img/loading.gif" lazyload alt="1699770620115"></p>
 <h1>控制平面</h1>
 <h2 id="概述">概述</h2>
 <p>逻辑集中式控制, 本地路由器需要从集中服务点获取转发表和流表.</p>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699834156338.png" srcset="/img/loading.gif" lazyload alt="1699834156338"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1699834156338.png" srcset="/img/loading.gif" lazyload alt="1699834156338"></p>
 <h2 id="路由选择算法">路由选择算法</h2>
 <h3 id="分类">分类</h3>
 <p>分类一</p>
@@ -455,11 +455,11 @@
 </ul>
 <h3 id="通告BGP路由信息">通告BGP路由信息</h3>
 <p>对于下图中的网络, 红圈圈出来的是每个AS的网关路由器, 其余的是各自AS的内部路由器. 在 BGP 中，每对路由器通过使用 179 端口的半永久TCP 连接交换路由选择信息. 每条直接连接以及所有通过该连接发送的 BGP 报文，称为BGP 连接(BGP connection). 跨越两个AS的BGP链接称为 <strong>外部BGP(eBGP)</strong> 链接, 同一个AS中的两台路由器之间的BGP会话称为 <strong>内部BGP(iBGP)</strong> 链接.</p>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1700382752448.png" srcset="/img/loading.gif" lazyload alt="1700382752448"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1700382752448.png" srcset="/img/loading.gif" lazyload alt="1700382752448"></p>
 <p>例如, 现在AS1要知道如何到达3c前缀. 网关路由器3a通过eBGP向网关路由器2c发送eBGP报文&quot;AS3 3c&quot;, 然后2a告知AS2中的所有路由器, 发送iBGP报文&quot;AS3 3c&quot;, 网关路由器2a再向AS1的网关路由器1c发送eBGP报文&quot;AS2 AS3 3c&quot;, 最后1c通过iBGP报文&quot;AS2 AS3 3c&quot;告知AS1的所有路由器.</p>
 <h3 id="确定最好的路由">确定最好的路由</h3>
 <p>在BGP通告前缀中有BGP属性, 其中比较重要的是 <strong>AS-PATH</strong> 和 <strong>NEXT-HOP</strong>. <strong>AS-PATH</strong> 记录了该BGP通告经过的AS列表, 如果一台BGP路由器在路径列表中发现了自己的AS, 他将拒绝该通告. <strong>NEXT-HOP</strong> 是 <strong>AS-PATH</strong> 起始路由器接口的IP地址, 在下图中, NEXT-HOP 指向起始路由器的接口.</p>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702253252997.png" srcset="/img/loading.gif" lazyload alt="1702253252997"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702253252997.png" srcset="/img/loading.gif" lazyload alt="1702253252997"></p>
 <ul>
 <li>热土豆路由选择: 每个网关路由器将BGP通告发给开销最小的 NEXT-HOP, 这里的开销可以是链路跳数或时延等.</li>
 <li>路由器选择算法: 对于给定的目的地前缀, 路由器本地学习了一个或多个到达该前缀的下一跳路由, 如果是有多个将使用如下规则进行选择:
@@ -475,7 +475,7 @@
 <p>IP 任播通常用于 DNS 中. 教材使用了 CDN 来作为例子(虽然实际中并不使用), 对于每个 CDN 的服务器, 可能分布于世界上的不同地理位置, 但是为它们分配一个相同的IP地址, 这样通过 BGP 就可以将用户的请求发送到距离用户最近的 CDN 服务器上. 但是这可能导致同一个用户的同一个 TCP 连接请求发送到不同的 CDN 服务器上, 比如说当连接过程中 BGP 的最优选择改变.</p>
 <h3 id="路由选择策略">路由选择策略</h3>
 <p>下图中的 X 为一个 <strong>多宿接入ISP</strong> 它经由两个不同的提供商连接到网络, 为了避免转发 B 和 C 之间的流量, X 必须不通告它到 B 或到 C 的BGP路由信息. 同样, 这种方法可以使用到两个互联网提供商之间, 让两个没有合作的提供商相互不转发流量.</p>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702254826688.png" srcset="/img/loading.gif" lazyload alt="1702254826688"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702254826688.png" srcset="/img/loading.gif" lazyload alt="1702254826688"></p>
 <h2 id="SDN-控制平面">SDN 控制平面</h2>
 <h3 id="特征">特征</h3>
 <ul>
@@ -490,7 +490,7 @@
 <li>网络范围状态管理层: 由 SDN 控制平面做出的最终控制决定.</li>
 <li>通信层: SDN 控制器和受控网络设备之间的通信.</li>
 </ul>
-<p><img src="../../img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702256264076.png" srcset="/img/loading.gif" lazyload alt="1702256264076"></p>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/1702256264076.png" srcset="/img/loading.gif" lazyload alt="1702256264076"></p>
 <h3 id="OpenFlow-协议">OpenFlow 协议</h3>
 <ul>
 <li>配置. 该报文允许控制器查询并设置交换机的配置参数.</li>
