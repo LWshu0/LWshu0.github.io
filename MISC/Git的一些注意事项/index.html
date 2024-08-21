@@ -22,8 +22,8 @@
     <meta name="description" content="记录了一些Git的小tips, 以后也许会用到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git的一些注意事项">
-<meta property="og:url" content="https://lwshu0.github.io/Git%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/index.html">
-<meta property="og:site_name" content="朔宝的小屋">
+<meta property="og:url" content="https://lwshu0.github.io/MISC/Git%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/index.html">
+<meta property="og:site_name" content="LWshu0&#39;s Blog">
 <meta property="og:description" content="记录了一些Git的小tips, 以后也许会用到">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-23T07:58:48.000Z">
@@ -35,7 +35,7 @@
   
   
   
-  <title>Git的一些注意事项 - 朔宝的小屋</title>
+  <title>Git的一些注意事项 - LWshu0&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -46,6 +46,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -236,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          531 字
+          530 字
         
       </span>
     
@@ -302,9 +304,10 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一些实用的Git小技巧-建议"><a href="#一些实用的Git小技巧-建议" class="headerlink" title="一些实用的Git小技巧&#x2F;建议"></a>一些实用的Git小技巧&#x2F;建议</h1><h2 id="关于提交信息"><a href="#关于提交信息" class="headerlink" title="关于提交信息"></a>关于提交信息</h2><p><strong>规范</strong></p>
+                <h1>一些实用的Git小技巧/建议</h1>
+<h2 id="关于提交信息">关于提交信息</h2>
+<p><strong>规范</strong></p>
 <figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs inform7">&lt;type&gt;<span class="hljs-comment">[scope]</span>: &lt;description&gt;<br><br><span class="hljs-comment">[body]</span><br><br><span class="hljs-comment">[footer]</span><br></code></pre></td></tr></table></figure>
-
 <p><strong>对规范的说明</strong></p>
 <table>
 <thead>
@@ -313,7 +316,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>feat</td>
 <td>添加新功能</td>
 </tr>
@@ -365,14 +369,15 @@
 <td>chore</td>
 <td>其他修改，如构建过程或辅助工具的变动</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><code>scope</code>是可选的信息，用于说明 Commit 影响的范围，可以是文件名、模块名、功能名等。</p>
 <p><code>description</code>是对 Commit 的简短描述，一般不超过50个字符。建议使用中文，结尾不加标点。<strong>描述一定要简洁、清晰</strong></p>
 <p><code>body</code>是可选的，对 Commit 的详细描述。</p>
-<p><code>footer</code>是可选的，对 Commit 的脚注 –&gt; 要关闭的 issue。</p>
-<h2 id="关于忽略不重要的文件"><a href="#关于忽略不重要的文件" class="headerlink" title="关于忽略不重要的文件"></a>关于忽略不重要的文件</h2><p><code>.gitignore</code>文件中声明一些不需要跟踪的文件或文件夹。<code>*</code>号是通配符，可以匹配任意(包括0个)字符or字符串。<code>*</code>可以匹配一层目录，<code>**</code>可以匹配任意的目录层级。<code>#</code>号是注释。下面举一些例子来说明：</p>
+<p><code>footer</code>是可选的，对 Commit 的脚注 --&gt; 要关闭的 issue。</p>
+<h2 id="关于忽略不重要的文件">关于忽略不重要的文件</h2>
+<p><code>.gitignore</code>文件中声明一些不需要跟踪的文件或文件夹。<code>*</code>号是通配符，可以匹配任意(包括0个)字符or字符串。<code>*</code>可以匹配一层目录，<code>**</code>可以匹配任意的目录层级。<code>#</code>号是注释。下面举一些例子来说明：</p>
 <figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-comment"># 忽略日志文件</span><br>logfile.log<br><br><span class="hljs-comment"># 忽略编译生成的可执行文件</span><br>*<span class="hljs-string">.exe</span><br><br><span class="hljs-comment"># 忽略所有的图片文件</span><br>*<span class="hljs-string">.jpg</span><br>*<span class="hljs-string">.png</span><br>*<span class="hljs-string">.gif</span><br><br><span class="hljs-comment"># 忽略编译生成的目录</span><br>build/<br><br><span class="hljs-comment"># 忽略以&quot;tmp_&quot;开头的所有文件</span><br>tmp_*<br><br><span class="hljs-comment"># 忽略所有层级下名为&quot;temp&quot;的内容</span><br>**<span class="hljs-string">/temp/</span><br><br></code></pre></td></tr></table></figure>
-
 <p><strong>补充</strong></p>
 <table>
 <thead>
@@ -381,7 +386,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>!感叹号</td>
 <td>用于取反，取消匹配的效果。可以在特定模式前使用，表示不忽略该文件或目录。</td>
 </tr>
@@ -401,8 +407,10 @@
 <td>()圆括号</td>
 <td>用于在模式内分组。</td>
 </tr>
-</tbody></table>
-<p><strong>使用正则表达式</strong><br>*.pattern regexp，其中pattern是一个自定义的正则表达式字符串。</p>
+</tbody>
+</table>
+<p><strong>使用正则表达式</strong><br>
+*.pattern regexp，其中pattern是一个自定义的正则表达式字符串。</p>
 
                 
               </div>
@@ -458,7 +466,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Git的一些注意事项</div>
-      <div>https://lwshu0.github.io/Git的一些注意事项/</div>
+      <div>https://lwshu0.github.io/MISC/Git的一些注意事项/</div>
     </div>
     <div class="license-meta">
       
@@ -551,6 +559,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

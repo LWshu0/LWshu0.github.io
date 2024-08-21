@@ -19,12 +19,12 @@
   <meta name="author" content="LWshu0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="网络通信框架  套接字 函数说明WSAStartup &amp; WSACleanup在程序创建第一个套接字之前使用 WSAStartup()初始化 Windows 套接字的动态连接库 程序结束后执行 WSACleanup清除 12WINSOCK_API_LINKAGE int WSAAPI WSAStartup(WORD wVersionRequested,LPWSADATA lpWSAData">
+    <meta name="description" content="网络通信 框架   套接字  函数说明 WSAStartup &amp; WSACleanup 在程序创建第一个套接字之前使用 WSAStartup()初始化 Windows 套接字的动态连接库 程序结束后执行 WSACleanup清除 12WINSOCK_API_LINKAGE int WSAAPI WSAStartup(WORD wVersionRequested,LPWSADATA lpWS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="internet_programming">
+<meta property="og:title" content="网络编程">
 <meta property="og:url" content="https://lwshu0.github.io/Computer_Net/internet-programming/index.html">
-<meta property="og:site_name" content="朔宝的小屋">
-<meta property="og:description" content="网络通信框架  套接字 函数说明WSAStartup &amp; WSACleanup在程序创建第一个套接字之前使用 WSAStartup()初始化 Windows 套接字的动态连接库 程序结束后执行 WSACleanup清除 12WINSOCK_API_LINKAGE int WSAAPI WSAStartup(WORD wVersionRequested,LPWSADATA lpWSAData">
+<meta property="og:site_name" content="LWshu0&#39;s Blog">
+<meta property="og:description" content="网络通信 框架   套接字  函数说明 WSAStartup &amp; WSACleanup 在程序创建第一个套接字之前使用 WSAStartup()初始化 Windows 套接字的动态连接库 程序结束后执行 WSACleanup清除 12WINSOCK_API_LINKAGE int WSAAPI WSAStartup(WORD wVersionRequested,LPWSADATA lpWS">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lwshu0.github.io/img/internet-programming/1695052575889.png">
 <meta property="og:image" content="https://lwshu0.github.io/img/internet-programming/1695052787608.png">
@@ -39,7 +39,7 @@
   
   
   
-  <title>internet_programming - 朔宝的小屋</title>
+  <title>网络编程 - LWshu0&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -50,6 +50,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -217,7 +219,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="internet_programming"></span>
+            <span id="subtitle" data-typed-text="网络编程"></span>
           
         </div>
 
@@ -301,65 +303,78 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">internet_programming</h1>
+            <h1 id="seo-header">网络编程</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="网络通信"><a href="#网络通信" class="headerlink" title="网络通信"></a>网络通信</h1><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p><img src="/img/internet-programming/1695052575889.png" srcset="/img/loading.gif" lazyload alt="1695052575889"></p>
+                <h1>网络通信</h1>
+<h2 id="框架">框架</h2>
+<p><img src="/img/internet-programming/1695052575889.png" srcset="/img/loading.gif" lazyload alt="1695052575889"></p>
 <p><img src="/img/internet-programming/1695052787608.png" srcset="/img/loading.gif" lazyload alt="1695052787608"></p>
-<h2 id="套接字"><a href="#套接字" class="headerlink" title="套接字"></a>套接字</h2><p><img src="/img/internet-programming/1695049787130.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="函数说明"><a href="#函数说明" class="headerlink" title="函数说明"></a>函数说明</h2><h3 id="WSAStartup-WSACleanup"><a href="#WSAStartup-WSACleanup" class="headerlink" title="WSAStartup &amp; WSACleanup"></a>WSAStartup &amp; WSACleanup</h3><p>在程序创建第一个套接字之前使用 <code>WSAStartup()</code>初始化 Windows 套接字的动态连接库</p>
+<h2 id="套接字">套接字</h2>
+<p><img src="/img/internet-programming/1695049787130.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="函数说明">函数说明</h2>
+<h3 id="WSAStartup-WSACleanup">WSAStartup &amp; WSACleanup</h3>
+<p>在程序创建第一个套接字之前使用 <code>WSAStartup()</code>初始化 Windows 套接字的动态连接库</p>
 <p>程序结束后执行 <code>WSACleanup</code>清除</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">WINSOCK_API_LINKAGE <span class="hljs-type">int</span> WSAAPI <span class="hljs-title function_">WSAStartup</span><span class="hljs-params">(WORD wVersionRequested,LPWSADATA lpWSAData)</span>;<br>WINSOCK_API_LINKAGE <span class="hljs-type">int</span> WSAAPI <span class="hljs-title function_">WSACleanup</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span>;<br></code></pre></td></tr></table></figure>
-
 <p>其中 <code>WSAStartup()</code>第一个参数传入 <code>MAKEWORD(2, 0)</code>, 这是一个宏定义. 第二个参数传入一个 <code>WSADATA</code>类型数据的地址, 用于存储 <code>WSAStartup()</code>返回的一些信息</p>
-<h3 id="socket"><a href="#socket" class="headerlink" title="socket"></a>socket</h3><p>创建套接字</p>
+<h3 id="socket">socket</h3>
+<p>创建套接字</p>
 <ol>
 <li>协议族, socket中只能是 <code>AF_INET</code>(这是说明IP地址为IPv4类型)</li>
 <li>协议类型, <code>SOCK_STREAM</code>代表使用TCP, <code>SOCK_DGRAM</code>代表UDP</li>
 <li>具体协议, 0会自动选择协议</li>
 </ol>
-<h3 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h3><p>客户端向服务器请求连接, 返回0代表连接成功</p>
+<h3 id="connect">connect</h3>
+<p>客户端向服务器请求连接, 返回0代表连接成功</p>
 <ol>
 <li>socket函数返回的值</li>
 <li>指明目标服务器的协议族, IP, 端口</li>
 <li>第二个参数的大小, 使用 <code>sizeof</code>即可</li>
 </ol>
-<h3 id="send"><a href="#send" class="headerlink" title="send"></a>send</h3><p>用于向TCP的另一端发送数据, 返回发送的字节数</p>
+<h3 id="send">send</h3>
+<p>用于向TCP的另一端发送数据, 返回发送的字节数</p>
 <ol>
 <li>发送端的套接字描述符, 由 <code>socket</code>函数创建</li>
 <li>发送数据的内存地址(可以是基本数据类型, 数组, 结构体, 字符串)</li>
 <li>指明要发送的字节数</li>
 <li>设置为0</li>
 </ol>
-<h3 id="recv"><a href="#recv" class="headerlink" title="recv"></a>recv</h3><p>用于接收另一端socket发送过来的数据, 如果没有收到会一直等待, 收到则返回收到的字符数. 返回-1代表出错, 0代表socket关闭.</p>
+<h3 id="recv">recv</h3>
+<p>用于接收另一端socket发送过来的数据, 如果没有收到会一直等待, 收到则返回收到的字符数. 返回-1代表出错, 0代表socket关闭.</p>
 <ol>
 <li>接收端的套接字描述符, 由 <code>socket</code>函数创建返回</li>
 <li>接受数据的内存地址(可以是基本数据类型, 数组, 结构体, 字符串)</li>
 <li>需要接受的字节数(不能超过第二个参数指定的缓冲区大小)</li>
 <li>设置为0</li>
 </ol>
-<h3 id="close"><a href="#close" class="headerlink" title="close"></a>close</h3><p>关闭套接字, 并终止TCP连接, 成功返回0, 失败返回-1.</p>
-<h3 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h3><p>服务端把用于通信的地址和端口绑定到socket上，当bind函数返回0时，为正确绑定，返回-1，则为绑定失败.</p>
+<h3 id="close">close</h3>
+<p>关闭套接字, 并终止TCP连接, 成功返回0, 失败返回-1.</p>
+<h3 id="bind">bind</h3>
+<p>服务端把用于通信的地址和端口绑定到socket上，当bind函数返回0时，为正确绑定，返回-1，则为绑定失败.</p>
 <ol>
 <li>需要绑定的socket, 由 <code>socket</code>函数创建</li>
 <li>服务端的通信地址(IP)与端口</li>
 <li>第二个参数的大小(使用 <code>sizeof</code>即可)</li>
 </ol>
-<h3 id="listen"><a href="#listen" class="headerlink" title="listen"></a>listen</h3><p>当有较多的client发起connect时，server端不能及时的处理已经建立的连接，这时就会将connect连接放在等待队列中缓存起来. 这个等待队列的长度有listen中的backlog参数来设定. 当listen运行成功时，返回0；运行失败时，返回值为-1.</p>
+<h3 id="listen">listen</h3>
+<p>当有较多的client发起connect时，server端不能及时的处理已经建立的连接，这时就会将connect连接放在等待队列中缓存起来. 这个等待队列的长度有listen中的backlog参数来设定. 当listen运行成功时，返回0；运行失败时，返回值为-1.</p>
 <p><code>listen</code>函数使进程从指定的套接字开始接收连接消息, 类似一个开关</p>
 <ol>
 <li><code>socket</code>函数创建的套接字, 从这个套接字接收连接消息</li>
 <li>server可以缓存的连接最大个数, 即等待队列的长度</li>
 </ol>
-<h3 id="accept"><a href="#accept" class="headerlink" title="accept"></a>accept</h3><p>accept函数等待客户端的连接，如果没有客户端连上来，它就一直等待. accept等待到客户端的连接后，创建一个新的socket，函数返回值就是这个新的socket，服务端用这个新的socket和客户端进行报文的收发.</p>
+<h3 id="accept">accept</h3>
+<p>accept函数等待客户端的连接，如果没有客户端连上来，它就一直等待. accept等待到客户端的连接后，创建一个新的socket，函数返回值就是这个新的socket，服务端用这个新的socket和客户端进行报文的收发.</p>
 <ol>
 <li>被 <code>listen</code>过的socket</li>
 <li>存放客户端的地址信息(协议族, IP, 端口)</li>
 <li>存放第二个参数的大小</li>
 </ol>
-<h3 id="recvfrom"><a href="#recvfrom" class="headerlink" title="recvfrom"></a>recvfrom</h3><p>UDP中用于接收数据的方法</p>
+<h3 id="recvfrom">recvfrom</h3>
+<p>UDP中用于接收数据的方法</p>
 <p><code>int recvfrom(int s, void *buf, int len, unsigned int flags, struct sockaddr *from,int *fromlen);</code></p>
 <ol>
 <li>接收数据的套接字</li>
@@ -369,7 +384,8 @@
 <li>用于存储发送数据的网络地址</li>
 <li>第五个参数的大小(使用sizeof)</li>
 </ol>
-<h3 id="sendto"><a href="#sendto" class="headerlink" title="sendto"></a>sendto</h3><p>UDP用于发送数据的方法</p>
+<h3 id="sendto">sendto</h3>
+<p>UDP用于发送数据的方法</p>
 <p><code>int sendto(int s, const void * msg, int len, unsigned int flags, const struct sockaddr * to, int tolen);</code></p>
 <ol>
 <li>发送数据的套接字</li>
@@ -379,7 +395,9 @@
 <li>指定目的网络的地址</li>
 <li>第5个参数的大小(使用sizeof)</li>
 </ol>
-<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><h3 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h3>
+<h2 id="TCP">TCP</h2>
+<h3 id="基本流程">基本流程</h3>
+
                 
               </div>
             
@@ -433,7 +451,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>internet_programming</div>
+      <div>网络编程</div>
       <div>https://lwshu0.github.io/Computer_Net/internet-programming/</div>
     </div>
     <div class="license-meta">
@@ -533,6 +551,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenGL着色器">
 <meta property="og:url" content="https://lwshu0.github.io/OpenGL/OpenGL%E7%9D%80%E8%89%B2%E5%99%A8/index.html">
-<meta property="og:site_name" content="朔宝的小屋">
+<meta property="og:site_name" content="LWshu0&#39;s Blog">
 <meta property="og:description" content="OpenGL着色器的简要介绍, 包括输入, 输出等基本概念, 也包括了如何使用多个属性">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lwshu0.github.io/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693321965242.png">
@@ -37,7 +37,7 @@
   
   
   
-  <title>OpenGL着色器 - 朔宝的小屋</title>
+  <title>OpenGL着色器 - LWshu0&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -48,6 +48,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -238,7 +240,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          961 字
+          960 字
         
       </span>
     
@@ -304,13 +306,15 @@
             
               <div class="markdown-body">
                 
-                <h1 id="GLSL"><a href="#GLSL" class="headerlink" title="GLSL"></a>GLSL</h1><h2 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h2><p>OpenGL着色器语言是一种类C语言, 基本格式:</p>
+                <h1>GLSL</h1>
+<h2 id="基本格式">基本格式</h2>
+<p>OpenGL着色器语言是一种类C语言, 基本格式:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 版本</span><br><span class="hljs-meta">#version version_number</span><br><span class="hljs-comment">// 输入</span><br>in type in_variable_name;<br>in type in_variable_name;<br><span class="hljs-comment">// 输出</span><br>out type out_variable_name;<br><span class="hljs-comment">// uniform变量</span><br>uniform type uniform_name;<br><br><span class="hljs-type">int</span> main&#123;<br>    <span class="hljs-comment">//处理输入的一些图形操作</span><br>    <span class="hljs-comment">//...</span><br><br>    <span class="hljs-comment">//将结果输出</span><br>    out_variable_name = weird_stuff_we_processed;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>每一个输入的变量都叫一个顶点属性, 由于硬件, 我们一般只能使用16个4分量的顶点属性, 这在前一节中也有提到(VAO中的顶点属性指针, 标号从0到15)</p>
 <p><strong>查询方法</strong>: <code>glGetIntegerv(GL_MAX_VERTEX_ATTRIBS, &amp;nrAttributes);</code></p>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>GLSL中包含C等其它语言大部分的默认基础数据类型: int、float、double、uint和bool. GLSL也有两种容器类型, 它们会在这个教程中使用很多, 分别是向量(Vector)和矩阵(Matrix)</p>
-<p><strong>向量(vector)</strong> </p>
+<h2 id="数据类型">数据类型</h2>
+<p>GLSL中包含C等其它语言大部分的默认基础数据类型: int、float、double、uint和bool. GLSL也有两种容器类型, 它们会在这个教程中使用很多, 分别是向量(Vector)和矩阵(Matrix)</p>
+<p><strong>向量(vector)</strong></p>
 <table>
 <thead>
 <tr>
@@ -318,7 +322,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>vecn</td>
 <td>包含n个float分量的默认向量</td>
 </tr>
@@ -338,29 +343,28 @@
 <td>dvecn</td>
 <td>包含n个double分量的向量</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p><em>注: 其中n为 2, 3, 4中的一个</em></p>
 <p>向量中的第一个分量, 第二个分量, 第三个分量, 第四个分量分别使用 x, y, z, w 代表, 访问一个二维向量的 z 和 w 都是非法的.</p>
 <p>GLSL也允许你对颜色使用rgba，或是对纹理坐标使用stpq访问相同的分量。</p>
 <p>以下几种赋值方式也是允许的:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 重组</span><br>vec2 someVec;<br>vec4 differentVec = someVec.xyxx;<br>vec3 anotherVec = differentVec.zyw;<br>vec4 otherVec = someVec.xxxx + anotherVec.yxzy;<br><span class="hljs-comment">// 使用向量构造</span><br>vec2 vect = vec2(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.7</span>);<br>vec4 result = vec4(vect, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>);<br>vec4 otherResult = vec4(result.xyz, <span class="hljs-number">1.0</span>);<br></code></pre></td></tr></table></figure>
-
-<h2 id="输入与输出"><a href="#输入与输出" class="headerlink" title="输入与输出"></a>输入与输出</h2><p><strong>着色器之间的交流只能通过输入和输出</strong>, 着色器使用 <code>in</code>和 <code>out</code>关键字来声明输入和输出. 名称相同的输入和输出会在着色器链接阶段进行链接, 从而达到传输数据的目的.</p>
+<h2 id="输入与输出">输入与输出</h2>
+<p><strong>着色器之间的交流只能通过输入和输出</strong>, 着色器使用 <code>in</code>和 <code>out</code>关键字来声明输入和输出. 名称相同的输入和输出会在着色器链接阶段进行链接, 从而达到传输数据的目的.</p>
 <p><strong>顶点着色器</strong>接受特殊的输入, 他的输入直接来自于顶点数据, 我们需要使用 <code>location</code>来指定顶点属性在顶点数据中的位置, 同时顶点着色器需要为输入提供一个 <code>layout</code>标识.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 顶点着色器的一个输入</span><br>layout (location = <span class="hljs-number">0</span>) in vec3 aPos; <span class="hljs-comment">// 位置变量的属性位置值为0</span><br></code></pre></td></tr></table></figure>
-
 <p><strong>片段着色器</strong>需要输出一个 <code>vec4</code>的颜色输出, 如果没有在片段着色器中定义输出颜色, OpenGL默认渲染成黑色.</p>
-<h2 id="Uniform"><a href="#Uniform" class="headerlink" title="Uniform"></a>Uniform</h2><p><strong>从CPU向GPU中的着色器传输数据</strong></p>
+<h2 id="Uniform">Uniform</h2>
+<p><strong>从CPU向GPU中的着色器传输数据</strong></p>
 <p>uniform是全局的, 它的名称在所有的着色器中是唯一的, 着色器可以在任意阶段访问uniform.</p>
 <blockquote>
 <p>如果声明了一个uniform但是没有在GLSL中使用, 编译时会忽略该uniform</p>
 </blockquote>
 <p>首先,着色器中声明一个uniform:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#version 330 core</span><br>out vec4 FragColor;<br><br>uniform vec4 ourColor; <span class="hljs-comment">// 在OpenGL程序代码中设定这个变量</span><br><br><span class="hljs-type">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    FragColor = ourColor;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>然后找到uniform的location, 从而设置它的值:</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-comment">// 绿色随时间改变</span><br><span class="hljs-type">float</span> timeValue = glfwGetTime();<br><span class="hljs-type">float</span> greenValue = (<span class="hljs-built_in">sin</span>(timeValue) / <span class="hljs-number">2.0f</span>) + <span class="hljs-number">0.5f</span>;<br><span class="hljs-type">int</span> vertexColorLocation = glGetUniformLocation(shaderProgram, <span class="hljs-string">&quot;ourColor&quot;</span>);<br>glUseProgram(shaderProgram); <span class="hljs-comment">// 更新着色器之前必须激活对应的着色器程序</span><br>glUniform4f(vertexColorLocation, <span class="hljs-number">0.0f</span>, greenValue, <span class="hljs-number">0.0f</span>, <span class="hljs-number">1.0f</span>);<br></code></pre></td></tr></table></figure>
-
 <p>如果 <code>glGetUniformLocation</code>返回-1, 代表没有找到该uniform.</p>
 <p>更新着色器(<code>glUniform4f</code>)之前必须先激活着色器程序, 因为 <code>glUniform4f</code>是设置当前激活的着色器程序.</p>
 <table>
@@ -370,7 +374,8 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>f</td>
 <td>函数需要一个float作为它的值</td>
 </tr>
@@ -388,15 +393,18 @@
 </tr>
 <tr>
 <td>fv</td>
-<td>函数需要一个float向量&#x2F;数组作为它的值</td>
+<td>函数需要一个float向量/数组作为它的值</td>
 </tr>
-</tbody></table>
-<h1 id="更多属性"><a href="#更多属性" class="headerlink" title="更多属性"></a>更多属性</h1><p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693321965242.png" srcset="/img/loading.gif" lazyload alt="1693321965242"></p>
+</tbody>
+</table>
+<h1>更多属性</h1>
+<p><img src="/img/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/1693321965242.png" srcset="/img/loading.gif" lazyload alt="1693321965242"></p>
 <p>使用 <code>glVertexAttribPointer</code>配置位置值为1的属性, 并使用 <code>glEnableVertexAttribArray</code>激活该属性. 添加更多属性也使用类似的方法</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-built_in">glVertexAttribPointer</span>(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, GL_FLOAT, GL_FALSE, <span class="hljs-number">6</span> * <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">float</span>), (<span class="hljs-type">void</span>*)(<span class="hljs-number">3</span>* <span class="hljs-built_in">sizeof</span>(<span class="hljs-type">float</span>)));<br><span class="hljs-built_in">glEnableVertexAttribArray</span>(<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
-
 <p>使用这些属性的时候(一般是在顶点着色器中), 使用 <code>location</code>关键字指明属性所在的位置值</p>
-<h1 id="着色器类"><a href="#着色器类" class="headerlink" title="着色器类"></a>着色器类</h1><h1 id="从文件读取"><a href="#从文件读取" class="headerlink" title="从文件读取"></a>从文件读取</h1>
+<h1>着色器类</h1>
+<h1>从文件读取</h1>
+
                 
               </div>
             
@@ -550,6 +558,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

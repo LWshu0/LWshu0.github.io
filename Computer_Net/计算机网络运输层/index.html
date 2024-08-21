@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络运输层">
 <meta property="og:url" content="https://lwshu0.github.io/Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/index.html">
-<meta property="og:site_name" content="朔宝的小屋">
+<meta property="og:site_name" content="LWshu0&#39;s Blog">
 <meta property="og:description" content="计算机网络教程学习运输层内容的笔记, 供日后复习查看">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lwshu0.github.io/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696516554716.png">
@@ -51,7 +51,7 @@
   
   
   
-  <title>计算机网络运输层 - 朔宝的小屋</title>
+  <title>计算机网络运输层 - LWshu0&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -62,6 +62,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -252,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3k 字
+          3.1k 字
         
       </span>
     
@@ -318,33 +320,44 @@
             
               <div class="markdown-body">
                 
-                <h1 id="多路复用与多路分解"><a href="#多路复用与多路分解" class="headerlink" title="多路复用与多路分解"></a>多路复用与多路分解</h1><p>网络层提供的是端到端(主机到主机)的服务, 是一对一的, 而运输层将这一服务拓展到进程到进程的服务, 变为了多对多. 这些多对多的服务都是使用网络层提供的一对一服务, 运输层将多个进程发送的数据分别打包并传输到网络层, 就是 <strong>多路复用</strong> ; 接收端从网络层接收到的数据需要分发到对应的进程, 这就是 <strong>多路分解</strong> .</p>
+                <h1>多路复用与多路分解</h1>
+<p>网络层提供的是端到端(主机到主机)的服务, 是一对一的, 而运输层将这一服务拓展到进程到进程的服务, 变为了多对多. 这些多对多的服务都是使用网络层提供的一对一服务, 运输层将多个进程发送的数据分别打包并传输到网络层, 就是 <strong>多路复用</strong> ; 接收端从网络层接收到的数据需要分发到对应的进程, 这就是 <strong>多路分解</strong> .</p>
 <p>多路分解时通过运输层协议中的 <strong>源端口字段</strong> 和 <strong>目的端口字段</strong> 来确定该条数据要分发到哪一个进程. 其中的端口字段都是 16 bits 的数字, 范围从0到65535, 注意0到1023的端口号为 <strong>周知端口号(well-known port number)</strong> 都有特定的用途, 比如 HTTP 使用80端口, FTP使用21端口等.</p>
 <p>在一般的网络程序中, 服务器是固定IP和固定端口, 而客户端则可以使用随机IP和随机端口. 服务器能够向客户端发送数据靠的就是协议中的源IP和源端口字段.</p>
 <ol>
-<li>面向无连接<br>一个UDP套接字由目的IP和目的端口唯一标识, 在接收方运输层将根据目的端口定向发送到对应的进程套接字.</li>
-<li>面向连接<br>一个TCP套接字由源IP, 源端口, 目的IP和目的端口唯一标识, 接收主机通过全部四个值来确定要将该数据发送到哪一个套接字(除非携带了创建连接请求, 这将会创建一个新的套接字).</li>
-<li>web服务器与TCP<br>一个web服务器使用的都是80端口, 当今高性能的服务器通常只运行一个进程, 而为每一个客户创建一个具有新套接字的新线程, 这样就可以在一个端口上为多个用户提供服务. 当用户使用非持续性连接时, 频繁的创建关闭套接字会严重影响服务器的性能.</li>
+<li>面向无连接<br>
+一个UDP套接字由目的IP和目的端口唯一标识, 在接收方运输层将根据目的端口定向发送到对应的进程套接字.</li>
+<li>面向连接<br>
+一个TCP套接字由源IP, 源端口, 目的IP和目的端口唯一标识, 接收主机通过全部四个值来确定要将该数据发送到哪一个套接字(除非携带了创建连接请求, 这将会创建一个新的套接字).</li>
+<li>web服务器与TCP<br>
+一个web服务器使用的都是80端口, 当今高性能的服务器通常只运行一个进程, 而为每一个客户创建一个具有新套接字的新线程, 这样就可以在一个端口上为多个用户提供服务. 当用户使用非持续性连接时, 频繁的创建关闭套接字会严重影响服务器的性能.</li>
 </ol>
-<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><p>在运输层提供最低限度的服务—复用&#x2F;解复用.</p>
-<h2 id="相对于TCP的优点"><a href="#相对于TCP的优点" class="headerlink" title="相对于TCP的优点"></a>相对于TCP的优点</h2><ul>
+<h1>UDP</h1>
+<p>在运输层提供最低限度的服务—复用/解复用.</p>
+<h2 id="相对于TCP的优点">相对于TCP的优点</h2>
+<ul>
 <li>可以立即发送数据到网络层, 且没有拥塞控制来遏制发送, 适合一些容忍数据丢失的实时程序(如视频播放等)</li>
 <li>没有建立连接的时延, 如DNS服务, 谷歌chrome浏览器就使用UDP</li>
 <li>无需在系统中维护连接状态, 包括接收发送缓存, 拥塞控制参数, 序号与确认号等, 某些特定应用就可以支持更多的用户</li>
 <li>分组首部开销小</li>
 </ul>
-<h2 id="报文段结构"><a href="#报文段结构" class="headerlink" title="报文段结构"></a>报文段结构</h2><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696516554716.png" srcset="/img/loading.gif" lazyload alt="1696516554716"></p>
+<h2 id="报文段结构">报文段结构</h2>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696516554716.png" srcset="/img/loading.gif" lazyload alt="1696516554716"></p>
 <p>长度字段包括首部加数据的字节数</p>
-<h2 id="UDP校验和"><a href="#UDP校验和" class="headerlink" title="UDP校验和"></a>UDP校验和</h2><p>发送方:</p>
+<h2 id="UDP校验和">UDP校验和</h2>
+<p>发送方:</p>
 <p>将所有16bit字求和, 如果遇到进位就将进位加到最低位(回卷), 最后的结果取反码存到校验和字段中</p>
 <p>接收方:</p>
 <p>将所有的16bit字求和(包括校验和字段), 如果没有错, 最终结果将是1111_1111_1111_1111, 如果结果有一位是0就代表分组出错.</p>
-<h1 id="可靠数据传输"><a href="#可靠数据传输" class="headerlink" title="可靠数据传输"></a>可靠数据传输</h1><blockquote>
+<h1>可靠数据传输</h1>
+<blockquote>
 <p>下面使用FSM(有限状态机)来描述, 横线上方是引起变化的条件, 横线下方是采取的动作, 实线箭头是状态转移.</p>
 </blockquote>
-<h2 id="基于可靠信道"><a href="#基于可靠信道" class="headerlink" title="基于可靠信道"></a>基于可靠信道</h2><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696518014199.png" srcset="/img/loading.gif" lazyload alt="1696518014199"></p>
-<h2 id="基于具有比特差错的信道"><a href="#基于具有比特差错的信道" class="headerlink" title="基于具有比特差错的信道"></a>基于具有比特差错的信道</h2><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696518460337.png" srcset="/img/loading.gif" lazyload alt="1696518460337"></p>
-<p>$\Lambda$ 代表什么也不做</p>
+<h2 id="基于可靠信道">基于可靠信道</h2>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696518014199.png" srcset="/img/loading.gif" lazyload alt="1696518014199"></p>
+<h2 id="基于具有比特差错的信道">基于具有比特差错的信道</h2>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696518460337.png" srcset="/img/loading.gif" lazyload alt="1696518460337"></p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Λ</mi></mrow><annotation encoding="application/x-tex">\Lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord">Λ</span></span></span></span> 代表什么也不做</p>
 <p>发送方在发送数据后需要等待接收方发来的ACK消息, 说明接收方接收到了正确的数据.</p>
 <p>接收方在接收到数据后需要检验, 数据没有错就向发送方发送一个ACK消息, 否则发送一个NAK消息告知发送方重发.</p>
 <p><strong>重要的步骤:</strong></p>
@@ -355,34 +368,40 @@
 </ul>
 <p><strong>当ACK或者NAK受损时:</strong></p>
 <ul>
-<li>发送方要求接收方重复一遍上一次的消息(也就是ACK&#x2F;NAK)</li>
+<li>发送方要求接收方重复一遍上一次的消息(也就是ACK/NAK)</li>
 <li>增加足够的检验和比特, 可以从错误中恢复数据</li>
-<li>发送方收到不清楚的ANK&#x2F;NAK时, 直接重传一份数据分组(称为 <strong>冗余分组</strong> ), 那么接收方如何知道这是重传的数据还是新的数据呢? 给分组 <strong>序号</strong>!</li>
+<li>发送方收到不清楚的ANK/NAK时, 直接重传一份数据分组(称为 <strong>冗余分组</strong> ), 那么接收方如何知道这是重传的数据还是新的数据呢? 给分组 <strong>序号</strong>!</li>
 </ul>
 <p>对于序号, 只用1 bit就可以, 因为只需要区分是重传还是新数据, 可靠传输的发送方在上一次发送的数据没有得到接收方确认收到的时候不会发送新数据.</p>
-<p><strong>rdt2.1 解决ACK&#x2F;NAK受损的问题</strong></p>
+<p><strong>rdt2.1 解决ACK/NAK受损的问题</strong></p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696580888103.png" srcset="/img/loading.gif" lazyload alt="1696580888103"></p>
-<p>接收方的两个 duplicate pkt 是因为发送方没有接收到ACK&#x2F;NAK而重发的数据包, 但是接收方已经接收到了正确的数据包, 并且将状态转移到了等待接收另一个数据包, 所以才会出现接收方在等待1的时候接收到0, 在等待0的时候接收到1的情况.</p>
+<p>接收方的两个 duplicate pkt 是因为发送方没有接收到ACK/NAK而重发的数据包, 但是接收方已经接收到了正确的数据包, 并且将状态转移到了等待接收另一个数据包, 所以才会出现接收方在等待1的时候接收到0, 在等待0的时候接收到1的情况.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696580969063.png" srcset="/img/loading.gif" lazyload alt="1696580969063"></p>
 <p><strong>rdt2.2 不使用NAK, 而使用冗余ACK</strong></p>
 <p>红色方框框出主要的与rdt2.1不同的地方. 接收方只会发送自己正确接收到的最后一个分组标号,</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696581671087.png" srcset="/img/loading.gif" lazyload alt="1696581671087"></p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696581985703.png" srcset="/img/loading.gif" lazyload alt="1696581985703"></p>
-<h2 id="基于有比特差错的丢包信道"><a href="#基于有比特差错的丢包信道" class="headerlink" title="基于有比特差错的丢包信道"></a>基于有比特差错的丢包信道</h2><p>也称为<strong>比特交替协议</strong>. 发送方没有收到ACK可能是因为: 发送数据丢包, ACK丢包, 数据或ACK过度时延. 而对于发送方, 重传总是起作用的, 所以在遇到超时没有收到ACK的情况, 就重传数据.</p>
+<h2 id="基于有比特差错的丢包信道">基于有比特差错的丢包信道</h2>
+<p>也称为<strong>比特交替协议</strong>. 发送方没有收到ACK可能是因为: 发送数据丢包, ACK丢包, 数据或ACK过度时延. 而对于发送方, 重传总是起作用的, 所以在遇到超时没有收到ACK的情况, 就重传数据.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696598963935.png" srcset="/img/loading.gif" lazyload alt="1696598963935"></p>
 <p><strong>接收方的FSM与rdt2.0相同</strong></p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696605424067.png" srcset="/img/loading.gif" lazyload alt="1696605424067"></p>
-<h2 id="流水线的可靠数据传输协议"><a href="#流水线的可靠数据传输协议" class="headerlink" title="流水线的可靠数据传输协议"></a>流水线的可靠数据传输协议</h2><p>rdt3.0是一个功能正确但性能不高的协议, 主要是因为其中有大量的停等时间.</p>
-<p>定义一个信道利用率: $U &#x3D; \frac{L&#x2F;R}{RTT+L&#x2F;R}$ , 假如往返时延为30ms, $L&#x2F;R$ 为 $8 \mu s$, 此时信道利用率只有万分之2.7. 在上面的协议中, 每传输一个分组就要等待一个RTT. 这是非常低效的.</p>
+<h2 id="流水线的可靠数据传输协议">流水线的可靠数据传输协议</h2>
+<p>rdt3.0是一个功能正确但性能不高的协议, 主要是因为其中有大量的停等时间.</p>
+<p>定义一个信道利用率: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>=</mo><mfrac><mrow><mi>L</mi><mi mathvariant="normal">/</mi><mi>R</mi></mrow><mrow><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mi>L</mi><mi mathvariant="normal">/</mi><mi>R</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">U = \frac{L/R}{RTT+L/R}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">U</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.53em;vertical-align:-0.52em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.655em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">RTT</span><span class="mbin mtight">+</span><span class="mord mathnormal mtight">L</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">L</span><span class="mord mtight">/</span><span class="mord mathnormal mtight" style="margin-right:0.00773em;">R</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.52em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> , 假如往返时延为30ms, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mi mathvariant="normal">/</mi><mi>R</mi></mrow><annotation encoding="application/x-tex">L/R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">L</span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span></span></span></span> 为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn><mi>μ</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">8 \mu s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">8</span><span class="mord mathnormal">μ</span><span class="mord mathnormal">s</span></span></span></span>, 此时信道利用率只有万分之2.7. 在上面的协议中, 每传输一个分组就要等待一个RTT. 这是非常低效的.</p>
 <p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696606074361.png" srcset="/img/loading.gif" lazyload alt="1696606074361"></p>
-<h3 id="回退N步-Go-Back-N-GBN"><a href="#回退N步-Go-Back-N-GBN" class="headerlink" title="回退N步(Go-Back-N, GBN)"></a>回退N步(Go-Back-N, GBN)</h3><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696606218217.png" srcset="/img/loading.gif" lazyload alt="1696606218217"></p>
+<h3 id="回退N步-Go-Back-N-GBN">回退N步(Go-Back-N, GBN)</h3>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696606218217.png" srcset="/img/loading.gif" lazyload alt="1696606218217"></p>
 <p>随着协议的进行, 窗口会在分组序号空间中向后滑动, 因此GBN协议也叫做 <strong>滑动窗口协议</strong></p>
-<p>需要注意, 假如分配给分组序号的bit是k, 那么分组序号的范围就是 $[0, 2^k-1]$ , 滑动窗口的大小不能超过该范围的一半</p>
-<p><strong>sender</strong><br><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696607002803.png" srcset="/img/loading.gif" lazyload alt="1696607002803"></p>
-<p><strong>receiver</strong><br><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696607165711.png" srcset="/img/loading.gif" lazyload alt="1696607165711"></p>
+<p>需要注意, 假如分配给分组序号的bit是k, 那么分组序号的范围就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mn>0</mn><mo separator="true">,</mo><msup><mn>2</mn><mi>k</mi></msup><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[0, 2^k-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0991em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8491em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03148em;">k</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span> , 滑动窗口的大小不能超过该范围的一半</p>
+<p><strong>sender</strong><br>
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696607002803.png" srcset="/img/loading.gif" lazyload alt="1696607002803"></p>
+<p><strong>receiver</strong><br>
+<img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696607165711.png" srcset="/img/loading.gif" lazyload alt="1696607165711"></p>
 <p>可以发现, 接收方只会对按顺序收到的最后一个正确分组回复一个ACK消息, 假如此时接收到了1245, 3号分组丢失, 也只会回复ACK 2, 这就浪费了时间和网络资源重发已经正确收到的45号分组.</p>
 <p><strong>累积确认</strong>: 指发送方在收到序号为N的ACK, 代表包括N及其之前的所有分组接收方都正确收到</p>
-<h3 id="选择重传-Selective-Repeat-SR"><a href="#选择重传-Selective-Repeat-SR" class="headerlink" title="选择重传(Selective Repeat, SR)"></a>选择重传(Selective Repeat, SR)</h3><p>仅选择那些接收方出错的分组(丢失或者受损)进行重传</p>
+<h3 id="选择重传-Selective-Repeat-SR">选择重传(Selective Repeat, SR)</h3>
+<p>仅选择那些接收方出错的分组(丢失或者受损)进行重传</p>
 <p><strong>发送方</strong></p>
 <ol>
 <li>从上层接收到数据, 为其分配一个下一个可用的分组序号, 如果序号在发送窗口内就发送, 否则可以缓存或者返回到上层</li>
@@ -398,27 +417,39 @@
 <blockquote>
 <p>之前都假段端到端之间是一条物理链路, 而当端到端之间是一个网络时, 接收端中一个分组的旧副本可能会被收到(这是之前某个连接请求的, 但是因为网络原因在本次链接才到达接收方), 为了避免这种情况, 给分组定义一个 <strong>存活时间</strong> (大约是3分钟).</p>
 </blockquote>
-<h1 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h1><h2 id="TCP-连接"><a href="#TCP-连接" class="headerlink" title="TCP 连接"></a>TCP 连接</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>应用程序建立套接字后, 可以通过该套接字发送数据, 发送的数据会先存储到连接的 <strong>发送缓存</strong> 中(发送缓存是握手阶段设置的缓存之一), 然后由TCP时不时的从缓存中取数据并传送到网络层. TCP可以从缓存中取出&#x2F;放入的数据量受限于 <strong>最大报文段长度(Maximum Segment Size, MSS)</strong> , 而MSS根据本地主机的最大链路层帧长度( <strong>最大传输单元, Maximum Transmission Unit, MTU</strong> )设置. 通常MTU有1500字节, 减去TCP头部40字节, 剩余的1460字节就是MSS.</p>
-<h3 id="报文段"><a href="#报文段" class="headerlink" title="报文段"></a>报文段</h3><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696985043723.png" srcset="/img/loading.gif" lazyload alt="1696985043723"></p>
-<h4 id="序号和确认号"><a href="#序号和确认号" class="headerlink" title="序号和确认号"></a>序号和确认号</h4><p>一个报文段的序号是该段报文首字节在整个文件中的字节流编号, 因此序号一般是不连续的.</p>
+<h1>TCP</h1>
+<h2 id="TCP-连接">TCP 连接</h2>
+<h3 id="简介">简介</h3>
+<p>应用程序建立套接字后, 可以通过该套接字发送数据, 发送的数据会先存储到连接的 <strong>发送缓存</strong> 中(发送缓存是握手阶段设置的缓存之一), 然后由TCP时不时的从缓存中取数据并传送到网络层. TCP可以从缓存中取出/放入的数据量受限于 <strong>最大报文段长度(Maximum Segment Size, MSS)</strong> , 而MSS根据本地主机的最大链路层帧长度( <strong>最大传输单元, Maximum Transmission Unit, MTU</strong> )设置. 通常MTU有1500字节, 减去TCP头部40字节, 剩余的1460字节就是MSS.</p>
+<h3 id="报文段">报文段</h3>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1696985043723.png" srcset="/img/loading.gif" lazyload alt="1696985043723"></p>
+<h4 id="序号和确认号">序号和确认号</h4>
+<p>一个报文段的序号是该段报文首字节在整个文件中的字节流编号, 因此序号一般是不连续的.</p>
 <p>确认号是主机期望收到的报文段序号, 同样也是字节流编号. TCP使用 <strong>累积确认</strong>, 对于失序到达的分组: 丢弃或者缓存.</p>
-<h4 id="往返时间的估计和超时"><a href="#往返时间的估计和超时" class="headerlink" title="往返时间的估计和超时"></a>往返时间的估计和超时</h4><p><strong>往返时间</strong>: 从报文段被发出(交给IP)到该报文段确认收到之间的时间.</p>
+<h4 id="往返时间的估计和超时">往返时间的估计和超时</h4>
+<p><strong>往返时间</strong>: 从报文段被发出(交给IP)到该报文段确认收到之间的时间.</p>
 <p>用 SampleRTT均值(EstimatedRTT) 来估计RTT, 该计算方法被称为<strong>指数加权移动平均(EWMA)</strong>:</p>
-<p>$$<br>EstimatedRTT &#x3D; (1-\alpha)<em>EstimatedRTT+\alpha</em>SampleRTT<br>$$</p>
-<p>其中$\alpha$推荐使用0.125</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>E</mi><mi>s</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>e</mi><mi>d</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>α</mi><mo stretchy="false">)</mo><mo>∗</mo><mi>E</mi><mi>s</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>e</mi><mi>d</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mi>α</mi><mo>∗</mo><mi>S</mi><mi>a</mi><mi>m</mi><mi>p</mi><mi>l</mi><mi>e</mi><mi>R</mi><mi>T</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">EstimatedRTT = (1-\alpha)*EstimatedRTT+\alpha*SampleRTT
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ima</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ima</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.4653em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">am</span><span class="mord mathnormal" style="margin-right:0.01968em;">pl</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span></span></span></span></span></p>
+<p>其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal" style="margin-right:0.0037em;">α</span></span></span></span>推荐使用0.125</p>
 <p>RTT的偏差, 即SampleRTT偏离EstimatedRTT的程度:</p>
-<p>$$<br>DevRTT&#x3D; (1-\beta)<em>DevRTT+\beta</em>|SampleRTT-EstimatedRTT|<br>$$</p>
-<p>其中$\beta$推荐使用0.25</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>D</mi><mi>e</mi><mi>v</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>=</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>β</mi><mo stretchy="false">)</mo><mo>∗</mo><mi>D</mi><mi>e</mi><mi>v</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mi>β</mi><mo>∗</mo><mi mathvariant="normal">∣</mi><mi>S</mi><mi>a</mi><mi>m</mi><mi>p</mi><mi>l</mi><mi>e</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>−</mo><mi>E</mi><mi>s</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>e</mi><mi>d</mi><mi>R</mi><mi>T</mi><mi>T</mi><mi mathvariant="normal">∣</mi></mrow><annotation encoding="application/x-tex">DevRTT= (1-\beta)*DevRTT+\beta*|SampleRTT-EstimatedRTT|
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">De</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.7667em;vertical-align:-0.0833em;"></span><span class="mord mathnormal">De</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">am</span><span class="mord mathnormal" style="margin-right:0.01968em;">pl</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ima</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mord">∣</span></span></span></span></span></p>
+<p>其中<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi></mrow><annotation encoding="application/x-tex">\beta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.05278em;">β</span></span></span></span>推荐使用0.25</p>
 <p>确定超时间隔, 在估计的平均RTT上添加余量, 当RTT波动大时, 该余量也要大, 当RTT波动小时, 该余量也应该小:</p>
-<p>$$<br>TimeoutInterval &#x3D; EstimatedRTT + 4*DevRTT<br>$$</p>
-<p>推荐的$TimeoutInterval$初始值为1秒, 在收到报文段时从新计算即可.</p>
+<p class="katex-block "><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>T</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>I</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>l</mi><mo>=</mo><mi>E</mi><mi>s</mi><mi>t</mi><mi>i</mi><mi>m</mi><mi>a</mi><mi>t</mi><mi>e</mi><mi>d</mi><mi>R</mi><mi>T</mi><mi>T</mi><mo>+</mo><mn>4</mn><mo>∗</mo><mi>D</mi><mi>e</mi><mi>v</mi><mi>R</mi><mi>T</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">TimeoutInterval = EstimatedRTT + 4*DevRTT
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">im</span><span class="mord mathnormal">eo</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.0833em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">ima</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal">d</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal">De</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal" style="margin-right:0.13889em;">RTT</span></span></span></span></span></p>
+<p>推荐的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>T</mi><mi>i</mi><mi>m</mi><mi>e</mi><mi>o</mi><mi>u</mi><mi>t</mi><mi>I</mi><mi>n</mi><mi>t</mi><mi>e</mi><mi>r</mi><mi>v</mi><mi>a</mi><mi>l</mi></mrow><annotation encoding="application/x-tex">TimeoutInterval</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">T</span><span class="mord mathnormal">im</span><span class="mord mathnormal">eo</span><span class="mord mathnormal">u</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>初始值为1秒, 在收到报文段时从新计算即可.</p>
 <p><strong>超时</strong></p>
 <p>当收到收到上层应用数据和收到ACK时, 使用TimeoutInterval推算出的时间重置定时器, 而如果是因为超时, 则重置定时器为原来的两倍时间.</p>
 <p><strong>快速重传</strong></p>
 <p>当发送方收到了三个冗余ACK后, 发送方就认为冗余ACK后的报文段丢失, 不用等待定时器超时而执行<strong>快速重传</strong> .</p>
-<h4 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h4><p><strong>流量控制服务</strong>: 使发送方的发送速率和接收方的接受速率匹配, 避免接收方缓存溢出. 注意这和拥塞控制是不同的服务(主要是目的不同).</p>
+<h4 id="流量控制">流量控制</h4>
+<p><strong>流量控制服务</strong>: 使发送方的发送速率和接收方的接受速率匹配, 避免接收方缓存溢出. 注意这和拥塞控制是不同的服务(主要是目的不同).</p>
 <p>通过在发送方维护一个<strong>接收窗口</strong>来提供流量控制, 接收窗口代表接收方所能接收的最大数据量(可用的缓存空间), 发送方发送的数据量不能超过接收窗口的大小. 接收方的接收窗口大小会随着ACK报文传给发送方. 当接收方的接收窗口为0时, 发送方仍会发送一个一字节的报文段, 与此同时接收方正好可以处理完一部分缓存, 这时就可以返回一个非0的接收窗口了.</p>
-<h1 id="拥塞控制原理"><a href="#拥塞控制原理" class="headerlink" title="拥塞控制原理"></a>拥塞控制原理</h1><h1 id="TCP的拥塞控制"><a href="#TCP的拥塞控制" class="headerlink" title="TCP的拥塞控制"></a>TCP的拥塞控制</h1><p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1697366706181.png" srcset="/img/loading.gif" lazyload alt="1697366706181"></p>
+<h1>拥塞控制原理</h1>
+<h1>TCP的拥塞控制</h1>
+<p><img src="/img/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/1697366706181.png" srcset="/img/loading.gif" lazyload alt="1697366706181"></p>
 <ol>
 <li>慢启动: 拥塞控制窗口以一个MSS的初始大小, 呈指数增加, 这在一开始是很慢的. 当报文段超时时, 将慢启动的阈值(ssthresh)设置为当前拥塞控制窗口的一半, 并重新开始慢启动. 当超过慢启动阈值时, 就要进入拥塞避免模式, 使得窗口缓慢增加.</li>
 <li>拥塞避免: 进入拥塞避免后的拥塞窗口大约是之前的一半, 所以不能再以翻番的方式增加, 而是每个RTT增加一个MSS.</li>
@@ -533,8 +564,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Computer_Net/internet-programming/" title="internet_programming">
-                        <span class="hidden-mobile">internet_programming</span>
+                      <a href="/Computer_Net/internet-programming/" title="网络编程">
+                        <span class="hidden-mobile">网络编程</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -578,6 +609,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

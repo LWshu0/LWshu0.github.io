@@ -23,7 +23,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络套接字聊天程序">
 <meta property="og:url" content="https://lwshu0.github.io/Project/%E7%BD%91%E7%BB%9C%E5%A5%97%E6%8E%A5%E5%AD%97%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/index.html">
-<meta property="og:site_name" content="朔宝的小屋">
+<meta property="og:site_name" content="LWshu0&#39;s Blog">
 <meta property="og:description" content="关于我写的一个网络聊天程序的说明与收获, 总结在本次小项目中学到的知识.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lwshu0.github.io/img/%E7%BD%91%E7%BB%9C%E5%A5%97%E6%8E%A5%E5%AD%97%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/1695918538600.png">
@@ -31,14 +31,14 @@
 <meta property="article:modified_time" content="2023-09-28T15:59:58.000Z">
 <meta property="article:author" content="LWshu0">
 <meta property="article:tag" content="项目">
-<meta property="article:tag" content="计算机网络">
 <meta property="article:tag" content="C++">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lwshu0.github.io/img/%E7%BD%91%E7%BB%9C%E5%A5%97%E6%8E%A5%E5%AD%97%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/1695918538600.png">
   
   
   
-  <title>网络套接字聊天程序 - 朔宝的小屋</title>
+  <title>网络套接字聊天程序 - LWshu0&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -49,6 +49,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -305,7 +307,9 @@
             
               <div class="markdown-body">
                 
-                <h1 id="知识总结"><a href="#知识总结" class="headerlink" title="知识总结"></a>知识总结</h1><h2 id="动态类成员函数作为-pthread-create-的回调函数"><a href="#动态类成员函数作为-pthread-create-的回调函数" class="headerlink" title="动态类成员函数作为 pthread_create 的回调函数"></a>动态类成员函数作为 pthread_create 的回调函数</h2><p>自从大一学完 c++ 已经很久不去注意这些小细节了, 虽然当时学过 <code>this</code> 指针, 也知道这是个什么东西, 但现在确实有些忘记了. 本项目中应用了多线程, 为了保持服务器类的封装性, 打算将多线程相关的内容也一同放进类方法中, 不过发现 <code>pthread_create</code> 函数的回调函数参数不能是类成员方法(准确来说不能是<strong>动态</strong>类成员方法).</p>
+                <h1>知识总结</h1>
+<h2 id="动态类成员函数作为-pthread-create-的回调函数">动态类成员函数作为 pthread_create 的回调函数</h2>
+<p>自从大一学完 c++ 已经很久不去注意这些小细节了, 虽然当时学过 <code>this</code> 指针, 也知道这是个什么东西, 但现在确实有些忘记了. 本项目中应用了多线程, 为了保持服务器类的封装性, 打算将多线程相关的内容也一同放进类方法中, 不过发现 <code>pthread_create</code> 函数的回调函数参数不能是类成员方法(准确来说不能是<strong>动态</strong>类成员方法).</p>
 <p>为了能让线程执行类成员方法, 可以有三个方法, 下面分别阐述.</p>
 <ol>
 <li>声明一个普通函数作为回调函数, 在其中调用类成员方法. 一开始我的做法就是这样子的, 但是很明显无法做到很好的封装性.</li>
@@ -316,7 +320,6 @@
 <p>该程序可以证明 <code>fun</code>的第一个参数是隐藏的 <code>this</code>指针, 注意这里 <code>fun</code>的声明是没有显式的参数的, 但是线程执行时还是向它传了一个参数也就是隐藏的 <code>this</code>指针.</p>
 <p>那么为什么要向它传 <code>this</code>指针呢? 编译器不是会给成员函数自动添加一个隐藏的 <code>this</code>指针吗? <strong>这里传递函数指针时做了强制转换, 已经不是成员函数了, 编译器就不会自动为它添加 <code>this</code>指针</strong>, 我们传递的 <code>this</code>指针就是完成了编译器不做的工作.</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">typedef</span> <span class="hljs-type">void</span>*(*t_fun)(<span class="hljs-type">void</span>*);<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>;<br><br>A* b_p = <span class="hljs-literal">nullptr</span>;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">A</span>&#123;<br><span class="hljs-keyword">private</span>:<br>	<span class="hljs-type">int</span> data;<br>	<span class="hljs-type">pthread_t</span> th[<span class="hljs-number">5</span>];<br>	<span class="hljs-type">pthread_mutex_t</span> dm = PTHREAD_MUTEX_INITIALIZER;<br><span class="hljs-keyword">public</span>:<br>	<span class="hljs-built_in">A</span>(<span class="hljs-type">int</span> d = <span class="hljs-number">0</span>)&#123;<br>		data = d;<br>	&#125;<br>	<span class="hljs-function"><span class="hljs-type">void</span>* <span class="hljs-title">fun</span><span class="hljs-params">()</span></span>&#123;<br>		<span class="hljs-built_in">pthread_mutex_lock</span>(&amp;dm);<br>		cout &lt;&lt; data &lt;&lt; endl;<br>		data += <span class="hljs-number">2</span>;<br>		<span class="hljs-built_in">pthread_mutex_unlock</span>(&amp;dm);<br>		<span class="hljs-keyword">return</span> (<span class="hljs-type">void</span>*)<span class="hljs-number">0</span>;<br>	&#125;<br>	<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">run</span><span class="hljs-params">()</span></span>&#123;<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;<br>			<span class="hljs-built_in">pthread_create</span>(&amp;th[i], <span class="hljs-number">0</span>, (t_fun)&amp;fun, b_p);<br>		&#125;<br>	<br>		<span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">5</span>;i++)&#123;<br>			<span class="hljs-built_in">pthread_join</span>(th[i], <span class="hljs-number">0</span>);<br>		&#125;<br>	&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>	<span class="hljs-function">A <span class="hljs-title">a</span><span class="hljs-params">(<span class="hljs-number">1</span>)</span></span>; <span class="hljs-comment">// a 将输出奇数</span><br>	b_p = &amp;a; <span class="hljs-comment">// 取得实例 a 的 this 指针</span><br>	<span class="hljs-function">A <span class="hljs-title">b</span><span class="hljs-params">(<span class="hljs-number">2</span>)</span></span>; <span class="hljs-comment">// b 将输出偶数</span><br>	a.<span class="hljs-built_in">run</span>();<br>	b.<span class="hljs-built_in">run</span>();<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>运行结果如下图所示, 按理来说 <code>a</code>应该输出奇数, <code>b</code>应该输出偶数, 但结果都是奇数, 为什么? 因为我们给回调函数传递的是 <code>a</code>的 <code>this</code>指针(就是程序中的 <code>b_p</code>), 所以即使运行的是 <code>b</code>的 <code>run</code>函数, <code>b</code>的 <code>fun</code>函数, <code>fun</code>函数内访问的却是 <code>a</code>的 <code>data</code>.</p>
 <p><img src="/img/%E7%BD%91%E7%BB%9C%E5%A5%97%E6%8E%A5%E5%AD%97%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/1695918538600.png" srcset="/img/loading.gif" lazyload alt="1695918538600"></p>
 
@@ -361,9 +364,9 @@
       
         <a href="/tags/%E9%A1%B9%E7%9B%AE/" class="print-no-link">#项目</a>
       
-        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="print-no-link">#计算机网络</a>
-      
         <a href="/tags/C/" class="print-no-link">#C++</a>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="print-no-link">#计算机网络</a>
       
     </div>
   
@@ -475,6 +478,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

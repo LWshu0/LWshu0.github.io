@@ -19,12 +19,12 @@
   <meta name="author" content="LWshu0">
   <meta name="keywords" content="">
   
-    <meta name="description" content="编译与运行基本命令1mpicc -g -Wall -o &lt;executable&gt; &lt;source file&gt;  mpicc: 编译命令, 实际中使用 gcc 也可以通过编译 -g: 产生调试信息 -Wall: 打开所有 waring -o: 输出文件, 后跟输出文件名 &lt;executable&gt;: 输出的可执行程序文件名 &lt;source file&gt;:">
+    <meta name="description" content="编译与运行 基本命令 1mpicc -g -Wall -o &lt;executable&gt; &lt;source file&gt;  mpicc: 编译命令, 实际中使用 gcc 也可以通过编译 -g: 产生调试信息 -Wall: 打开所有 waring -o: 输出文件, 后跟输出文件名 &lt;executable&gt;: 输出的可执行程序文件名 &lt;source file&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MPI">
 <meta property="og:url" content="https://lwshu0.github.io/Parallel/MPI/index.html">
-<meta property="og:site_name" content="朔宝的小屋">
-<meta property="og:description" content="编译与运行基本命令1mpicc -g -Wall -o &lt;executable&gt; &lt;source file&gt;  mpicc: 编译命令, 实际中使用 gcc 也可以通过编译 -g: 产生调试信息 -Wall: 打开所有 waring -o: 输出文件, 后跟输出文件名 &lt;executable&gt;: 输出的可执行程序文件名 &lt;source file&gt;:">
+<meta property="og:site_name" content="LWshu0&#39;s Blog">
+<meta property="og:description" content="编译与运行 基本命令 1mpicc -g -Wall -o &lt;executable&gt; &lt;source file&gt;  mpicc: 编译命令, 实际中使用 gcc 也可以通过编译 -g: 产生调试信息 -Wall: 打开所有 waring -o: 输出文件, 后跟输出文件名 &lt;executable&gt;: 输出的可执行程序文件名 &lt;source file&gt;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lwshu0.github.io/img/MPI/1710754413641.png">
 <meta property="article:published_time" content="2024-03-18T09:19:24.000Z">
@@ -36,7 +36,7 @@
   
   
   
-  <title>MPI - 朔宝的小屋</title>
+  <title>MPI - LWshu0&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -47,6 +47,8 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
 
 
 
@@ -303,7 +305,9 @@
             
               <div class="markdown-body">
                 
-                <h1 id="编译与运行"><a href="#编译与运行" class="headerlink" title="编译与运行"></a>编译与运行</h1><h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pf">mpicc -g -W<span class="hljs-literal">all</span> -o <span class="hljs-variable">&lt;executable&gt;</span> <span class="hljs-variable">&lt;source file&gt;</span><br></code></pre></td></tr></table></figure>
+                <h1>编译与运行</h1>
+<h2 id="基本命令">基本命令</h2>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pf">mpicc -g -W<span class="hljs-literal">all</span> -o <span class="hljs-variable">&lt;executable&gt;</span> <span class="hljs-variable">&lt;source file&gt;</span><br></code></pre></td></tr></table></figure>
 <ul>
 <li><code>mpicc</code>: 编译命令, 实际中使用 <code>gcc</code> 也可以通过编译</li>
 <li><code>-g</code>: 产生调试信息</li>
@@ -321,27 +325,28 @@
 <li><code>&lt;executable&gt;</code>: 运行的可执行文件名</li>
 </ul>
 <p>举例: <code>mpiexec -n 3 mpi_hello</code> 将以三个进程来运行 <code>mpi_hello</code></p>
-<h2 id="配置方式"><a href="#配置方式" class="headerlink" title="配置方式"></a>配置方式</h2><p>在 Windows 下编译与运行, 我的 MPI 下载在 <code>D:/3rd_lib/MPI</code><br><img src="/img/MPI/1710754413641.png" srcset="/img/loading.gif" lazyload alt="1710754413641"></p>
+<h2 id="配置方式">配置方式</h2>
+<p>在 Windows 下编译与运行, 我的 MPI 下载在 <code>D:/3rd_lib/MPI</code><br>
+<img src="/img/MPI/1710754413641.png" srcset="/img/loading.gif" lazyload alt="1710754413641"></p>
 <p>必需的文件夹是 Include(内部是 MPI 的头文件), Bin(内部有 MPI 的执行程序, 也就是 mpiexec), Lib( MPI 的静态库文件)</p>
 <p>下面说明两种配置方式, vscode+cmake 或者 devc++</p>
 <p><strong>vscode + cmake</strong></p>
 <p>在 CMakeLists.txt 中添加下面三条命令, 使得 CMake 可以找到对应的头文件和库文件</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># MPI 路径</span><br><span class="hljs-keyword">set</span>(MPI_DIR <span class="hljs-string">&quot;D:/3rd_lib/MPI&quot;</span>)<br><br><span class="hljs-comment"># 指明所有头文件路径</span><br><span class="hljs-keyword">include_directories</span>(<span class="hljs-variable">$&#123;MPI_DIR&#125;</span>/<span class="hljs-keyword">Include</span>)<br><br><span class="hljs-comment"># 指明所有库文件路径</span><br><span class="hljs-keyword">link_directories</span>(<span class="hljs-variable">$&#123;MPI_DIR&#125;</span>/Lib/x64)<br></code></pre></td></tr></table></figure>
-
 <p>生成可执行文件 mpi_hello.exe, 编译器用 gcc 即可.</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-function"><span class="hljs-title">link_libraries</span><span class="hljs-params">(msmpi)</span></span><br><br><span class="hljs-function"><span class="hljs-title">add_executable</span><span class="hljs-params">(mpi_hello mpi_hello.c)</span></span><br></code></pre></td></tr></table></figure>
-
 <p>运行方式, 在 vscode 中新建一个控制台, 输入如下命令, 以 3 个进程来运行 mpi_hello</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs swift"><span class="hljs-type">D</span>:<span class="hljs-regexp">/3rd_lib/</span><span class="hljs-type">MPI</span><span class="hljs-regexp">/Bin/</span>mpiexec.exe <span class="hljs-operator">-</span>n <span class="hljs-number">3</span> mpi_hello<br></code></pre></td></tr></table></figure>
-
-<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">[<span class="hljs-keyword">build</span>] D:/<span class="hljs-number">3</span>rd_lib/MPI/<span class="hljs-keyword">Include</span>/mpi.h:<span class="hljs-number">245</span>:<span class="hljs-number">9</span>: error: <span class="hljs-keyword">unknown</span> <span class="hljs-built_in">type</span> name <span class="hljs-string">&#x27;__int64&#x27;</span><br>[<span class="hljs-keyword">build</span>]   <span class="hljs-number">245</span> | typedef __int64 MPI_Aint;<br>[<span class="hljs-keyword">build</span>]       |         ^~~~~~~<br></code></pre></td></tr></table></figure>
-
+<h2 id="坑">坑</h2>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">[<span class="hljs-keyword">build</span>] D:/<span class="hljs-number">3</span>rd_lib/MPI/<span class="hljs-keyword">Include</span>/mpi.h:<span class="hljs-number">245</span>:<span class="hljs-number">9</span>: error: <span class="hljs-keyword">unknown</span> <span class="hljs-built_in">type</span> name <span class="hljs-string">&#x27;__int64&#x27;</span><br>[<span class="hljs-keyword">build</span>]   <span class="hljs-number">245</span> | typedef __int64 MPI_Aint;<br>[<span class="hljs-keyword">build</span>]       |         ^~~~~~~<br></code></pre></td></tr></table></figure>
 <p>找不到 <code>__int64</code> 的定义, 在 <code>#include &lt;mpi.h&gt;</code> 之前 <code>#include &lt;stdio.h&gt;</code>. 只要保证最后引入 <code>mpi.h</code> 即可避免类似问题.</p>
 <figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br></code></pre></td></tr></table></figure>
-
-<h1 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h1><h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs objectivec"><span class="hljs-comment">//... 其他头文件</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><br><span class="hljs-type">int</span> main(<span class="hljs-type">void</span>)<br>&#123;<br>    <span class="hljs-type">int</span>  comm_sz;<br>    <span class="hljs-type">int</span>  my_rank;<br><br>    <span class="hljs-built_in">MPI_Init</span>(<span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>);<br>    <span class="hljs-built_in">MPI_Comm_size</span>(<span class="hljs-built_in">MPI_COMM_WORLD</span>, &amp;comm_sz);<br>    <span class="hljs-built_in">MPI_Comm_rank</span>(<span class="hljs-built_in">MPI_COMM_WORLD</span>, &amp;my_rank);<br><br>    <span class="hljs-keyword">if</span>(my_rank == <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-comment">//...</span><br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-comment">//...</span><br>    &#125;<br><br>    <span class="hljs-built_in">MPI_Finalize</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="初始化-MPI"><a href="#初始化-MPI" class="headerlink" title="初始化 MPI"></a>初始化 MPI</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Init(<br>    <span class="hljs-type">int</span>* argc,      <span class="hljs-comment">// 参数的数量, main 函数第一个参数的地址</span><br>    <span class="hljs-type">char</span>*** argv    <span class="hljs-comment">// 参数, main 函数的第二个参数</span><br>);<br></code></pre></td></tr></table></figure>
+<h1>基本语法</h1>
+<h2 id="框架">框架</h2>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs objectivec"><span class="hljs-comment">//... 其他头文件</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;mpi.h&gt;</span></span><br><br><span class="hljs-type">int</span> main(<span class="hljs-type">void</span>)<br>&#123;<br>    <span class="hljs-type">int</span>  comm_sz;<br>    <span class="hljs-type">int</span>  my_rank;<br><br>    <span class="hljs-built_in">MPI_Init</span>(<span class="hljs-literal">NULL</span>, <span class="hljs-literal">NULL</span>);<br>    <span class="hljs-built_in">MPI_Comm_size</span>(<span class="hljs-built_in">MPI_COMM_WORLD</span>, &amp;comm_sz);<br>    <span class="hljs-built_in">MPI_Comm_rank</span>(<span class="hljs-built_in">MPI_COMM_WORLD</span>, &amp;my_rank);<br><br>    <span class="hljs-keyword">if</span>(my_rank == <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-comment">//...</span><br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        <span class="hljs-comment">//...</span><br>    &#125;<br><br>    <span class="hljs-built_in">MPI_Finalize</span>();<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="函数">函数</h2>
+<h3 id="初始化-MPI">初始化 MPI</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Init(<br>    <span class="hljs-type">int</span>* argc,      <span class="hljs-comment">// 参数的数量, main 函数第一个参数的地址</span><br>    <span class="hljs-type">char</span>*** argv    <span class="hljs-comment">// 参数, main 函数的第二个参数</span><br>);<br></code></pre></td></tr></table></figure>
 <p>参数:</p>
 <ul>
 <li>argc: 参数的数量, main 函数第一个参数的地址, 不需要可置 NULL</li>
@@ -349,10 +354,12 @@
 </ul>
 <p>说明:</p>
 <p>在调用 MPI 函数之前需要调用此函数, 所有 MPI 的函数都要在此之后调用</p>
-<h3 id="终止-MPI"><a href="#终止-MPI" class="headerlink" title="终止 MPI"></a>终止 MPI</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-built_in">MPI_Finalize</span>();<br></code></pre></td></tr></table></figure>
+<h3 id="终止-MPI">终止 MPI</h3>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scss"><span class="hljs-built_in">MPI_Finalize</span>();<br></code></pre></td></tr></table></figure>
 <p>说明:</p>
 <p>该函数之后不可再调用 MPI 函数, 所有 MPI 的函数都要在此之前调用</p>
-<h3 id="通信子"><a href="#通信子" class="headerlink" title="通信子"></a>通信子</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Comm_size(MPI_Comm comm, <span class="hljs-type">int</span>* size);<br></code></pre></td></tr></table></figure>
+<h3 id="通信子">通信子</h3>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Comm_size(MPI_Comm comm, <span class="hljs-type">int</span>* size);<br></code></pre></td></tr></table></figure>
 <p>参数:</p>
 <ul>
 <li>comm: 通信子, 一个通信子包括一组进程, 填入 <code>MPI_COMM_WORLD</code> 即可</li>
@@ -368,8 +375,9 @@
 </ul>
 <p>说明:</p>
 <p>获取本进程在通信子中的编号</p>
-<h1 id="点对点通信"><a href="#点对点通信" class="headerlink" title="点对点通信"></a>点对点通信</h1><h2 id="Send-函数"><a href="#Send-函数" class="headerlink" title="Send 函数"></a>Send 函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Send(<br>    <span class="hljs-type">const</span> <span class="hljs-type">void</span>* buf,<br>    <span class="hljs-type">int</span> count,<br>    MPI_Datatype datatype,<br>    <span class="hljs-type">int</span> dest,<br>    <span class="hljs-type">int</span> tag,<br>    MPI_Comm comm<br>);<br></code></pre></td></tr></table></figure>
-
+<h1>点对点通信</h1>
+<h2 id="Send-函数">Send 函数</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Send(<br>    <span class="hljs-type">const</span> <span class="hljs-type">void</span>* buf,<br>    <span class="hljs-type">int</span> count,<br>    MPI_Datatype datatype,<br>    <span class="hljs-type">int</span> dest,<br>    <span class="hljs-type">int</span> tag,<br>    MPI_Comm comm<br>);<br></code></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -378,7 +386,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>const void*</td>
 <td>buf</td>
 <td>待发送的数据缓冲区指针, 需要是连续的内存</td>
@@ -408,13 +417,15 @@
 <td>comm</td>
 <td>进程所处的通信子</td>
 </tr>
-</tbody></table>
-<p>注意:<br>该函数必需和 recv 函数成对出现, 否则会导致内存溢出等问题</p>
-<p>示例:<br>向 1 号进程发送两个 3*3 大小的 double 矩阵, 为了区分两个矩阵, tag 字段分别设置为了 0 和 1</p>
+</tbody>
+</table>
+<p>注意:<br>
+该函数必需和 recv 函数成对出现, 否则会导致内存溢出等问题</p>
+<p>示例:<br>
+向 1 号进程发送两个 3*3 大小的 double 矩阵, 为了区分两个矩阵, tag 字段分别设置为了 0 和 1</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Send(matB, <span class="hljs-number">3</span>*<span class="hljs-number">3</span>, MPI_DOUBLE, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, MPI_COMM_WORLD);<br>MPI_Send(matC, <span class="hljs-number">3</span>*<span class="hljs-number">3</span>, MPI_DOUBLE, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, MPI_COMM_WORLD);<br></code></pre></td></tr></table></figure>
-
-<h2 id="Recv-函数"><a href="#Recv-函数" class="headerlink" title="Recv 函数"></a>Recv 函数</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Recv(<br>    <span class="hljs-type">void</span>* buf,<br>    <span class="hljs-type">int</span> count,<br>    MPI_Datatype datatype,<br>    <span class="hljs-type">int</span> source,<br>    <span class="hljs-type">int</span> tag,<br>    MPI_Comm comm,<br>    MPI_Status* status<br>);<br></code></pre></td></tr></table></figure>
-
+<h2 id="Recv-函数">Recv 函数</h2>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Recv(<br>    <span class="hljs-type">void</span>* buf,<br>    <span class="hljs-type">int</span> count,<br>    MPI_Datatype datatype,<br>    <span class="hljs-type">int</span> source,<br>    <span class="hljs-type">int</span> tag,<br>    MPI_Comm comm,<br>    MPI_Status* status<br>);<br></code></pre></td></tr></table></figure>
 <table>
 <thead>
 <tr>
@@ -423,7 +434,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>void*</td>
 <td>buf</td>
 <td>接收数据的缓冲区指针, 需要是连续的内存</td>
@@ -458,9 +470,12 @@
 <td>status</td>
 <td>存储返回状态信息, status.MPI_SOURCE, status.MPI_TAG 和 status.MPI_ERROR 分别存储所收到数据发送源的进程号, 该消息的 tag 值和接收操作的错误代码. 如果不用该状态, 一般可以填入 MPI_STATUS_IGNORE</td>
 </tr>
-</tbody></table>
-<p>注意:<br>该函数是阻塞调用的, 它会一直等待期望的数据知道收到. 当两个进程互相收发消息时, 需要严格确定收发的顺序, 避免出现死锁现象(e.g. 两个进程都在等对方发送完才发送自己的数据).</p>
-<p>示例:<br>从 0 号矩阵接收两个 3*3 的 double 矩阵, 将 tag 对应设置, 避免接收到错误顺序的数据(错误顺序指matC的数据先到, 所以存入matB中, matB的数据后到, 所以存到matC 中), 同时最后填入 MPI_STATUS_IGNORE 忽略错误信息.</p>
+</tbody>
+</table>
+<p>注意:<br>
+该函数是阻塞调用的, 它会一直等待期望的数据知道收到. 当两个进程互相收发消息时, 需要严格确定收发的顺序, 避免出现死锁现象(e.g. 两个进程都在等对方发送完才发送自己的数据).</p>
+<p>示例:<br>
+从 0 号矩阵接收两个 3*3 的 double 矩阵, 将 tag 对应设置, 避免接收到错误顺序的数据(错误顺序指matC的数据先到, 所以存入matB中, matB的数据后到, 所以存到matC 中), 同时最后填入 MPI_STATUS_IGNORE 忽略错误信息.</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c">MPI_Recv(matB, <span class="hljs-number">3</span>*<span class="hljs-number">3</span>, MPI_DOUBLE, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);<br>MPI_Recv(matC, <span class="hljs-number">3</span>*<span class="hljs-number">3</span>, MPI_DOUBLE, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, MPI_COMM_WORLD, MPI_STATUS_IGNORE);<br></code></pre></td></tr></table></figure>
                 
               </div>
@@ -558,6 +573,12 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/CPP/theory/" title="C++ 理论知识">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C++ 理论知识</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
@@ -607,6 +628,11 @@
 
 
   
+
+
+  
+  
+
 
 
 

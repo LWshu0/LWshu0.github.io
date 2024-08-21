@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LWshu0">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="介绍数据结构与算法中的查找算法, 包括线性查找, 树形查找, 散列查找">
+<meta property="og:type" content="article">
+<meta property="og:title" content="查找算法">
+<meta property="og:url" content="https://lwshu0.github.io/DataStruct/DataStruct-Find/index.html">
+<meta property="og:site_name" content="LWshu0&#39;s Blog">
+<meta property="og:description" content="介绍数据结构与算法中的查找算法, 包括线性查找, 树形查找, 散列查找">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lwshu0.github.io/img/DataStruct-Find/1723890464172.png">
+<meta property="og:image" content="https://lwshu0.github.io/img/DataStruct-Find/1724079577803.png">
+<meta property="og:image" content="https://lwshu0.github.io/img/DataStruct-Find/1724240692673.png">
+<meta property="og:image" content="https://lwshu0.github.io/img/DataStruct-Find/1724240660885.png">
+<meta property="og:image" content="https://lwshu0.github.io/img/DataStruct-Find/1724241757371.png">
+<meta property="og:image" content="https://lwshu0.github.io/img/DataStruct-Find/1724242284680.png">
+<meta property="og:image" content="https://lwshu0.github.io/img/DataStruct-Find/1724242696304.png">
+<meta property="og:image" content="https://lwshu0.github.io/img/DataStruct-Find/1724242408379.png">
+<meta property="article:published_time" content="2024-08-16T15:42:27.000Z">
+<meta property="article:modified_time" content="2024-08-16T15:42:27.000Z">
+<meta property="article:author" content="LWshu0">
+<meta property="article:tag" content="数据结构与算法">
+<meta property="article:tag" content="查找算法">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lwshu0.github.io/img/DataStruct-Find/1723890464172.png">
+  
+  
+  
+  <title>查找算法 - LWshu0&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/KaTeX/0.16.2/katex.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lwshu0.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"left","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":6},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null},"woyaola":null,"cnzz":null},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LWshu0</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/" target="_self">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="查找算法"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-08-16 23:42" pubdate>
+          2024年8月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="padding-left: 2rem; margin-right: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">查找算法</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="线性结构查找">线性结构查找</h2>
+<h3 id="顺序查找">顺序查找</h3>
+<p><strong>基本顺序查找</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(std::vector&lt;<span class="hljs-type">int</span>&gt;&amp; v, <span class="hljs-type">int</span> k)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; v.<span class="hljs-built_in">size</span>(); i++)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (v[i] == k) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>注: 这里的 <code>v.size()</code> 是 <code>constexpr</code> 即编译时计算, 在运行时并不会产生函数调用, 所以如下两种写法在效率上是一样的:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; v.<span class="hljs-built_in">size</span>(); i++)&#123;&#125;    <span class="hljs-comment">// 方式一</span><br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i--)&#123;&#125; <span class="hljs-comment">// 方式二</span><br></code></pre></td></tr></table></figure>
+<p><strong>哨兵</strong></p>
+<p>在上面的基本顺序查找中, 每次循环需要两次比较 <code>i &lt; v.size()</code> 和 <code>v[i] == k</code>. 通过引入哨兵可以减少一次比较(但是要消耗额外的一个空间):</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-comment">// 此时数组中有效数据是 [1, v.size() - 1], v[0] 将用来存放哨兵</span><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(std::vector&lt;<span class="hljs-type">int</span>&gt;&amp; v, <span class="hljs-type">int</span> k)</span></span><br><span class="hljs-function"></span>&#123;<br>    v[<span class="hljs-number">0</span>] = k;   <span class="hljs-comment">// 哨兵</span><br>    <span class="hljs-type">int</span> i;<br>    <span class="hljs-keyword">for</span> (i = <span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>; v[i] != k; i--);<br>    <span class="hljs-keyword">return</span> i != <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>上面的例子中把 <code>v[0]</code> 作为了哨兵, 这样子在 <code>for</code> 循环遍历中, 一定可以 <strong>避免访问越界</strong> (因为 <code>v[0]</code> 就是我们要找的元素, 此时一定结束循环), 同时 <strong>减少了一次比较运算</strong>. 此外, 我们也可以把 <code>v[v.size() - 1]</code> 作为哨兵, 那么就需要正向遍历数组了, 代码实现非常相似, 此处不再赘述.</p>
+<p><strong>有序表的顺序查找</strong></p>
+<p>不妨设此时数组是升序的, 当我们从 0 开始遍历数组查找 <code>k</code> 时, 当我们找到一个大于 <code>k</code> 的值时, 说明其后也都是大于 <code>k</code> 的值(一定没有 <code>k</code> 了), 此时就可以提前结束以提高效率.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(std::vector&lt;<span class="hljs-type">int</span>&gt;&amp; v, <span class="hljs-type">int</span> k)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">while</span> (i &lt; v.<span class="hljs-built_in">size</span>())<br>    &#123;<br>        <span class="hljs-keyword">if</span> (v[i] == k) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(v[i] &gt; k) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>; <span class="hljs-comment">// 此时再往后查找没有意义</span><br>        <span class="hljs-keyword">else</span> i++;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>尽管上面提到了一些优化, 顺序查找的 <strong>时间复杂度</strong> 都为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>. 但是它具有十分的通用性, 不论是连续存储还是链式存储, 该方法都可以使用.</p>
+<h3 id="折半查找">折半查找</h3>
+<p>折半查找也叫二分查找, 仅用于连续有序数组上(保证可以随机访问).</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">myfind</span><span class="hljs-params">(std::vector&lt;<span class="hljs-type">int</span>&gt;&amp; v, <span class="hljs-type">int</span> k)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> r = v.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt; r)<br>    &#123;<br>        <span class="hljs-type">int</span> mid = (l + r) / <span class="hljs-number">2</span>;<br>        <span class="hljs-keyword">if</span> (v[mid] &lt; k) l = mid + <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (v[mid] &gt; k) r = mid - <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> v[l] == k;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>时间复杂度为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><msub><mi>g</mi><mn>2</mn></msub><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(log_2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+<h3 id="分块查找">分块查找</h3>
+<p>将数据(下图中的查找表)分为多个块, <strong>块内无序</strong>, <strong>块间有序</strong>. 额外维护一个索引表. 在查找元素时, 首先通过二分(或者顺序)查找到对应的块, 然后在块内进行顺序查找.</p>
+<p><img src="/img/DataStruct-Find/1723890464172.png" srcset="/img/loading.gif" lazyload alt="分块查找"></p>
+<h2 id="树形结构查找">树形结构查找</h2>
+<h3 id="二叉排序树-BST">二叉排序树(BST)</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/LWshu0/SmallStep/blob/main/DataStructure%26Algorithm/Tree/BST.hpp">代码实现-非递归版本</a></p>
+<h4 id="二叉排序树定义">二叉排序树定义</h4>
+<ol>
+<li>如果根节点左子树不为空, 则左子树中所有节点的值都小于根节点</li>
+<li>如果根节点右子树不为空, 则右子树中所有节点的值都大于根节点</li>
+<li>左右子树也是二叉排序树</li>
+</ol>
+<p>由定义可知, 对于二叉排序树的中序遍历将得到一个非递减的序列.</p>
+<blockquote>
+<p>注: 因为二叉排序树中可能存在重复的元素, 对于可能有重复元素的树, 我们在节点中额外添加一个计数字段, 用来记录该元素出现的次数. 同时因为重复元素的存在, 导致中序遍历将是一个非递减序列.</p>
+</blockquote>
+<p>代码实现树节点的定义, 这里给出了 <code>TreeNode</code> 两个构造函数, 后续代码中将使用第二个构造.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">TreeNode</span> &#123;<br>    TreeNode* left;     <span class="hljs-comment">// 指向左子树的指针</span><br>    TreeNode* right;    <span class="hljs-comment">// 指向右子树的指针</span><br>    <span class="hljs-type">int</span> count;          <span class="hljs-comment">// 节点元素出现的次数</span><br>    <span class="hljs-type">int</span> value;          <span class="hljs-comment">// 节点元素值</span><br>    <span class="hljs-built_in">TreeNode</span>() :<span class="hljs-built_in">left</span>(<span class="hljs-literal">nullptr</span>), <span class="hljs-built_in">right</span>(<span class="hljs-literal">nullptr</span>), <span class="hljs-built_in">count</span>(<span class="hljs-number">0</span>), <span class="hljs-built_in">value</span>(<span class="hljs-number">0</span>) &#123;&#125;<br>    <span class="hljs-built_in">TreeNode</span>(<span class="hljs-type">int</span> v) :<span class="hljs-built_in">left</span>(<span class="hljs-literal">nullptr</span>), <span class="hljs-built_in">right</span>(<span class="hljs-literal">nullptr</span>), <span class="hljs-built_in">count</span>(<span class="hljs-number">1</span>), <span class="hljs-built_in">value</span>(v) &#123;&#125;<br>&#125;;<br></code></pre></td></tr></table></figure>
+<p>二叉排序树类 <code>BST</code> 的成员包括一个 <code>TreeNode* root;</code> 即树的根节点, 初始情况下 <code>root</code> 的值为 <code>nullptr</code>. 后续代码都作为 <code>BST</code> 类的成员函数.</p>
+<h4 id="二叉排序树查找">二叉排序树查找</h4>
+<p>从根节点开始, 沿着某一个分支逐层向下查找. 定义待查找的元素为 <code>value</code>, 树的根节点为 <code>root</code>, 我们以根节点为当前节点 <code>search_ptr</code> 开始查找, 具体过程:</p>
+<ol>
+<li>如果 <code>value</code> 的值小于 <code>search_ptr</code> , 向左子树移动</li>
+<li>如果 <code>value</code> 的值大于 <code>search_ptr</code> , 向右子树移动</li>
+<li>如果 <code>value</code> 的值等于 <code>search_ptr</code> , 返回查找成功</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">TreeNode* <span class="hljs-title">findNode</span><span class="hljs-params">(<span class="hljs-type">int</span> value)</span></span><br><span class="hljs-function"></span>&#123;<br>    TreeNode* search_ptr = root;<br>    <span class="hljs-keyword">while</span> (search_ptr)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (value &lt; search_ptr-&gt;value) search_ptr = search_ptr-&gt;left;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value &gt; search_ptr-&gt;value) search_ptr = search_ptr-&gt;right;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> search_ptr; <span class="hljs-comment">// 查找成功</span><br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>; <span class="hljs-comment">// 查找失败</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>二叉排序树平均查找时间为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msub><mrow><mi>log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(\log_2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.207em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>, 最坏情况下, 退化为一个单链表, 此时查找时间为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></p>
+<h4 id="二叉排序树的插入">二叉排序树的插入</h4>
+<p>二叉排序树的插入过程(下面的代码是 <strong>非递归</strong> 的写法, 如果使用 <strong>递归</strong> 代码会更简洁, 但是会产生递归的内存开销):</p>
+<ol>
+<li>如果二叉排序树为空, 新建根节点.</li>
+<li>当二叉排序树不空时, 从根节点开始向下找待插入元素的插入位置. 即代码中令 <code>search_ptr</code> 等于 <code>root</code>.
+<ul>
+<li>当 <code>search_ptr</code> 的值小于待插入的 <code>value</code> 时, 需要向右子树移动, 此时应该先检查右子树是否存在. 如果右子树不存在说明待插入的 <code>value</code> 是一个不存在在二叉排序树中的新的值, 新建一个节点然后跳出循环即可. 否则就向右子树移动.</li>
+<li>当 <code>search_ptr</code> 的值大于待插入的 <code>value</code> 时, 需要向左子树移动, 操作与上述小于的情况类似.</li>
+<li>当 <code>search_ptr</code> 的值大于待插入的 <code>value</code> 时, 说明插入了一个重复元素, 令其计数加一即可.</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">insertNode</span><span class="hljs-params">(<span class="hljs-type">int</span> value)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">nullptr</span> == root)<br>    &#123;<br>        root = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(value);<br>    &#125;<br>    <span class="hljs-keyword">else</span><br>    &#123;<br>        TreeNode* search_ptr = root;<br>        <span class="hljs-keyword">while</span> (search_ptr)<br>        &#123;<br>            <span class="hljs-keyword">if</span> (search_ptr-&gt;value &lt; value)<br>            &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-literal">nullptr</span> == search_ptr-&gt;right)<br>                &#123;<br>                    search_ptr-&gt;right = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(value);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> search_ptr = search_ptr-&gt;right;<br>            &#125;<br>            <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (search_ptr-&gt;value &gt; value)<br>            &#123;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-literal">nullptr</span> == search_ptr-&gt;left)<br>                &#123;<br>                    search_ptr-&gt;left = <span class="hljs-keyword">new</span> <span class="hljs-built_in">TreeNode</span>(value);<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>                <span class="hljs-keyword">else</span> search_ptr = search_ptr-&gt;left;<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                search_ptr-&gt;count += <span class="hljs-number">1</span>;<br>                <span class="hljs-keyword">break</span>;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="二叉排序树的删除">二叉排序树的删除</h4>
+<blockquote>
+<p>二叉排序树删除然后插入同一个元素, 可能会改变树的结构</p>
+</blockquote>
+<p>二叉排序树的节点删除, 如果计数大于 1, 只要减少计数即可, 此时删除操作不会改变二叉排序树的结构, 当待删除的节点计数为 1 时, 需要把节点中书上移除, 此时一共有三种情况:</p>
+<ol>
+<li>待删除的节点为叶子节点(没有左右子树), 此时直接删除</li>
+<li>待删除的节点有一个子树(左子树或者右子树), 删除节点后让子树代替删除节点的位置</li>
+<li>待删除的节点有两个子树, 选择右子树最小的节点(或者左子树最大的节点)移动到删除节点的位置代替删除节点</li>
+</ol>
+<p>为了解决上述第三种情况, 我们需要先写一个拿到右子树中最小节点的方法 <code>cutMinimum(TreeNode** subtree)</code>, 该方法将从子树中剪下最小的节点返回. 这里之所以传入一个 <code>TreeNode**</code> 是因为当子树的根节点只有右子树时, 子树中最小节点就是根节点本身, 当剪下最小节点(即根节点)后, 需要修改指向子树的指针使其指向原来根节点的右子树. 这样做保证了整个二叉排序树的结构完整性, 避免了野指针造成的内存泄漏.</p>
+<p>下面的代码中使用了一个 <code>TreeNode**</code> 类型的 <code>pre_search_ptr</code>. 该变量的意义是用来找到 <code>search_ptr</code> 指向的节点的父节点中指向 <code>search_ptr</code> 指向的节点的指针(在 <code>cutMinimum</code> 函数中为 <code>left</code> 指针), 作用是维护树结构, 使在剪切节点时树不断裂. 如果这个描述有些绕, 可以看后面的图示帮助理解.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">TreeNode* <span class="hljs-title">cutMinimum</span><span class="hljs-params">(TreeNode** subtree)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-comment">// 传入子树为空, 返回 nullptr</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">nullptr</span> == *subtree) <span class="hljs-keyword">return</span> <span class="hljs-literal">nullptr</span>;<br>    TreeNode** pre_search_ptr = subtree;<br>    TreeNode* search_ptr = *subtree;<br>    <span class="hljs-comment">// 找到最小元素节点</span><br>    <span class="hljs-keyword">while</span> (search_ptr-&gt;left)<br>    &#123;<br>        pre_search_ptr = &amp;(search_ptr-&gt;left);<br>        search_ptr = search_ptr-&gt;left;<br>    &#125;<br>    <span class="hljs-comment">// 将最小节点的右子树接到其父节点的 left 处</span><br>    *pre_search_ptr = search_ptr-&gt;right;<br>    search_ptr-&gt;right = <span class="hljs-literal">nullptr</span>;<br>    <span class="hljs-keyword">return</span> search_ptr;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>下面的图可以形象地表达 <code>pre_search_ptr</code> 与 <code>search_ptr</code> 的关系. 在查找节点的过程中, <code>search_ptr</code> 指向当前正在查看的节点(下图中的时刻, 正在查看值为 3 的节点, 我们后面称值为 n 的节点为 n 号节点). <code>pre_search_ptr</code> 指向 3 号节点的父节点(14 号节点)中指向 3 号节点的指针 <code>left</code>.</p>
+<p><img src="/img/DataStruct-Find/1724079577803.png" srcset="/img/loading.gif" lazyload alt="pre_search_ptr 与 search_ptr"></p>
+<p>此时由于 3 号节点的左子树为空, 循环结束. 执行 <code>*pre_search_ptr = search_ptr-&gt;right;</code> 将把 14 号节点的 <code>left</code> 指针指向 3 号节点的右子树(不过, 此时 3 号节点的右子树为空), 这一操作保证在 3 号节点右子树不空时, 树不会断裂. 然后执行 <code>search_ptr-&gt;right = nullptr;</code> 彻底将 3 号节点从树上剥离下来.</p>
+<p>在理解了上面的操作后, 接下来是正式的删除节点代码. 删除代码中也使用了 <code>pre_search_ptr</code> 和 <code>search_ptr</code>, 所以先理解上面的代码后再看.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">removeNode</span><span class="hljs-params">(<span class="hljs-type">int</span> value)</span></span><br><span class="hljs-function"></span>&#123;<br>    TreeNode** pre_search_ptr = &amp;root;<br>    TreeNode* search_ptr = root;<br>    <span class="hljs-comment">// 尝试找到待删除元素</span><br>    <span class="hljs-keyword">while</span> (search_ptr)<br>    &#123;<br>        <span class="hljs-keyword">if</span> (value &lt; search_ptr-&gt;value)<br>        &#123;<br>            pre_search_ptr = &amp;(search_ptr-&gt;left);<br>            search_ptr = search_ptr-&gt;left;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (value &gt; search_ptr-&gt;value)<br>        &#123;<br>            pre_search_ptr = &amp;(search_ptr-&gt;right);<br>            search_ptr = search_ptr-&gt;right;<br>        &#125;<br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">break</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">nullptr</span> == search_ptr) <span class="hljs-keyword">return</span>;  <span class="hljs-comment">// 树为空或树中不存在待删除的元素</span><br><br>    <span class="hljs-comment">// 如果节点计数大于 1, 只需要更改计数, 不做节点删除</span><br>    <span class="hljs-keyword">if</span> (search_ptr-&gt;count &gt; <span class="hljs-number">1</span>)<br>    &#123;<br>        search_ptr-&gt;count--;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">nullptr</span> == search_ptr-&gt;left)    <span class="hljs-comment">// 待删除节点左子树为空(右子树可能为空, 也可能不空)</span><br>    &#123;<br>        *pre_search_ptr = search_ptr-&gt;right;<br>        <span class="hljs-keyword">delete</span> search_ptr;<br>    &#125;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (<span class="hljs-literal">nullptr</span> == search_ptr-&gt;right)  <span class="hljs-comment">// 待删除节点右子树为空(左子树不空)</span><br>    &#123;<br>        *pre_search_ptr = search_ptr-&gt;left;<br>        <span class="hljs-keyword">delete</span> search_ptr;<br>    &#125;<br>    <span class="hljs-keyword">else</span>  <span class="hljs-comment">// 待删除节点左右子树都不空</span><br>    &#123;<br>        <span class="hljs-comment">// 得到右子树的最小节点</span><br>        TreeNode* min_node = <span class="hljs-built_in">cutMinimum</span>(&amp;search_ptr-&gt;right);<br>        min_node-&gt;left = search_ptr-&gt;left;<br>        min_node-&gt;right = search_ptr-&gt;right;<br>        *pre_search_ptr = min_node;<br>        <span class="hljs-keyword">delete</span> search_ptr;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="二叉平衡树">二叉平衡树</h3>
+<p><strong>二叉平衡树</strong>(BBT, Balanced Binary Tree), 也称为 <strong>AVL 树</strong>(大学教授 G.M. Adelson-Velsky 和 E.M. Landis 名称的缩写). <a target="_blank" rel="noopener" href="https://github.com/LWshu0/SmallStep/blob/main/DataStructure%26Algorithm/Tree/AVL.hpp">代码实现-非递归版本</a></p>
+<h4 id="基础定义">基础定义</h4>
+<ul>
+<li><strong>AVL 树</strong>: AVL 树是一个满足平衡因子约束的 <strong>二叉排序树</strong>.</li>
+<li><strong>树高</strong>: 定义叶子节点的树高为 1, 向上依次递增. 当一个节点的左右子树高度不一致时, 取子树高度最大值加 1 作为当前节点树高.</li>
+<li><strong>平衡因子</strong>: 一个节点的平衡因子为其左子树高度 - 右子树高度. 在 AVL 树中要求每个节点的平衡因子取值范围为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><mo>−</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[-1, 1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>, 当一个节点的平衡因子小于 -1 或者 大于 1 时, 需要对树结构进行调整(即旋转)</li>
+</ul>
+<h4 id="AVL-查找">AVL 查找</h4>
+<p>由于 AVL 树是一个二叉平衡树, 所以其查找方式与二叉平衡树完全一致.</p>
+<h4 id="AVL-的旋转">AVL 的旋转</h4>
+<p>一个不满足平衡因子约束的 AVL 树可以通过旋转操作使其满足约束, 旋转操作分为左旋和右旋.</p>
+<p><strong>左旋</strong></p>
+<p>下图例为以 3 号节点为根节点的子树左旋. 左旋操作更改了 2 号节点的 <code>right</code> 指针, 3 号节点的 <code>right</code> 指针, 4 号节点的 <code>left</code> 指针. (把 4 号节点原来的左子树接到 3 号节点的右子树上)</p>
+<p><img src="/img/DataStruct-Find/1724240692673.png" srcset="/img/loading.gif" lazyload alt="AVL 左旋"></p>
+<p>要实现上图中的左旋, 需要传入指向 3 号节点的指针(2 号节点的 <code>right</code> 指针). 为了保证树的结构, 需要调用后赋值 <code>node2-&gt;right = rotateLeft(node2-&gt;right);</code>. 由于 3 号和 4 号树节点的高度变化, 所以还要更新这两个树节点的高度.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">NodeType* <span class="hljs-title">rotateLeft</span><span class="hljs-params">(NodeType* subtree)</span></span><br><span class="hljs-function"></span>&#123;<br>    NodeType* new_root = subtree-&gt;<span class="hljs-built_in">right</span>();<br>    subtree-&gt;<span class="hljs-built_in">right</span>() = new_root-&gt;<span class="hljs-built_in">left</span>();<br>    new_root-&gt;<span class="hljs-built_in">left</span>() = subtree;<br>    <span class="hljs-built_in">updateHeight</span>(subtree);<br>    <span class="hljs-built_in">updateHeight</span>(new_root);<br>    <span class="hljs-keyword">return</span> new_root;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>右旋</strong></p>
+<p>下图例为以 3 号节点为根节点的子树右旋. 右旋操作更改了 4 号节点的 <code>left</code> 指针, 3 号节点的 <code>left</code> 指针, 2 号节点的 <code>right</code> 指针. (把 2 号节点原来的右子树接到 3 号节点的左子树上)</p>
+<p><img src="/img/DataStruct-Find/1724240660885.png" srcset="/img/loading.gif" lazyload alt="AVL 右旋"></p>
+<p>右旋代码与左旋类似, 不再赘述.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">NodeType* <span class="hljs-title">rotateRight</span><span class="hljs-params">(NodeType* subtree)</span></span><br><span class="hljs-function"></span>&#123;<br>    NodeType* new_root = subtree-&gt;<span class="hljs-built_in">left</span>();<br>    subtree-&gt;<span class="hljs-built_in">left</span>() = new_root-&gt;<span class="hljs-built_in">right</span>();<br>    new_root-&gt;<span class="hljs-built_in">right</span>() = subtree;<br>    <span class="hljs-built_in">updateHeight</span>(subtree);<br>    <span class="hljs-built_in">updateHeight</span>(new_root);<br>    <span class="hljs-keyword">return</span> new_root;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="AVL-插入">AVL 插入</h4>
+<p>插入已存在节点只需计数加一即可, 下面讨论需要新建节点的情况. 新建节点一定是叶子节点(参考二叉排序树的插入操作), 然后根据不同的情况进行旋转使其满足 AVL 树的定义. 总共四种情况: LL, LR, RR, RL.</p>
+<p><strong>LL</strong>, 即插入位置为左(Left)子树的左侧(Left). 下图新插入的节点是 1 号节点, 插入位置是 3 号节点左子树的左侧. 所以此时执行 LL 旋转, 即以 3 号节点为根节点右旋一次.</p>
+<p><img src="/img/DataStruct-Find/1724241757371.png" srcset="/img/loading.gif" lazyload alt="LL旋转"></p>
+<p><strong>LR</strong>, 即插入位置为左(Left)子树的右侧(Right). 下图新插入的节点是 2 号节点, 插入位置是 3 号节点左子树的右侧. 所以执行 LR 旋转, 即首先以 1 号节点为根节点左旋一次, 转为上面图 <em>LL旋转</em> 的情况. 然后以 3 号节点为根节点右旋一次.</p>
+<p><img src="/img/DataStruct-Find/1724242284680.png" srcset="/img/loading.gif" lazyload alt="LR旋转"></p>
+<p><strong>RR</strong>, 即插入位置为右(Right)子树的右侧(Right). 下图新插入节点为 5 号节点, 插入位置是 3 号节点右子树的右侧. 所以执行 RR 旋转, 即以 3 号节点为根节点左旋一次.</p>
+<p><img src="/img/DataStruct-Find/1724242696304.png" srcset="/img/loading.gif" lazyload alt="RR旋转"></p>
+<p><strong>RL</strong>, 即插入位置为右(Right)子树的左侧(Left). 下图新插入的节点为 4 号节点, 插入位置是 3 号节点右子树的左侧. 所以执行 RL 旋转, 即首先以 5 号节点为根节点右旋一次, 转为上图 <em>RR旋转</em> 的情况, 然后以 3 号节点为根节点左旋一次.</p>
+<p><img src="/img/DataStruct-Find/1724242408379.png" srcset="/img/loading.gif" lazyload alt="RL旋转"></p>
+<h4 id="AVL-删除">AVL 删除</h4>
+<p>按照二叉排序树的删除方式删除节点. 然后再调整不平衡的子树.</p>
+<h3 id="红黑树">红黑树</h3>
+<h3 id="B树">B树</h3>
+<h3 id="B-树">B+树</h3>
+<h2 id="散列结构查找">散列结构查找</h2>
+<h3 id="散列表">散列表</h3>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="category-chain-item">数据结构与算法</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="print-no-link">#数据结构与算法</a>
+      
+        <a href="/tags/%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95/" class="print-no-link">#查找算法</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>查找算法</div>
+      <div>https://lwshu0.github.io/DataStruct/DataStruct-Find/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LWshu0</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年8月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/DataStruct/DataStruct-Sort/" title="排序算法">
+                        <span class="hidden-mobile">排序算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
