@@ -1,1 +1,84 @@
-site_name: My Docs
+site_name: LWshu0
+theme:
+  name: material
+  palette: 
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: black
+      accent: indigo
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+  features:
+    # - navigation.sections
+    - navigation.tabs
+    - navigation.top
+    - navigation.path
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.footnote.tooltips
+  language: zh
+
+plugins:
+  - search:
+      separator: '[\s\u200b\-]' # jieba 中文分词搜索
+  - tags
+  - awesome-nav
+
+markdown_extensions:
+  # 基础扩展
+  # - def_list          # 定义列表
+  - attr_list           # 图片/链接属性（对齐/大小）
+  - tables              # 基础表格
+  - footnotes           # 脚注
+  - admonition          # 提示
+  - md_in_html
+  - pymdownx.blocks.caption
+  - pymdownx.tasklist:  # 任务列表
+      custom_checkbox: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.highlight:
+      use_pygments: true      # 代码高亮
+      linenums: true          # 行号
+      anchor_linenums: true   # 行号锚点
+      linenums_style: pymdownx-inline
+      pygments_lang_class: true
+      auto_title: true        # 代码块添加语言标题
+      line_spans: __span
+  - pymdownx.details      # 折叠块
+  - pymdownx.tilde        # 下标
+  - pymdownx.tabbed:      # 选项卡
+      alternate_style: true
+  - pymdownx.arithmatex:  # 数学公式
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css

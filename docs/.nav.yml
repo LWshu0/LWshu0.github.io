@@ -1,0 +1,14 @@
+title: Home
+
+nav:
+  - index.md
+  - 计网: Computer_Net
+  - OpenGL: OpenGL
+  - 数据库: DataBase
+  - 数据结构: DataStruct
+  - 并行编程: Parallel
+  - 项目: Project
+  - Python: Python
+  - C++: CPP
+  - 杂项: MISC
+  - about.md
