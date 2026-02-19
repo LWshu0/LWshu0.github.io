@@ -1,0 +1,3010 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/">
+      
+      
+        <link rel="next" href="../../DataStruct/DataStruct-Basics/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
+    
+    
+      
+        <title>关系数据库设计 - LWshu0</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="LWshu0" class="md-header__button md-logo" aria-label="LWshu0" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            LWshu0
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              关系数据库设计
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Computer_Net/internet-programming/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  计网
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../OpenGL/OpenGL%E5%8F%98%E6%8D%A2/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  OpenGL
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../E-R%E6%A8%A1%E5%9E%8B/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数据库
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../DataStruct/DataStruct-Basics/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数据结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Parallel/MPI/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  并行编程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Project/PVZ%E9%A1%B9%E7%9B%AEbug%E8%A7%A3%E5%86%B3%E6%B1%87%E6%80%BB/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  项目
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Python/Package/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../CPP/EffCpp/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  C++
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../MISC/Git%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  杂项
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="LWshu0" class="md-nav__button md-logo" aria-label="LWshu0" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    LWshu0
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计网
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计网
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Computer_Net/internet-programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络编程
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B8%8E%E5%9B%A0%E7%89%B9%E7%BD%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络与因特网
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络应用层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%BD%91%E7%BB%9C%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络网络层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%BF%90%E8%BE%93%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络运输层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Computer_Net/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E9%93%BE%E8%B7%AF%E5%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机网络链路层
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    OpenGL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL/OpenGL%E5%8F%98%E6%8D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL变换
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL坐标系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL/OpenGL%E6%91%84%E5%83%8F%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL摄像机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL/OpenGL%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL渲染管线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL/OpenGL%E7%9D%80%E8%89%B2%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL着色器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../OpenGL/OpenGL%E7%BA%B9%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenGL纹理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据库
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据库
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../E-R%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E-R模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MySql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MySql
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关系数据库
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关系数据库设计
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关系数据库设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基础概念
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数依赖理论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数依赖理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数依赖的闭包
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数依赖的闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        属性集的闭包
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="属性集的闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        属性集闭包用途
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无关属性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="无关属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        正则覆盖
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="正则覆盖">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无损分解/有损分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保持依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关系模式的范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关系模式的范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boyce-codd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boyce-Codd 范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boyce-Codd 范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bcnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BCNF分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3NF分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据结构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataStruct/DataStruct-Basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据结构与算法前置知识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataStruct/DataStruct-Find/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    查找算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataStruct/DataStruct-Graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../DataStruct/DataStruct-Sort/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    排序算法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    并行编程
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    并行编程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Parallel/MPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    项目
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    项目
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Project/PVZ%E9%A1%B9%E7%9B%AEbug%E8%A7%A3%E5%86%B3%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PVZ项目bug解决汇总
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Project/%E7%BD%91%E7%BB%9C%E5%A5%97%E6%8E%A5%E5%AD%97%E8%81%8A%E5%A4%A9%E7%A8%8B%E5%BA%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网络套接字聊天程序
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/Package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 包管理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPP/EffCpp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Effective C++ 笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPP/stl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stl
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CPP/theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ 理论知识
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    杂项
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    杂项
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MISC/Git%E7%9A%84%E4%B8%80%E4%BA%9B%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git的一些注意事项
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MISC/Linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MISC/Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Markdown 语法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关于
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基础概念
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数依赖理论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数依赖理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数依赖的闭包
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="函数依赖的闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        属性集的闭包
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="属性集的闭包">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造方式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        属性集闭包用途
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无关属性
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="无关属性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        正则覆盖
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="正则覆盖">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        构造
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无损分解/有损分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        保持依赖
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关系模式的范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关系模式的范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boyce-codd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boyce-Codd 范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Boyce-Codd 范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        判断方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bcnf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BCNF分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三范式
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第三范式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        定义
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3nf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3NF分解
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../E-R%E6%A8%A1%E5%9E%8B/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    数据库
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <span class="md-tag">数据库</span>
+      
+    
+      
+      
+      
+      
+        <span class="md-tag">课程笔记</span>
+      
+    
+  </nav>
+
+
+
+<h1 id="_1">关系数据库设计</h1>
+<h2 id="_2">基础概念</h2>
+<p><strong>域</strong> 是属性的取值范围, 如果一个域的元素不可再分, 则一个域是 <strong>原子的</strong>. 这里的原子性还是会由我们的理解方式来确定, 比如一个整数, 如果我们把它看成一个整数那它就是原子的, 但如果我们把它看成是一列有序数字, 则它就不是原子的.</p>
+<p>属性集使用希腊字母表示, 如 <span class="arithmatex">\(\alpha\)</span>. 使用罗马字母加大写字母表示关系模式, 如 <span class="arithmatex">\(r(R)\)</span>, <span class="arithmatex">\(r(A_1, A_2)\)</span>, 其中 r 表示关系, R 表示属性集. 关系模式的超码使用 <span class="arithmatex">\(K\)</span> 表示.</p>
+<p>对于一个关系模式 <span class="arithmatex">\(r(R)\)</span> , 有属性集 <span class="arithmatex">\(\alpha, \beta \subseteq R\)</span> , 如果对关系模式中的任意元组 <span class="arithmatex">\(t_1, t_2\)</span> 满足 <span class="arithmatex">\(t_1[\alpha] = t_2[\alpha]\)</span>, 则 <span class="arithmatex">\(t_1[\beta] = t_2[\beta]\)</span>, 那么就称这个关系模式满足 <strong>函数依赖</strong> <span class="arithmatex">\(\alpha \to \beta\)</span>, 或者说该函数依赖在关系模式 <span class="arithmatex">\(r(R)\)</span> 上成立.</p>
+<p>对于函数依赖 <span class="arithmatex">\(\alpha \to \alpha\)</span>, 可知其自然满足 <span class="arithmatex">\(t_1[\alpha] = t_2[\alpha]\)</span>, 则 <span class="arithmatex">\(t_1[\alpha] = t_2[\alpha]\)</span>, 称这种函数依赖为 <strong>平凡的</strong>. 进一步推广, 如果函数依赖 <span class="arithmatex">\(\alpha \to \beta\)</span> 中, <span class="arithmatex">\(\beta \subseteq \alpha\)</span> 则该函数依赖是平凡的.</p>
+<p>对于属性集 <span class="arithmatex">\(A, B, C\)</span>, 已知函数依赖 <span class="arithmatex">\(A \to B\)</span> 和 <span class="arithmatex">\(B \to C\)</span>, 可以 <strong>推导</strong> 出 <span class="arithmatex">\(A \to C\)</span>.</p>
+<h2 id="_3">函数依赖理论</h2>
+<h3 id="_4">函数依赖的闭包</h3>
+<h4 id="_5">定义</h4>
+<p>对于函数依赖集 <span class="arithmatex">\(F\)</span>, 由 <span class="arithmatex">\(F\)</span> 可以推导出的所有函数依赖构成的集合 <span class="arithmatex">\(F^+\)</span> 称为 <span class="arithmatex">\(F\)</span> 的 <strong>闭包</strong>.</p>
+<h4 id="_6">构造方式</h4>
+<p><strong>Armstrong公理</strong></p>
+<ul>
+<li><strong>自反律</strong>. 若 <span class="arithmatex">\(\alpha, \beta\)</span> 为属性集, 且 <span class="arithmatex">\(\beta \subseteq \alpha\)</span>, 则 <span class="arithmatex">\(\alpha \to \beta\)</span> 成立.</li>
+<li><strong>增补律</strong>. 若 <span class="arithmatex">\(\alpha \to \beta\)</span> 成立且 <span class="arithmatex">\(\gamma\)</span> 为一属性集, 则 <span class="arithmatex">\(\gamma\alpha \to \gamma\beta\)</span> 成立.</li>
+<li><strong>传递律</strong>. 若 <span class="arithmatex">\(\alpha \to \beta\)</span> 和 若 <span class="arithmatex">\(\beta \to \gamma\)</span> 成立, 则 <span class="arithmatex">\(\alpha \to \gamma\)</span> 成立.</li>
+</ul>
+<p><strong>由Armstrong推导出的定理</strong></p>
+<ul>
+<li><strong>合并律</strong>. 若 <span class="arithmatex">\(\alpha \to \beta\)</span> 和 <span class="arithmatex">\(\alpha \to \gamma\)</span> 成立, 则 <span class="arithmatex">\(\alpha \to \beta\gamma\)</span> 成立.</li>
+<li><strong>分解律</strong>. 若 <span class="arithmatex">\(\alpha \to \beta\gamma\)</span> 成立, 则 <span class="arithmatex">\(\alpha \to \beta\)</span> 和 <span class="arithmatex">\(\alpha \to \gamma\)</span> 成立.</li>
+<li><strong>伪传递律</strong>. 若 <span class="arithmatex">\(\alpha \to \beta\)</span> 和 <span class="arithmatex">\(\gamma\beta \to \delta\)</span> 成立, 则 <span class="arithmatex">\(\alpha\gamma \to \delta\)</span> 成立.</li>
+</ul>
+<h3 id="_7">属性集的闭包</h3>
+<h4 id="_8">定义</h4>
+<p>如果 <span class="arithmatex">\(\alpha \to B\)</span>, 称属性 B 被属性集 <span class="arithmatex">\(\alpha\)</span> <strong>函数确定</strong>. 在函数依赖集 <span class="arithmatex">\(F\)</span> 下所有被 <span class="arithmatex">\(\alpha\)</span> 函数确定的属性集合构成 <span class="arithmatex">\(\alpha\)</span> 的 <strong>属性集闭包</strong>, 记为 <span class="arithmatex">\(\alpha^+\)</span>.</p>
+<h4 id="_9">构造方式</h4>
+<p>在函数依赖集 <span class="arithmatex">\(F\)</span> 下, <span class="arithmatex">\(\alpha\)</span> 的属性集闭包构造方式:</p>
+<p><span class="arithmatex">\(result :=  \alpha\)</span>;
+    <strong>repeat</strong>
+        <strong>for eaach</strong> 函数依赖 <span class="arithmatex">\(\beta \to \gamma\)</span> <strong>in</strong> <span class="arithmatex">\(F\)</span> <strong>do</strong>
+            <strong>begin</strong>
+                <strong>if</strong> <span class="arithmatex">\(\beta \subseteq result\)</span> <strong>then</strong> <span class="arithmatex">\(result := result \cup \gamma\)</span>
+            <strong>end</strong>
+    <strong>until</strong> (<span class="arithmatex">\(retult\)</span> 不变)</p>
+<h4 id="_10">属性集闭包用途</h4>
+<ul>
+<li>若 <span class="arithmatex">\(\alpha\)</span> 的属性集闭包 <span class="arithmatex">\(\alpha^+\)</span> 包括关系 <span class="arithmatex">\(R\)</span> 的所有属性, 则 <span class="arithmatex">\(alpha\)</span> 为超码.</li>
+<li>若 <span class="arithmatex">\(\beta \subseteq \alpha^+\)</span> 则 <span class="arithmatex">\(\alpha \to \beta\)</span> 成立.</li>
+<li>计算 <span class="arithmatex">\(F^+\)</span>. 如果对任意 <span class="arithmatex">\(\gamma \subseteq R\)</span>, 有任意 <span class="arithmatex">\(S \subseteq \gamma^+\)</span>, 可以得到函数依赖 <span class="arithmatex">\(\gamma \to S\)</span>.</li>
+</ul>
+<h3 id="_11">无关属性</h3>
+<h4 id="_12">定义</h4>
+<p>在一个函数依赖中去除 <strong>无关属性</strong> 不改变函数依赖集的闭包. 对于函数依赖 <span class="arithmatex">\(\alpha \to \beta\)</span> . 形式化定义如下:</p>
+<ul>
+<li>若 <span class="arithmatex">\(A \in \alpha\)</span> 且 <span class="arithmatex">\(F\)</span> 逻辑蕴含 <span class="arithmatex">\((F - \{\alpha \to \beta\}) \cup \{(\alpha - A) \to \beta\}\)</span>, 则属性 <span class="arithmatex">\(A\)</span> 在 <span class="arithmatex">\(\alpha\)</span> 中是无关的</li>
+<li>若 <span class="arithmatex">\(A \in \beta\)</span> 且 <span class="arithmatex">\((F - \{\alpha \to \beta\}) \cup \{\alpha \to (\beta - A)\}\)</span> 逻辑蕴含 <span class="arithmatex">\(F\)</span>, 则属性 <span class="arithmatex">\(A\)</span> 在 <span class="arithmatex">\(\beta\)</span> 中是无关的</li>
+</ul>
+<h3 id="_13">正则覆盖</h3>
+<h4 id="_14">定义</h4>
+<p><span class="arithmatex">\(F\)</span> 的正则覆盖 <span class="arithmatex">\(F_c\)</span> 是一个函数依赖集, 需要满足:</p>
+<ul>
+<li><span class="arithmatex">\(F\)</span> 逻辑蕴含 <span class="arithmatex">\(F_c\)</span> 中所有依赖, 且 <span class="arithmatex">\(F_c\)</span> 逻辑蕴含 <span class="arithmatex">\(F\)</span> 中所有依赖</li>
+<li><span class="arithmatex">\(F_c\)</span> 中任何函数依赖都不含无关属性</li>
+<li><span class="arithmatex">\(F_c\)</span> 中函数依赖的左半部都是唯一的, 即不存在两个依赖 <span class="arithmatex">\(\alpha_1 \to \beta_1\)</span> 和 <span class="arithmatex">\(\alpha_2 \to \beta_2\)</span> 使得 <span class="arithmatex">\(\alpha_1 = \alpha_2\)</span></li>
+</ul>
+<p><span class="arithmatex">\(F_c\)</span> 和 <span class="arithmatex">\(F\)</span> 具有相同的依赖集闭包, 且 <span class="arithmatex">\(F_c\)</span> 不包含无关属性, 是最小的.</p>
+<h4 id="_15">构造</h4>
+<p><span class="arithmatex">\(F_c = F\)</span>
+    <strong>repeat</strong>
+        使用合并律将 <span class="arithmatex">\(F_c\)</span> 中所有形如 <span class="arithmatex">\(\alpha_1 \to \beta_1\)</span> 和 <span class="arithmatex">\(\alpha_1 \to \beta_2\)</span> 的依赖替换为 <span class="arithmatex">\(\alpha_1 \to \beta_1\beta_2\)</span>
+        在 <span class="arithmatex">\(F_c\)</span> 中寻找函数依赖 <span class="arithmatex">\(\alpha \to \beta\)</span>, 它在 <span class="arithmatex">\(\alpha\)</span> 或在 <span class="arithmatex">\(\beta\)</span> 中具有一个无关属性
+        如果找到一个无关属性, 就将它从 <span class="arithmatex">\(F_c\)</span> 中的 <span class="arithmatex">\(\alpha \to \beta\)</span> 中删除
+    <strong>until</strong> <span class="arithmatex">\(F_c\)</span> 不变</p>
+<h3 id="_16">无损分解/有损分解</h3>
+<p>无损分解和有损分解有时称为无损连接分解和有损连接分解, 关系模式 <span class="arithmatex">\(r(R)\)</span> 中将属性集 <span class="arithmatex">\(R\)</span> 分解为 <span class="arithmatex">\(R_1, R_2\)</span>, 如果用 <span class="arithmatex">\(r_1(R_1), r_2(R_2)\)</span> 代替 <span class="arithmatex">\(r(R)\)</span> 时没有信息损失, 则称该分解是无损分解. 否则就是有损分解.</p>
+<p>如果 <span class="arithmatex">\(R_1 \cap R_2\)</span> 是 <span class="arithmatex">\(R_1\)</span> 或者 <span class="arithmatex">\(R_2\)</span> 的超码, <span class="arithmatex">\(R\)</span> 上的分解就是无损分解.</p>
+<h3 id="_17">保持依赖</h3>
+<p>令 <span class="arithmatex">\(F\)</span> 为模式 <span class="arithmatex">\(R\)</span> 上的一个函数依赖集, <span class="arithmatex">\(R_1, R_2, \dots, R_n\)</span> 为 <span class="arithmatex">\(R\)</span> 的一个分解, <span class="arithmatex">\(F\)</span> 在 <span class="arithmatex">\(R_i\)</span> 上的 <strong>限定</strong> 是 <span class="arithmatex">\(F^+\)</span> 中所有只包含 <span class="arithmatex">\(R_i\)</span> 中属性的函数依赖集合 <span class="arithmatex">\(F_i\)</span>. 令 <span class="arithmatex">\(F' =F_1 \cup F_2 \cup \dots \cup F_n\)</span>, 如果 <span class="arithmatex">\(F'^+ = F^+\)</span> 则该分解是保持依赖的分解.</p>
+<p><strong>验证方法</strong></p>
+<p>详见教材P195</p>
+<p>对于函数依赖集 F, 考虑其中的每一个函数依赖 <span class="arithmatex">\(\alpha \to \beta\)</span> 如果这些函数依赖能够在某一个 <span class="arithmatex">\(F_i\)</span> 上成立, 那么该分解就是保持依赖的. 验证成立可以通过计算 <span class="arithmatex">\(\alpha\)</span> 的属性集与 <span class="arithmatex">\(R_i\)</span> 的交集的闭包和 <span class="arithmatex">\(R_i\)</span> 的交集, 如果 <span class="arithmatex">\(\beta\)</span> 属于第二个交集, 那么函数依赖就在 <span class="arithmatex">\(F_i\)</span> 中成立.</p>
+<p>例: R = {A, B, C, D, E} , F = {B <span class="arithmatex">\(\to\)</span> A, D <span class="arithmatex">\(\to\)</span> A, A <span class="arithmatex">\(\to\)</span> E, AC <span class="arithmatex">\(\to\)</span> B}, 分解为 <span class="arithmatex">\(R_1\)</span> = {ABCE}, <span class="arithmatex">\(R_2\)</span> = {CD}, 判断分解是否保持依赖.</p>
+<p>解答: 考虑 B <span class="arithmatex">\(\to\)</span> A, B与 <span class="arithmatex">\(R_1\)</span> 的交集为 B, 计算 B 在 F 下的闭包为 {BEA}, 与 <span class="arithmatex">\(R_1\)</span> 的交集为 {BEA}, 此时 A 属于交集, 所以函数依赖 B <span class="arithmatex">\(\to\)</span> A 是保持的. 考虑 D <span class="arithmatex">\(\to\)</span> A, D与 <span class="arithmatex">\(R_1\)</span> 的交集为空不考虑, D 与 <span class="arithmatex">\(R_2\)</span> 的交集为D, 计算D在F下的闭包为 {DAE}, 与 <span class="arithmatex">\(R_2\)</span> 的交集为 {D}, 而A不属于交集, 所以该依赖不保持. 此时就可以停止计算并判断分解不保持函数依赖.</p>
+<h2 id="_18">关系模式的范式</h2>
+<h3 id="_19">第一范式</h3>
+<h4 id="_20">定义</h4>
+<p>关系 R 的所有属性的域都是原子的.</p>
+<h3 id="boyce-codd">Boyce-Codd 范式</h3>
+<h4 id="_21">定义</h4>
+<p>关系模式 <span class="arithmatex">\(R\)</span> 的函数依赖集 <span class="arithmatex">\(F\)</span> 的闭包 <span class="arithmatex">\(F^+\)</span> , 对于 <span class="arithmatex">\(F^+\)</span>中任意的函数依赖 <span class="arithmatex">\(\alpha \to \beta\)</span> 有以下至少一项成立:</p>
+<ul>
+<li><span class="arithmatex">\(\alpha \to \beta\)</span> 是平凡的函数依赖</li>
+<li><span class="arithmatex">\(\alpha\)</span> 是模式 <span class="arithmatex">\(R\)</span> 的一个超码</li>
+</ul>
+<h4 id="_22">判断方法</h4>
+<ul>
+<li>检查非平凡函数依赖 <span class="arithmatex">\(\alpha \to \beta\)</span> 需要计算 <span class="arithmatex">\(\alpha^+\)</span> 是否包含 R 中所有属性即验证 <span class="arithmatex">\(\alpha\)</span> 是否为超码.</li>
+<li>检查关系模式 R 需要检查其函数依赖集 F 中所有的函数依赖是否违反 BCNF.</li>
+<li>判断分解后的关系 <span class="arithmatex">\(R_i\)</span> 是否符合 BCNF, 需要检查对于 <span class="arithmatex">\(R_i\)</span> 的每一个子集 <span class="arithmatex">\(\alpha\)</span> 确保 <span class="arithmatex">\(\alpha^+\)</span> 要么不包含 <span class="arithmatex">\(R_i-\alpha\)</span> 的任何属性, 要么包含 <span class="arithmatex">\(R_i\)</span> 的所有属性.</li>
+</ul>
+<h4 id="bcnf">BCNF分解</h4>
+<p>将一个不属于 BCNF 的模式 <span class="arithmatex">\(R\)</span> 用下面的两个模式替换, 其中 <span class="arithmatex">\(\alpha\)</span> 不是 <span class="arithmatex">\(R\)</span> 的超码且 <span class="arithmatex">\(\alpha \to \beta\)</span> 不是平凡的:</p>
+<ul>
+<li><span class="arithmatex">\((\alpha \cup \beta)\)</span></li>
+<li><span class="arithmatex">\((R-(\beta - \alpha))\)</span></li>
+</ul>
+<p><strong>分解算法</strong>
+<span class="arithmatex">\(result := \{R\}\)</span>
+    <span class="arithmatex">\(done := false\)</span>;
+    计算 <span class="arithmatex">\(F^+\)</span>;
+    <strong>while</strong> (<strong>not</strong> done) <strong>do</strong>
+        <strong>if</strong>(result中存在模式<span class="arithmatex">\(R_i\)</span>不属于BCNF)
+        <strong>then begin</strong>
+            令 <span class="arithmatex">\(\alpha \to \beta\)</span> 为一个在 <span class="arithmatex">\(R_i\)</span> 上成立的非平凡函数依赖, 满足 <span class="arithmatex">\(\alpha \to R_i\)</span> 不属于 <span class="arithmatex">\(F^+\)</span>, 并且 <span class="arithmatex">\(\alpha \cap \beta = \phi\)</span>;
+            <span class="arithmatex">\(result := (result- R_i)\cup(R_i-\beta)\cup(\alpha, \beta)\)</span>
+    <strong>end</strong>
+    <strong>else</strong> <span class="arithmatex">\(done := true\)</span>;</p>
+<p>算法中 <span class="arithmatex">\(\alpha \to R_i\)</span> 不属于 <span class="arithmatex">\(F^+\)</span> 说明 <span class="arithmatex">\(\alpha\)</span> 不是 <span class="arithmatex">\(R_i\)</span> 的超码, <span class="arithmatex">\(\alpha \cap \beta = \phi\)</span> 保证 <span class="arithmatex">\((R-(\beta - \alpha)) = R-\beta\)</span>, 在这两个限制条件下, 该算法也就和本小节最开始说的分解方式相同.</p>
+<h3 id="_23">第三范式</h3>
+<h4 id="_24">定义</h4>
+<p>对于 <span class="arithmatex">\(F^+\)</span> 中所有形如 <span class="arithmatex">\(\alpha \to \beta\)</span> 的函数依赖(其中 <span class="arithmatex">\(\alpha \subseteq R\)</span> 且 <span class="arithmatex">\(\beta \subseteq R\)</span>), 以下至少一项成立:</p>
+<ul>
+<li><span class="arithmatex">\(\alpha \to \beta\)</span> 是平凡的函数依赖</li>
+<li><span class="arithmatex">\(\alpha\)</span> 是 <span class="arithmatex">\(R\)</span> 的一个超码</li>
+<li><span class="arithmatex">\(\beta - \alpha\)</span> 中的每个属性 <span class="arithmatex">\(A\)</span> 都包含于 <span class="arithmatex">\(R\)</span> 的一个候选码中(可以是不同的候选码)</li>
+</ul>
+<h4 id="3nf">3NF分解</h4>
+<p><strong>算法</strong></p>
+<p>令 <span class="arithmatex">\(F_c\)</span> 为 <span class="arithmatex">\(F\)</span> 的正则覆盖;
+<span class="arithmatex">\(i:=0\)</span>;
+<strong>for each</strong> <span class="arithmatex">\(F_c\)</span> 中的函数依赖 <span class="arithmatex">\(\alpha \to \beta\)</span>
+    <span class="arithmatex">\(i := i+1\)</span>;
+    <span class="arithmatex">\(R_i := \alpha\beta\)</span>;
+<strong>if</strong> 模式 <span class="arithmatex">\(R_j, j=1, 2, \dots, i\)</span> 都不包含 <span class="arithmatex">\(R\)</span> 的候选码
+<strong>then</strong>
+    <span class="arithmatex">\(i:=i+1\)</span>;
+    <span class="arithmatex">\(R_i:=R\)</span> 的任意候选码;
+<strong>repeat</strong>
+    <strong>if</strong> 模式 <span class="arithmatex">\(R_j\)</span> 包含于另一个模式 <span class="arithmatex">\(R_k\)</span> 中
+    <strong>then</strong>
+    <span class="arithmatex">\(R_j := R_i\)</span>;
+    <span class="arithmatex">\(i:=i-1\)</span>;
+<strong>until</strong> 不再有可以删除的 <span class="arithmatex">\(R_j\)</span>
+<strong>return</strong> <span class="arithmatex">\((R_1, R_2, \dots, R_i)\)</span></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.top", "navigation.path", "navigation.indexes", "toc.follow", "content.code.copy", "content.footnote.tooltips"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
